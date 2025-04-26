@@ -1,5 +1,5 @@
 {
-  "name": "@atombem/docs",
+  "name": "@anucss/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,9 +16,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@atombem/eslint-config": "workspace:*",
-    "@atombem/postcss": "workspace:*",
-    "@atombem/tsconfig": "workspace:*",
+    "@anucss/eslint-config": "workspace:*",
+    "@anucss/postcss": "workspace:*",
+    "@anucss/tsconfig": "workspace:*",
     "@next/eslint-plugin-next": "^14.1.1",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",

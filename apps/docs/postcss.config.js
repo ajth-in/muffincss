@@ -1,5 +1,5 @@
 module.exports = {
   plugins: {
-    "@atombem/postcss": {},
+    "@anucss/postcss": {},
   },
 };

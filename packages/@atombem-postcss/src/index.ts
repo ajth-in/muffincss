@@ -10,7 +10,7 @@ export type PluginOptions = {
 
 function tailwindcss(opts: PluginOptions = {}): AcceptedPlugin {
   return {
-    postcssPlugin: "@atombem/postcss",
+    postcssPlugin: "@anucss/postcss",
     async Once(root, { result }) {
       console.log(root);
     },
