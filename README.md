@@ -1,73 +1,35 @@
-# Turborepo Design System starter with Changesets
+# **AnuCSS** (*AnuCSS* - [ah-noo C-S-S])  
+A PostCSS plugin that transforms regular CSS into atomic, reusable utility classes for improved maintainability and efficiency.
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+### **Features**
 
-## Using this example
+- **Atomic Class Generation**: Converts your traditional CSS into atomic utility classes, promoting modular design and reducing code duplication.
+- **Shorthand Notations**: Supports shorthand utility classes, allowing for more concise and efficient CSS.
+- **Type Support for BEM-Style Classes**: Fully compatible with BEM (Block, Element, Modifier) conventions, ensuring that your class names remain modular and consistent.
 
-Run the following command:
+### **Installation**
 
-```sh
-npx create-turbo@latest -e with-changesets
+To install AnuCSS, follow the steps below:
+
+1. **Install the PostCSS Plugin**:  
+   AnuCSS is a **PostCSS** plugin, and you can easily add it to your build process.
+   
+```bash
+   npm install @anucss/postcss --save-dev
 ```
 
-## What's inside?
+2. In your `postcss.config.js` file, include AnuCSS as a plugin:
 
-This Turborepo includes the following:
-
-### Apps and Packages
-
-- `@anucss/docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org/)
-- `@anucss/core`: core React components
-- `@anucss/utils`: shared React utilities
-- `@anucss/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
-- `@anucss/eslint-config`: ESLint preset
-
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Useful commands
-
-- `yarn build` - Build all packages and the docs site
-- `yarn dev` - Develop all packages and the docs site
-- `yarn lint` - Lint all packages
-- `yarn changeset` - Generate a changeset
-- `yarn clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
-
-### Changing the npm organization scope
-
-The npm organization scope for this design system starter is `@anucss`. To change this, it's a bit manucssal at the moment, but you'll need to do the following:
-
-- Rename folders in `packages/*` to replace `acme` with your desired scope
-- Search and replace `acme` with your desired scope
-- Re-run `yarn install`
-
-## Versioning and Publishing packages
-
-Package publishing has been configured using [Changesets](https://github.com/changesets/changesets). Please review their [documentation](https://github.com/changesets/changesets#documentation) to familiarize yourself with the workflow.
-
-This example comes with automated npm releases setup in a [GitHub Action](https://github.com/changesets/action). To get this working, you will need to create an `NPM_TOKEN` and `GITHUB_TOKEN` in your repository settings. You should also install the [Changesets bot](https://github.com/apps/changeset-bot) on your GitHub repository as well.
-
-For more information about this automation, refer to the official [changesets documentation](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
-
-### npm
-
-If you want to publish package to the public npm registry and make them publicly available, this is already setup.
-
-To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s
-
-```diff
-- "publishConfig": {
--  "access": "public"
-- },
+```javascript
+module.exports = {
+  plugins: [
+    require('@anucss/postcss'),
+    // other PostCSS plugins...
+  ],
+};
 ```
+3. Install IDE extension (Optional but Recommended):
 
-### GitHub Package Registry
+Install AnuCSS Intellisense Extension
 
-See [Working with the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
+This extension will assist with shorthand class suggestions and improve your overall development experience
