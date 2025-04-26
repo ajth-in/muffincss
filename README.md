@@ -16,11 +16,11 @@ This Turborepo includes the following:
 
 ### Apps and Packages
 
-- `@atombem/docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org/)
-- `@atombem/core`: core React components
-- `@atombem/utils`: shared React utilities
-- `@atombem/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
-- `@atombem/eslint-config`: ESLint preset
+- `@anucss/docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org/)
+- `@anucss/core`: core React components
+- `@anucss/utils`: shared React utilities
+- `@anucss/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
+- `@anucss/eslint-config`: ESLint preset
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -42,7 +42,7 @@ This Turborepo has some additional tools already setup for you:
 
 ### Changing the npm organization scope
 
-The npm organization scope for this design system starter is `@atombem`. To change this, it's a bit manual at the moment, but you'll need to do the following:
+The npm organization scope for this design system starter is `@anucss`. To change this, it's a bit manucssal at the moment, but you'll need to do the following:
 
 - Rename folders in `packages/*` to replace `acme` with your desired scope
 - Search and replace `acme` with your desired scope
