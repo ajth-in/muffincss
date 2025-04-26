@@ -1,3 +1,4 @@
+import "./gloabls.css";
 export default function RootLayout({
   children,
 }: {
