@@ -2,10 +2,15 @@
   "name": "@atombem/postcss",
   "version": "0.0.0",
   "description": "PostCSS plugin for generating  atomic styles from regular css",
-  "keywords": ["postcss", "css", "postcss-plugin", "@atombem/postcss"],
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "@atombem/postcss"
+  ],
   "scripts": {
-    "unit": "node --test index.test.js",
-    "test": "npm run unit && eslint ."
+    "test": "npm run unit && eslint .",
+    "build": "tsup"
   },
   "author": "Ajith Kumar P M <ajithpmuralidharan01@gmail.com>",
   "license": "MIT",
@@ -13,12 +18,28 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  },
   "peerDependencies": {
     "postcss": "^8.4.27"
   },
   "devDependencies": {
     "eslint": "^8.47.0",
-    "postcss": "^8.4.27"
+    "postcss": "^8.4.27",
+    "tsup": "^8.4.0"
   },
   "eslintConfig": {
     "parserOptions": {
@@ -28,6 +49,8 @@
       "node": true,
       "es6": true
     },
-    "extends": ["eslint:recommended"]
+    "extends": [
+      "eslint:recommended"
+    ]
   }
 }
