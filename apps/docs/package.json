@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "install-run": "pnpm install && next dev",
     "start": "next start ",
     "dev": "next dev -p 3002",
     "lint": "next lint",
