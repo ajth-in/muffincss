@@ -6,13 +6,20 @@ const hashMap = new Map<string, string>();
 // Reverse map to quickly check if a string is already assigned a hash
 const reverseMap = new Map<string, string>();
 
+// Generate a set of alphabetic characters (lowercase + uppercase)
+const alphabet = characters.slice(10); // 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
 // Generator to iterate hashes in increasing length: '0', '1', ..., 'Z', '00', '01', ...
 function* hashGenerator(): Generator<string> {
     let length = 1;
     while (true) {
         const max = Math.pow(base, length);
         for (let i = 0; i < max; i++) {
-            yield encodeBase62(i, length);
+            const hash = encodeBase62(i, length);
+            // Ensure the hash starts with an alphabetic character
+            if (alphabet.includes(hash[0])) {
+                yield hash;
+            }
         }
         length++;
     }
@@ -45,4 +52,3 @@ export function getCompressedUniqueHash(input: string): string {
 
     throw new Error("Ran out of hashes (this should never happen)");
 }
-
