@@ -1,0 +1,19 @@
+.top-0        { top: 0; }
+.nav-top      { top: 0; }
+.fixed-header { top: 0; }
+
+.limit-width      { max-width: 500px; }
+.card-container   { max-width: 500px; }
+.content-wrapper  { max-width: 500px; }
+
+.hero-top         { top: 0; }
+.modal-top        { top: 0; }
+
+.form-box         { max-width: 500px; }
+.profile-section  { max-width: 500px; }
+
+.banner-top       { top: 0;color: red; }
+.footer-top       { top: 0; }
+
+.box-max          { max-width: 500px; }
+.text-area        { max-width: 500px; }
