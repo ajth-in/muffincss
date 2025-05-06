@@ -1,3 +1,5 @@
+![NPM Version](https://img.shields.io/npm/v/@muffincss/postcss)
+
 # MuffinCSS
 
 **MuffinCSS** is a lightweight, modular CSS package designed to help you create small, reusable CSS classes that scale as your website grows. Write plain old CSS, and MuffinCSS will automatically convert it into atomic CSS, enabling you to keep your codebase clean, maintainable, and efficient.
