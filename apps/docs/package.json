@@ -1,9 +1,10 @@
 {
-  "name": "@anucss/docs",
+  "name": "@muffincss/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "next build",
+    "install-run": "pnpm install && next dev",
     "start": "next start ",
     "dev": "next dev -p 3002",
     "lint": "next lint",
@@ -16,9 +17,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@anucss/eslint-config": "workspace:*",
-    "@anucss/postcss": "workspace:*",
-    "@anucss/tsconfig": "workspace:*",
+    "@muffincss/eslint-config": "workspace:*",
+    "@muffincss/postcss": "workspace:*",
+    "@muffincss/tsconfig": "workspace:*",
     "@next/eslint-plugin-next": "^14.1.1",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",

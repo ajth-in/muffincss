@@ -1,35 +1,19 @@
-# **AnuCSS** (*AnuCSS* - [ah-noo C-S-S])  
-A PostCSS plugin that transforms regular CSS into atomic, reusable utility classes for improved maintainability and efficiency.
+# MuffinCSS
 
-### **Features**
+**MuffinCSS** is a lightweight, modular CSS package designed to help you create small, reusable CSS classes that scale as your website grows. Write plain old CSS, and MuffinCSS will automatically convert it into atomic CSS, enabling you to keep your codebase clean, maintainable, and efficient.
 
-- **Atomic Class Generation**: Converts your traditional CSS into atomic utility classes, promoting modular design and reducing code duplication.
-- **Shorthand Notations**: Supports shorthand utility classes, allowing for more concise and efficient CSS.
-- **Type Support for BEM-Style Classes**: Fully compatible with BEM (Block, Element, Modifier) conventions, ensuring that your class names remain modular and consistent.
+> **Warning**: This package is in its early development stage. Features and APIs may change without notice.
 
-### **Installation**
+## Features
 
-To install AnuCSS, follow the steps below:
+- **Atomic CSS Generation**: MuffinCSS allows you to write regular CSS, and it transforms it into atomic, reusable classes.
+- **Scalable**: As your project grows, MuffinCSS helps maintain a clean structure by breaking down complex styles into small, modular classes.
+- **Simplicity**: No need to learn complex concepts or frameworks; just write CSS like you normally would.
+- **Customizable**: Easily extend or override default configurations to suit your needs.
 
-1. **Install the PostCSS Plugin**:  
-   AnuCSS is a **PostCSS** plugin, and you can easily add it to your build process.
-   
-```bash
-   npm install @anucss/postcss --save-dev
-```
+## How It Works
 
-2. In your `postcss.config.js` file, include AnuCSS as a plugin:
+1. Write your standard CSS as you normally would.
+2. MuffinCSS processes your CSS and extracts atomic classes.
+3. Each atomic class is optimized for reusability and performance.
 
-```javascript
-module.exports = {
-  plugins: [
-    require('@anucss/postcss'),
-    // other PostCSS plugins...
-  ],
-};
-```
-3. Install IDE extension (Optional but Recommended):
-
-Install AnuCSS Intellisense Extension
-
-This extension will assist with shorthand class suggestions and improve your overall development experience
