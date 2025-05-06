@@ -1,6 +1,6 @@
 {
   "exclude": ["node_modules"],
-  "extends": "@anucss/tsconfig/nextjs.json",
+  "extends": "@muffincss/tsconfig/nextjs.json",
   "compilerOptions": {
     "outDir": "dist",
     "incremental": true,
