@@ -16,7 +16,7 @@ export type PluginOptions = {
 
 function tailwindcss(opts: PluginOptions = {content:["src/**/*.bem.css"]}): AcceptedPlugin {
   return {
-    postcssPlugin: "@anucss/postcss",
+    postcssPlugin: "@muffincss/postcss",
 
     async Root(root, { result }) {
       const demandedStyles:Array<{selector:string, decl:Declaration_}> = []

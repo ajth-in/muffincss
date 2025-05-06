@@ -1,12 +1,12 @@
 {
-  "name": "@anucss/postcss",
+  "name": "@muffincss/postcss",
   "version": "0.0.0",
   "description": "PostCSS plugin for generating  atomic styles from regular css",
   "keywords": [
     "postcss",
     "css",
     "postcss-plugin",
-    "@anucss/postcss"
+    "@muffincss/postcss"
   ],
   "scripts": {
     "test": "npm run unit && eslint .",
@@ -14,7 +14,7 @@
   },
   "author": "Ajith Kumar P M <ajithpmuralidharan01@gmail.com>",
   "license": "MIT",
-  "repository": "ajth-in/anucss/@anucss-postcss",
+  "repository": "ajth-in/muffincss/@muffincss-postcss",
   "engines": {
     "node": ">=18.0.0"
   },

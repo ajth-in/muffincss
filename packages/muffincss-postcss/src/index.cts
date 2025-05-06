@@ -1,7 +1,7 @@
-import anucssPostcssPlugin from "./index.ts";
+import muffincssPostcssPlugin from "./index.ts";
 
 // This is used instead of `export default` to work around a bug in
 // `postcss-load-config`
 
 // @ts-ignore
-export = anucssPostcssPlugin;
+export = muffincssPostcssPlugin;
