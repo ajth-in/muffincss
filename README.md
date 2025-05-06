@@ -1,4 +1,4 @@
-![NPM Version](https://img.shields.io/npm/v/@muffincss/postcss)
+![NPM Version](https://img.shields.io/npm/v/@muffincss/postcss)  ![GitHub License](https://img.shields.io/github/license/ajth-in/muffincss)
 
 # MuffinCSS
 
