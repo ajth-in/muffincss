@@ -1,5 +1,5 @@
 {
-  "name": "@anucss/eslint-config",
+  "name": "@muffincss/eslint-config",
   "version": "0.0.0",
   "private": true,
   "files": [
