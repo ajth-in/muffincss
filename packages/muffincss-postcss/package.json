@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "npm run unit && eslint .",
-    "build": "tsup --watch"
+    "build": "tsup"
   },
   "author": "Ajith Kumar P M <ajithpmuralidharan01@gmail.com>",
   "license": "MIT",
