@@ -1,10 +1,11 @@
-import { rule, type AcceptedPlugin, type PluginCreator } from "postcss";
+import { atRule, rule, type AcceptedPlugin, type PluginCreator } from "postcss";
 import fg from 'fast-glob';
 import globParent from 'glob-parent';
 import fs from 'fs';
 import path from 'path';
 import type Declaration_ from "postcss/lib/declaration";
 import { getCompressedUniqueHash } from "./hash";
+import { getResetStyles } from "./resets";
 
 export type PluginOptions = {
   // The base directory to scan for class candidates.
@@ -19,16 +20,19 @@ function tailwindcss(opts: PluginOptions = {content:["src/**/*.bem.css"]}): Acce
     postcssPlugin: "@muffincss/postcss",
 
     async Root(root, { result }) {
+  
       const demandedStyles:Array<{selector:string, decl:Declaration_}> = []
       const selectorsSet = new Set<string>()
       console.log(__dirname);
       root.walkRules(rule=>{
+        if(rule.selector.startsWith(".")){
         rule.walkDecls(decl => {
           const selector = getCompressedUniqueHash(decl.value)
           if(!selectorsSet.has(selector)) demandedStyles.push({selector, decl} )
           selectorsSet.add(selector)
         });
         rule.remove()
+      }
       })
       console.log("STYLES",demandedStyles.map(({selector,decl})=>{
         return{selector, value:decl.prop + ":" + decl.value}
@@ -40,7 +44,10 @@ function tailwindcss(opts: PluginOptions = {content:["src/**/*.bem.css"]}): Acce
         return newRule
       })
       root.walkAtRules('tailwind', node => {
-          node.replaceWith(newRules)
+           // resetting the styles
+          const resetLayer = atRule({name:"layer", params:"reset"})
+          getResetStyles().map(style=>resetLayer.append(style))
+          node.replaceWith(resetLayer,newRules)
           node.remove()
       
       });
@@ -87,6 +94,8 @@ function tailwindcss(opts: PluginOptions = {content:["src/**/*.bem.css"]}): Acce
         //   candidates.add(candidate)
         // }
       }
+
+
 
 
     },
