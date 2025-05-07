@@ -57,7 +57,7 @@ const styleRules = [
     },
   ];
 
-export  const createPostCSSRules = () =>
+export  const getResetStyles = () =>
     styleRules.map(entry => {
       if (entry.atRule) {
         const atRule = postcss.atRule({
