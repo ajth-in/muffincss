@@ -35,6 +35,7 @@ function tailwindcss(opts: PluginOptions = {content:["src/**/*.bem.css"]}): Acce
       }))
       const newRules = demandedStyles.map(({selector, decl}) => {
         const newRule = rule({ selector: `.${selector}` });
+        
         newRule.append({ prop: decl.prop, value: decl.value });
         return newRule
       })
