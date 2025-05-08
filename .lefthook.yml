@@ -5,3 +5,7 @@ pre-commit:
       run: pnpm run lint
     format:
       run: pnpm run format
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm exec commitlint --edit {1}
