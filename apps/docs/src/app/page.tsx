@@ -1,4 +1,3 @@
-
 const Dashboard = () => {
   return (
     <div>
@@ -23,22 +22,40 @@ const Dashboard = () => {
           </button>
         </div>
         <div className="menu-links">
-          <a href="#home" className="menu-link"><span>Home</span></a>
-          <a href="#audience" className="menu-link"><span>Audience</span></a>
-          <a href="#behavior" className="menu-link"><span>Behavior</span></a>
-          <a href="#conversions" className="menu-link"><span>Conversions</span></a>
+          <a href="#home" className="menu-link">
+            <span>Home</span>
+          </a>
+          <a href="#audience" className="menu-link">
+            <span>Audience</span>
+          </a>
+          <a href="#behavior" className="menu-link">
+            <span>Behavior</span>
+          </a>
+          <a href="#conversions" className="menu-link">
+            <span>Conversions</span>
+          </a>
         </div>
       </aside>
 
       {/* Tab Selector */}
       <nav className="tab-selector">
         <div>
-          <a href="#home" className="tab-select selected-tab">Home</a>
-          <a href="#audience" className="tab-select">Audience</a>
-          <a href="#behavior" className="tab-select">Behavior</a>
-          <a href="#conversions" className="tab-select">Conversions</a>
+          <a href="#home" className="tab-select selected-tab">
+            Home
+          </a>
+          <a href="#audience" className="tab-select">
+            Audience
+          </a>
+          <a href="#behavior" className="tab-select">
+            Behavior
+          </a>
+          <a href="#conversions" className="tab-select">
+            Conversions
+          </a>
         </div>
-        <a href="#customize" className="tab-select float-right">Customize</a>
+        <a href="#customize" className="tab-select float-right">
+          Customize
+        </a>
       </nav>
 
       <div className="main-layout">
@@ -58,8 +75,15 @@ const Dashboard = () => {
             <div className="box page-views">
               <h2 className="box-title">Page views per minute</h2>
               <div className="graph">
-                {[66, 18, 34, 75, 15, 94, 95, 17, 32, 76, 80, 89, 63, 36, 82, 10, 27, 19, 5, 59, 18].map((height, index) => (
-                  <div key={index} aria-label={`${height} page views`} style={{ height: `${height}%` }}></div>
+                {[
+                  66, 18, 34, 75, 15, 94, 95, 17, 32, 76, 80, 89, 63, 36, 82,
+                  10, 27, 19, 5, 59, 18,
+                ].map((height, index) => (
+                  <div
+                    key={index}
+                    aria-label={`${height} page views`}
+                    style={{ height: `${height}%` }}
+                  ></div>
                 ))}
               </div>
               <div className="box-footer">
@@ -74,16 +98,35 @@ const Dashboard = () => {
           {/* Row 2 */}
           <div className="row-2">
             {[
-              { title: 'Users', value: '15K', trend: '268%', color: 'green' },
-              { title: 'Sessions', value: '17K', trend: '268%', color: 'green' },
-              { title: 'Bounce Rate', value: '62.57%', trend: '19%', color: 'red' },
-              { title: 'Session Duration', value: '1m 37s', trend: '29.7%', color: 'red' },
+              { title: "Users", value: "15K", trend: "268%", color: "green" },
+              {
+                title: "Sessions",
+                value: "17K",
+                trend: "268%",
+                color: "green",
+              },
+              {
+                title: "Bounce Rate",
+                value: "62.57%",
+                trend: "19%",
+                color: "red",
+              },
+              {
+                title: "Session Duration",
+                value: "1m 37s",
+                trend: "29.7%",
+                color: "red",
+              },
             ].map(({ title, value, trend, color }, i) => (
               <div className="stat-box" key={i}>
                 <div className="stat-title">
                   <span>{title}</span>
                   <span className={`stat-percentage ${color}`}>
-                    <img src={`./img/arrow-${color === 'green' ? 'up' : 'down'}-${color}.svg`} alt="" />{trend}
+                    <img
+                      src={`./img/arrow-${color === "green" ? "up" : "down"}-${color}.svg`}
+                      alt=""
+                    />
+                    {trend}
                   </span>
                 </div>
                 <h1 className="number-fs">{value}</h1>
@@ -110,15 +153,20 @@ const Dashboard = () => {
             <div className="box device-box">
               <div className="box-title">Devices</div>
               <div className="select-months">
-                {['May', 'June', 'July', 'August'].map((month, index) => (
-                  <div className={`select-month ${index === 0 ? 'active' : ''}`} key={month}>{month}</div>
+                {["May", "June", "July", "August"].map((month, index) => (
+                  <div
+                    className={`select-month ${index === 0 ? "active" : ""}`}
+                    key={month}
+                  >
+                    {month}
+                  </div>
                 ))}
               </div>
               <div className="month-info">
                 {[
-                  { label: 'Desktop', value: '52%', width: '62%' },
-                  { label: 'Tablet', value: '15%', width: '25%' },
-                  { label: 'Mobile', value: '36%', width: '46%' },
+                  { label: "Desktop", value: "52%", width: "62%" },
+                  { label: "Tablet", value: "15%", width: "25%" },
+                  { label: "Mobile", value: "36%", width: "46%" },
                 ].map(({ label, value, width }, i) => (
                   <div className="month-info-box" key={i}>
                     {label} | {value}
@@ -131,11 +179,11 @@ const Dashboard = () => {
               <div className="box-title">References</div>
               <div className="reference-details">
                 {[
-                  ['Direct', 24],
-                  ['Search', 18],
-                  ['Github', 12],
-                  ['Discord', 8],
-                  ['Other', 2],
+                  ["Direct", 24],
+                  ["Search", 18],
+                  ["Github", 12],
+                  ["Discord", 8],
+                  ["Other", 2],
                 ].map(([source, value], i) => (
                   <div className="reference" key={i}>
                     <span>{source}</span>
@@ -155,13 +203,13 @@ const Dashboard = () => {
           </div>
           <div className="side-bar-content">
             {[
-              ['/', '23,956'],
-              ['/about', '5664'],
-              ['/license', '2405'],
-              ['/post/sketch-help-center-links-search-day-1120', '1203'],
-              ['/post/sketch-stats-pricing-card-day-1116', '956'],
-              ['/posts/sketch-dark-progress-bar-day-1112', '869'],
-              ['/posts/sketch-message-ui-kit-day-5951', '654'],
+              ["/", "23,956"],
+              ["/about", "5664"],
+              ["/license", "2405"],
+              ["/post/sketch-help-center-links-search-day-1120", "1203"],
+              ["/post/sketch-stats-pricing-card-day-1116", "956"],
+              ["/posts/sketch-dark-progress-bar-day-1112", "869"],
+              ["/posts/sketch-message-ui-kit-day-5951", "654"],
             ].map(([page, visits], i) => (
               <div className="side-bar-page" key={i}>
                 <h4>{page}</h4>

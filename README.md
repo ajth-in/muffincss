@@ -1,4 +1,4 @@
-![NPM Version](https://img.shields.io/npm/v/@muffincss/postcss)  ![GitHub License](https://img.shields.io/github/license/ajth-in/muffincss)
+![NPM Version](https://img.shields.io/npm/v/@muffincss/postcss) ![GitHub License](https://img.shields.io/github/license/ajth-in/muffincss)
 
 # MuffinCSS
 
@@ -18,4 +18,3 @@
 1. Write your standard CSS as you normally would.
 2. MuffinCSS processes your CSS and extracts atomic classes.
 3. Each atomic class is optimized for reusability and performance.
-

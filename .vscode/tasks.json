@@ -1,13 +1,13 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "npm",
-			"script": "dev",
-			"path": "apps/docs",
-			"problemMatcher": [],
-			"label": "npm: dev - apps/docs",
-			"detail": "next dev -p 3002"
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "apps/docs",
+      "problemMatcher": [],
+      "label": "npm: dev - apps/docs",
+      "detail": "next dev -p 3002"
+    }
+  ]
 }

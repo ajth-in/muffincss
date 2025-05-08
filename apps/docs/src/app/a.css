@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 :root {
   --dark-blue: #0e1635;
@@ -22,7 +22,7 @@
 
 body {
   background-color: #f0f6f8;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 /* Menu */
@@ -146,11 +146,11 @@ nav.tab-selector {
   gap: 20px;
   justify-content: center;
   grid-template-areas:
-    'main main main'
-    'main main main'
-    'main main main'
-    'aside aside aside'
-    'aside aside aside';
+    "main main main"
+    "main main main"
+    "main main main"
+    "aside aside aside"
+    "aside aside aside";
   transition: opacity 0.55s;
 }
 
@@ -274,13 +274,13 @@ nav.tab-selector {
 }
 
 /* https://twitter.com/aralroca/status/1275700185385988096 */
-.graph div:hover::before{
+.graph div:hover::before {
   display: block;
 }
 
 .graph div:before {
   content: attr(aria-label);
-  display:none;
+  display: none;
   position: absolute;
   top: 30px;
   font-weight: 600;
@@ -290,9 +290,8 @@ nav.tab-selector {
   padding: 10px;
   background-color: #f0f6f8;
   border-radius: 5px;
-  pointer-events: none;  
+  pointer-events: none;
 }
-
 
 /* Row 2 */
 .row-2 {
@@ -376,7 +375,9 @@ nav.tab-selector {
   border-radius: 5px;
   color: var(--blue);
   font-weight: 550;
-  transition: color 0.3s, background 0.3s;
+  transition:
+    color 0.3s,
+    background 0.3s;
   margin-right: 10px;
 }
 
@@ -550,13 +551,12 @@ nav.tab-selector {
 @media screen and (min-width: 1300px) {
   .main-layout {
     grid-template-areas:
-      'main main aside'
-      'main main aside'
-      'main main aside'
-      'main main aside';
+      "main main aside"
+      "main main aside"
+      "main main aside"
+      "main main aside";
   }
 }
-
 
 * {
   margin: 0;
