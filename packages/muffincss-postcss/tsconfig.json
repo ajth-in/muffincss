@@ -19,6 +19,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "src/postcss.test.js"],
   "exclude": ["node_modules"]
 }
