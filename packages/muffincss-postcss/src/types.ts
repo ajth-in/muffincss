@@ -42,3 +42,10 @@ export interface AtomicRule {
   prop: string;
   value: string;
 }
+
+export type ProcessorContext = {
+  mediaAtRuleStore: Map<string, Map<string, AtomicRule>>;
+  selectorToAtomicClassesStore: Map<string, string[]>;
+  options: Required<AtomizerOptions>;
+  atomicRules: Map<string, AtomicRule>;
+};
