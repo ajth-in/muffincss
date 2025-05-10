@@ -1,7 +1,11 @@
 import processMediaRules from "./processors/media";
 import type { AtomicRule, AtomizerOptions } from "./types";
 import { Root, type Plugin } from "postcss";
-import { generateAtomicRule, generateMediaRules } from "./utils";
+import {
+  generateAtomicRule,
+  generateMediaRules,
+  generateTemplates,
+} from "./utils";
 import processRules from "./processors/rule";
 import message from "./lib/chalk";
 const path = require("path");
@@ -9,7 +13,7 @@ const fs = require("fs");
 
 const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
   const options: Required<AtomizerOptions> = {
-    outDir: "./.muffincss",
+    outDir: "./muffincss",
     prefix: "a-",
     optimize: true,
     purge: true,
@@ -53,7 +57,10 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         root.append(generateAtomicRule(className, data));
       });
 
-      console.log(selectorToAtomicClasses);
+      generateTemplates(
+        `${absolutePath}/__generated`,
+        Object.fromEntries(selectorToAtomicClasses),
+      );
     },
   };
 };

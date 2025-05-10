@@ -9,6 +9,7 @@ import {
   styleSheetWithMediaQueryAndSelectorsInput,
   styleSheetWithMediaQueryAndSelectorsOutput,
 } from "./tests/classes-with-nonclass-styles";
+const atomize = require("../muffincss/css");
 const cssnano = require("cssnano");
 
 type PluginOptions = Parameters<typeof myPlugin>[0];
@@ -46,5 +47,14 @@ describe("My PostCSS Plugin", () => {
     console.log(result);
 
     expect(result).toBe(styleSheetWithMediaQueryAndSelectorsOutput);
+  });
+  test("Atomize function should return the atomic styles of selectors ", async () => {
+    const result = await postcssPipeline(
+      styleSheetWithMediaQueryAndSelectorsInput,
+      { hash: false },
+    );
+    console.log(result);
+
+    expect(atomize("container")).toBe("a-padding-10px-_max_width__600px_");
   });
 });

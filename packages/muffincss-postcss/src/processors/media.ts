@@ -48,8 +48,11 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
     });
     if (isAtRuleRemovable) rule.remove();
     if (atomicClassesForSelector.length > 0) {
-      const mappingKey = `${mediaQuery} | ${rule.selector}`;
-      selectorToAtomicClassesStore.set(mappingKey, atomicClassesForSelector);
+      const prevKeys = selectorToAtomicClassesStore.get(rule.selector) ?? [];
+      selectorToAtomicClassesStore.set(rule.selector, [
+        ...prevKeys,
+        ...atomicClassesForSelector,
+      ]);
     }
   });
   if (isAtRuleRemovable) atRule.remove();
