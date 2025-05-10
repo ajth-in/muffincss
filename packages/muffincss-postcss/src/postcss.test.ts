@@ -9,7 +9,7 @@ import {
   styleSheetWithMediaQueryAndSelectorsInput,
   styleSheetWithMediaQueryAndSelectorsOutput,
 } from "./tests/classes-with-nonclass-styles";
-const atomize = require("../muffincss/css");
+const atomize = require("../muffincss/css.cjs");
 const cssnano = require("cssnano");
 
 type PluginOptions = Parameters<typeof myPlugin>[0];
@@ -44,7 +44,6 @@ describe("My PostCSS Plugin", () => {
       styleSheetWithMediaQueryAndSelectorsInput,
       { hash: false },
     );
-    console.log(result);
 
     expect(result).toBe(styleSheetWithMediaQueryAndSelectorsOutput);
   });
@@ -53,7 +52,6 @@ describe("My PostCSS Plugin", () => {
       styleSheetWithMediaQueryAndSelectorsInput,
       { hash: false },
     );
-    console.log(result);
 
     expect(atomize("container")).toBe("a-padding-10px-_max_width__600px_");
   });
