@@ -3,6 +3,7 @@ import type { AtomicRule, AtomizerOptions } from "./types";
 import { Root, type Plugin } from "postcss";
 import { generateAtomicRule, generateMediaRules } from "./utils";
 import processRules from "./processors/rule";
+import message from "./lib/chalk";
 const path = require("path");
 const fs = require("fs");
 
@@ -23,8 +24,12 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
       const absolutePath = path.resolve(process.cwd(), options.outDir);
       if (!fs.existsSync(absolutePath)) {
         result.warn(
-          `The directory ${options.outDir} is missing. Run '@muffincss/cli init' to set up.`,
+          message(
+            "success",
+            `The directory ${options.outDir} is missing. Run '@muffincss/cli init' to set up.`,
+          ),
         );
+        return;
       }
 
       const mediaQueries = new Map<string, Map<string, AtomicRule>>();

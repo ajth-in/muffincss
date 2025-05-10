@@ -67,6 +67,7 @@
     ]
   },
   "dependencies": {
+    "chalk": "^4.0.0",
     "fast-glob": "^3.3.3",
     "glob-parent": "^6.0.2"
   }
