@@ -33,12 +33,15 @@ export async function postcssPipeline(
 // todo tests for child selector, purge, psedo selector, multiple classes .etc
 describe("My PostCSS Plugin", () => {
   test("Should transform all media classNames to atomic styles, should not purge media at rules with unprocessed rules  ", async () => {
-    const result = await postcssPipeline(mediaQueriesWithNonClassStylesInput);
+    const result = await postcssPipeline(mediaQueriesWithNonClassStylesInput, {
+      hash: false,
+    });
     expect(result).toBe(mediaQueriesWithNonClassStylesOutput);
   });
   test("Should compile all class selectors to atomic styles, and should not purge non class selector styles  ", async () => {
     const result = await postcssPipeline(
       styleSheetWithMediaQueryAndSelectorsInput,
+      { hash: false },
     );
     console.log(result);
 

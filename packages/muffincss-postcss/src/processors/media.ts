@@ -34,7 +34,12 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
         return;
       }
 
-      const className = stringifyDeclaration(declaration, prefix, mediaQuery);
+      const className = stringifyDeclaration(
+        declaration,
+        prefix,
+        options.hash,
+        mediaQuery,
+      );
       atomicClassesForSelector.push(className);
       mediaAtRuleStore.get(mediaQuery)!.set(className, {
         prop: declaration.prop,

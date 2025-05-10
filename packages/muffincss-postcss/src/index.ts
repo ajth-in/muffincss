@@ -10,6 +10,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
     optimize: true,
     purge: true,
     reset: "default",
+    hash: true,
     exclude: { selectors: [], properties: [] },
     ...opts,
   };
@@ -36,6 +37,8 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
       atomicRules.forEach((data, className) => {
         root.append(generateAtomicRule(className, data));
       });
+
+      console.log(selectorToAtomicClasses);
     },
   };
 };
