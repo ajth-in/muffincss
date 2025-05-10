@@ -22,7 +22,7 @@ const processRules = (context: ProcessorContext) => (rule: Rule) => {
       isRuleRemovable = false;
       return;
     }
-    const className = stringifyDeclaration(declaration, prefix);
+    const className = stringifyDeclaration(declaration, prefix, options.hash);
     if (!atomicRules.has(className))
       atomicRules.set(className, {
         prop: declaration.prop,

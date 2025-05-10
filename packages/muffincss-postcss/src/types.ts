@@ -36,6 +36,11 @@ export type AtomizerOptions = {
     selectors: RegExp[];
     properties: RegExp[];
   };
+  /**
+   * Whether to hash all class names.
+   * Defaults to true.
+   */
+  hash?: boolean;
 };
 
 export interface AtomicRule {
