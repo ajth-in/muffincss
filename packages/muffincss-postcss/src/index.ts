@@ -1,62 +1,35 @@
-import { atRule, type AcceptedPlugin } from "postcss";
-import type Declaration_ from "postcss/lib/declaration";
-import { getResetStyles } from "./resets";
-import type { PluginOptions } from "./types";
-import { getCompressedUniqueHash } from "./hash";
+import processMediaRules from "./processors/media";
+import type { AtomicRule, AtomizerOptions } from "./types";
+import { Root, type Plugin } from "postcss";
+import { generateMediaRules } from "./utils";
 
-export default function muffincss(opts: PluginOptions): AcceptedPlugin {
-  const { optimize, purge, reset = "default" } = opts;
+const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
+  const options: Required<AtomizerOptions> = {
+    prefix: "a-",
+    optimize: true,
+    purge: true,
+    reset: "default",
+    exclude: { selectors: [], properties: [] },
+    ...opts,
+  };
   return {
     postcssPlugin: "@muffincss/postcss",
+    Once(root: Root) {
+      const mediaQueries = new Map<string, Map<string, AtomicRule>>();
+      const selectorToAtomicClasses = new Map<string, string[]>();
 
-    async Root(root, { result }) {
-      const demandedStyles: Array<{ selector: string; decl: Declaration_ }> =
-        [];
-      const demandedAtRules: Array<{
-        media: string;
-        selector: string;
-        declaration: Declaration_;
-      }> = [];
-
-      root.walkAtRules("media", (atRule) => {
-        const mediaDescription = atRule.params;
-        let haveNonClassRules = false;
-        atRule.walkRules((rule) => {
-          if (!rule.selector.startsWith(".")) {
-            haveNonClassRules = true;
-            return;
-          }
-
-          rule.walkDecls((decl) => {
-            demandedAtRules.push({
-              media: mediaDescription,
-              selector: rule.selector,
-              declaration: decl,
-            });
-          });
-          rule.remove();
-        });
-        if (!haveNonClassRules) atRule.remove();
-      });
-
-      const newAtRules = demandedAtRules.map(
-        ({ selector, declaration, media }) => {
-          const newAtRule = atRule({ params: selector, name: media });
-          const selectorHash = getCompressedUniqueHash(declaration.value);
-
-          newAtRule
-            .append({ selector: `.${selectorHash}` })
-            .append({ prop: declaration.prop, value: declaration.value });
-          return newAtRule;
-        },
+      root.walkAtRules(
+        "media",
+        processMediaRules(mediaQueries, selectorToAtomicClasses, options),
       );
-      root.walkAtRules("muffincss", (node) => {
-        // resetting the styles
-        const resetLayer = atRule({ name: "layer", params: "reset" });
-        getResetStyles().map((style) => resetLayer.append(style));
-        // node.replaceWith();
-        node.remove();
+      mediaQueries.forEach((rules, mediaQuery) => {
+        const mediaRule = generateMediaRules(rules, mediaQuery);
+        root.append(mediaRule);
       });
     },
   };
-}
+};
+
+postcssAtomizer.postcss = true;
+
+export default postcssAtomizer;
