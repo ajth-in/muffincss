@@ -44,6 +44,7 @@
     "@types/murmurhash3js": "^3.0.7",
     "@types/node": "^22.15.3",
     "crypto": "^1.0.1",
+    "cssnano": "^7.0.7",
     "eslint": "^8.47.0",
     "jest": "^29.7.0",
     "murmurhash3js": "^3.0.1",

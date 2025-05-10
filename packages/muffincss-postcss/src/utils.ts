@@ -30,3 +30,10 @@ export const generateMediaRules = (
   });
   return mediaRule;
 };
+
+export const generateAtomicRule = (className: string, data: AtomicRule) => {
+  const selector = `.${className}`;
+  const newRule = new Rule({ selector });
+  newRule.append(new Declaration({ prop: data.prop, value: data.value }));
+  return newRule;
+};
