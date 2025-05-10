@@ -2,6 +2,7 @@
  * Configuration options for the CSS atomizer.
  */
 export type AtomizerOptions = {
+  outDir?: string;
   /**
    * If true, compiles all CSS styles into atomic utility classes.
    * @default true
