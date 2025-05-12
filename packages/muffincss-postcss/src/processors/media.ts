@@ -3,7 +3,7 @@ import type { AtomicRule, ProcessorContext } from "../types";
 import { stringifyDeclaration } from "../utils";
 
 const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
-  const { options, mediaAtRuleStore, selectorToAtomicClassesStore } = context;
+  const { options, mediaAtRuleMap, resolvedClassesMap } = context;
   let isAtRuleRemovable = true;
   const mediaQuery = atRule.params;
   const {
@@ -13,8 +13,8 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
 
   if (selectors.some((regex) => regex.test(mediaQuery))) return;
 
-  if (!mediaAtRuleStore.has(mediaQuery)) {
-    mediaAtRuleStore.set(mediaQuery, new Map<string, AtomicRule>());
+  if (!mediaAtRuleMap.has(mediaQuery)) {
+    mediaAtRuleMap.set(mediaQuery, new Map<string, AtomicRule>());
   }
 
   atRule.walkRules((rule: Rule) => {
@@ -41,15 +41,15 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
         mediaQuery,
       );
       atomicClassesForSelector.push(className);
-      mediaAtRuleStore.get(mediaQuery)!.set(className, {
+      mediaAtRuleMap.get(mediaQuery)!.set(className, {
         prop: declaration.prop,
         value: declaration.value,
       });
     });
     if (isAtRuleRemovable) rule.remove();
     if (atomicClassesForSelector.length > 0) {
-      const prevKeys = selectorToAtomicClassesStore.get(rule.selector) ?? [];
-      selectorToAtomicClassesStore.set(rule.selector, [
+      const prevKeys = resolvedClassesMap.get(rule.selector) ?? [];
+      resolvedClassesMap.set(rule.selector, [
         ...prevKeys,
         ...atomicClassesForSelector,
       ]);

@@ -1,5 +1,5 @@
 import processMediaRules from "./processors/media";
-import type { AtomicRule, AtomizerOptions } from "./types";
+import type { AtomicRule, AtomizerOptions, ProcessorContext } from "./types";
 import { Root, type Plugin } from "postcss";
 import {
   generateAtomicRule,
@@ -13,7 +13,7 @@ const path = require("path");
 const fs = require("fs");
 const { performance } = require("perf_hooks");
 
-const instrumentation = new Instrumentation();
+const I = new Instrumentation();
 
 const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
   const options: Required<AtomizerOptions> = {
@@ -29,7 +29,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
   return {
     postcssPlugin: "@muffincss/postcss",
     Once(root: Root, { result }) {
-      instrumentation.start(" Compiled all CSS files");
+      I.start(" Compiled all CSS files");
 
       const absolutePath = path.resolve(process.cwd(), options.outDir);
       if (!fs.existsSync(absolutePath)) {
@@ -42,37 +42,37 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         return;
       }
 
-      const mediaQueries = new Map<string, Map<string, AtomicRule>>();
-      const selectorToAtomicClasses = new Map<string, string[]>();
-      const atomicRules = new Map<string, AtomicRule>();
+      const mediaAtRuleMap = new Map<string, Map<string, AtomicRule>>();
+      const rulesMap = new Map<string, AtomicRule>();
+      const resolvedClassesMap = new Map<string, string[]>();
 
-      const context = {
-        mediaAtRuleStore: mediaQueries,
-        selectorToAtomicClassesStore: selectorToAtomicClasses,
+      const context: ProcessorContext = {
+        mediaAtRuleMap,
+        resolvedClassesMap,
+        rulesMap,
         options,
-        atomicRules,
       };
-      instrumentation.start("Compiled all at-rules");
+      I.start("compile_at_rules");
       root.walkAtRules("media", processMediaRules(context));
-      instrumentation.end("Compiled all at-rules");
-      instrumentation.start("Compiled all rules");
+      I.end("compile_at_rules");
+      I.start("compile_rules");
       root.walkRules(processRules(context));
-      instrumentation.end("Compiled all rules");
-      mediaQueries.forEach((rules, mediaQuery) => {
+      I.end("compile_rules");
+      mediaAtRuleMap.forEach((rules, mediaQuery) => {
         const mediaRule = generateMediaRules(rules, mediaQuery);
         root.append(mediaRule);
       });
-      atomicRules.forEach((data, className) => {
+      rulesMap.forEach((data, className) => {
         root.append(generateAtomicRule(className, data));
       });
-      instrumentation.start("Writing to file system");
+      I.start("write_to_file_system");
       generateTemplates(
         `${absolutePath}/__generated`,
-        Object.fromEntries(selectorToAtomicClasses),
+        Object.fromEntries(resolvedClassesMap),
       );
-      instrumentation.end("Writing to file system");
-      instrumentation.end(" Compiled all CSS files");
-      instrumentation.report();
+      I.end("write_to_file_system");
+      I.end(" Compiled all CSS files");
+      I.report();
     },
   };
 };
