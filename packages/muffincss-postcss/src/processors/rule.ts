@@ -3,7 +3,7 @@ import type { ProcessorContext } from "../types";
 import { stringifyDeclaration } from "../utils";
 
 const processRules = (context: ProcessorContext) => (rule: Rule) => {
-  const { options, selectorToAtomicClassesStore, atomicRules } = context;
+  const { options, resolvedClassesMap, rulesMap } = context;
   const {
     prefix,
     exclude: { properties },
@@ -23,8 +23,8 @@ const processRules = (context: ProcessorContext) => (rule: Rule) => {
       return;
     }
     const className = stringifyDeclaration(declaration, prefix, options.hash);
-    if (!atomicRules.has(className))
-      atomicRules.set(className, {
+    if (!rulesMap.has(className))
+      rulesMap.set(className, {
         prop: declaration.prop,
         value: declaration.value,
       });
@@ -32,7 +32,7 @@ const processRules = (context: ProcessorContext) => (rule: Rule) => {
   });
 
   if (atomicClassesForSelector.length > 0) {
-    selectorToAtomicClassesStore.set(rule.selector, atomicClassesForSelector);
+    resolvedClassesMap.set(rule.selector, atomicClassesForSelector);
   }
   if (isRuleRemovable) rule.remove();
 };

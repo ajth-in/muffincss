@@ -19,6 +19,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["**/*.ts", "src/postcss.test.js"],
+  "include": ["**/*.ts", "src/postcss.test.js", "muffincss/css.cjs"],
   "exclude": ["node_modules"]
 }
