@@ -46,6 +46,11 @@ export type AtomizerOptions = {
    * Defaults to true.
    */
   hash?: boolean;
+  /**
+   * Enables debug mode.
+   * for the plugin outputs additional logging and diagnostic
+   */
+  debug?: boolean;
 };
 
 export interface AtomicRule {

@@ -1,17 +1,16 @@
 import processMediaRules from "./processors/media";
 import type { AtomicRule, AtomizerOptions, ProcessorContext } from "./types";
-import { Root, type Plugin } from "postcss";
+import { atRule, Root, type Plugin } from "postcss";
 import {
   generateAtomicRule,
   generateMediaRules,
   generateTemplates,
 } from "./utils";
 import processRules from "./processors/rule";
-import message from "./lib/chalk";
 import { Instrumentation } from "./instrumentation";
+import { getResetStyles } from "./resets";
+import { ensureOutDirStructure } from "./utils/create-dir-structure";
 const path = require("path");
-const fs = require("fs");
-const { performance } = require("perf_hooks");
 
 const I = new Instrumentation();
 
@@ -23,24 +22,17 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
     purge: true,
     reset: "default",
     hash: true,
+    debug: false,
     exclude: { selectors: [], properties: [] },
     ...opts,
   };
+  const DEBUG = options.debug || process.env.NODE_ENV === "development";
   return {
     postcssPlugin: "@muffincss/postcss",
     Once(root: Root, { result }) {
       I.start(" Compiled all CSS files");
-
       const absolutePath = path.resolve(process.cwd(), options.outDir);
-      if (!fs.existsSync(absolutePath)) {
-        result.warn(
-          message(
-            "success",
-            `The directory ${options.outDir} is missing. Run '@muffincss/cli init' to set up.`,
-          ),
-        );
-        return;
-      }
+      ensureOutDirStructure(absolutePath);
 
       const mediaAtRuleMap = new Map<string, Map<string, AtomicRule>>();
       const rulesMap = new Map<string, AtomicRule>();
@@ -52,27 +44,36 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         rulesMap,
         options,
       };
-      I.start("compile_at_rules");
+      DEBUG && I.start("compile_at_rules");
       root.walkAtRules("media", processMediaRules(context));
-      I.end("compile_at_rules");
-      I.start("compile_rules");
+      DEBUG && I.end("compile_at_rules");
+      DEBUG && I.start("compile_rules");
       root.walkRules(processRules(context));
-      I.end("compile_rules");
-      mediaAtRuleMap.forEach((rules, mediaQuery) => {
-        const mediaRule = generateMediaRules(rules, mediaQuery);
-        root.append(mediaRule);
+      DEBUG && I.end("compile_rules");
+
+      root.walkAtRules("muffincss", (node) => {
+        const resetLayer = atRule({ name: "layer", params: "reset" });
+        const utilitiesLayer = atRule({ name: "layer", params: "utilities" });
+        getResetStyles(options.reset).map((style) => resetLayer.append(style));
+        mediaAtRuleMap.forEach((rules, mediaQuery) => {
+          const mediaRule = generateMediaRules(rules, mediaQuery);
+          utilitiesLayer.append(mediaRule);
+        });
+        rulesMap.forEach((data, className) => {
+          utilitiesLayer.append(generateAtomicRule(className, data));
+        });
+        node.replaceWith(utilitiesLayer);
+        node.remove();
       });
-      rulesMap.forEach((data, className) => {
-        root.append(generateAtomicRule(className, data));
-      });
-      I.start("write_to_file_system");
+
+      DEBUG && I.start("write_to_file_system");
       generateTemplates(
         `${absolutePath}/__generated`,
         Object.fromEntries(resolvedClassesMap),
       );
-      I.end("write_to_file_system");
-      I.end(" Compiled all CSS files");
-      I.report();
+      DEBUG && I.end("write_to_file_system");
+      DEBUG && I.end(" Compiled all CSS files");
+      DEBUG && I.report();
     },
   };
 };

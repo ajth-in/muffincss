@@ -51,8 +51,6 @@ export const generateAtomicRule = (className: string, data: AtomicRule) => {
 };
 
 export function generateTemplates(outDir: string, data: object) {
-  // fs.mkdirSync(outDir, { recursive: true });
-
   const mediaClassMapString = JSON.stringify(data, null, 2);
 
   const cjsContent = mustache.render(cjsTemplate, {

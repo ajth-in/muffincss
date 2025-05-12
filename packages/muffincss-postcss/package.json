@@ -19,11 +19,12 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     }
   },
   "tsup": {

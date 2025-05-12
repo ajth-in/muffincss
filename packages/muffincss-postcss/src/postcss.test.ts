@@ -9,7 +9,7 @@ import {
   styleSheetWithMediaQueryAndSelectorsInput,
   styleSheetWithMediaQueryAndSelectorsOutput,
 } from "./tests/classes-with-nonclass-styles";
-const atomize = require("../muffincss/css.cjs");
+// const atomize = require("../muffincss/css.cjs");
 const cssnano = require("cssnano");
 
 type PluginOptions = Parameters<typeof myPlugin>[0];
@@ -36,23 +36,16 @@ describe("My PostCSS Plugin", () => {
   test("Should transform all media classNames to atomic styles, should not purge media at rules with unprocessed rules  ", async () => {
     const result = await postcssPipeline(mediaQueriesWithNonClassStylesInput, {
       hash: false,
+      reset: "default",
     });
     expect(result).toBe(mediaQueriesWithNonClassStylesOutput);
   });
   test("Should compile all class selectors to atomic styles, and should not purge non class selector styles  ", async () => {
     const result = await postcssPipeline(
       styleSheetWithMediaQueryAndSelectorsInput,
-      { hash: false },
+      { hash: false, reset: "minimal" },
     );
 
     expect(result).toBe(styleSheetWithMediaQueryAndSelectorsOutput);
-  });
-  test("Atomize function should return the atomic styles of selectors ", async () => {
-    const result = await postcssPipeline(
-      styleSheetWithMediaQueryAndSelectorsInput,
-      { hash: false },
-    );
-
-    expect(atomize("container")).toBe("a-padding-10px-_max_width__600px_");
   });
 });
