@@ -11,7 +11,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "gen:css": "tsup src/generate/css.ts --format cjs,esm --dts --external:./_generated --out-dir ./dist"
   },
   "author": "Ajith Kumar P M <ajithpmuralidharan01@gmail.com>",
   "license": "MIT",
@@ -71,6 +72,7 @@
     "chalk": "^4.0.0",
     "fast-glob": "^3.3.3",
     "glob-parent": "^6.0.2",
-    "mustache": "^4.2.0"
+    "mustache": "^4.2.0",
+    "ts-morph": "^25.0.1"
   }
 }

@@ -1,15 +1,13 @@
 import processMediaRules from "./processors/media";
 import type { AtomicRule, AtomizerOptions, ProcessorContext } from "./types";
 import { atRule, Root, type Plugin } from "postcss";
-import {
-  generateAtomicRule,
-  generateMediaRules,
-  generateTemplates,
-} from "./utils";
+import { generateAtomicRule, generateMediaRules } from "./utils";
 import processRules from "./processors/rule";
 import { Instrumentation } from "./instrumentation";
 import { getResetStyles } from "./resets";
 import { ensureOutDirStructure } from "./utils/create-dir-structure";
+import generateModuleVersionsWithType from "./generate/maps";
+import generateCSS from "./generate/css";
 const path = require("path");
 
 const I = new Instrumentation();
@@ -67,10 +65,12 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
       });
 
       DEBUG && I.start("write_to_file_system");
-      generateTemplates(
-        `${absolutePath}/__generated`,
-        Object.fromEntries(resolvedClassesMap),
-      );
+
+      generateModuleVersionsWithType(
+        resolvedClassesMap,
+        path.join(absolutePath, "__generated"),
+      ),
+        generateCSS(resolvedClassesMap, path.join(absolutePath, "css"));
       DEBUG && I.end("write_to_file_system");
       DEBUG && I.end(" Compiled all CSS files");
       DEBUG && I.report();

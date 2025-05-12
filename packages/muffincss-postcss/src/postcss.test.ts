@@ -37,6 +37,7 @@ describe("My PostCSS Plugin", () => {
     const result = await postcssPipeline(mediaQueriesWithNonClassStylesInput, {
       hash: false,
       reset: "default",
+      debug: true,
     });
     expect(result).toBe(mediaQueriesWithNonClassStylesOutput);
   });
