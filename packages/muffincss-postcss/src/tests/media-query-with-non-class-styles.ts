@@ -1,28 +1,39 @@
 export const mediaQueriesWithNonClassStylesInput = `
+@muffincss;
+
+.header {
+  color:yellow
+}
 @media (min-width: 768px) {
   .header {
     text-align: center;
     color: blue;
   }
+
   button {
     color: blue;
-  }
-}
-@media (min-width: 769px) {
-  .header {
-    color: yellow;
   }
 }
 `;
 
 export const mediaQueriesWithNonClassStylesOutput = `
-@media (min-width:768px){
-  button{color:blue}
-  .a-text-align-center-_min_width__768px_{text-align:center}
-  .a-color-blue-_min_width__768px_{color:blue}
+@layer utilities {
+  @media (min-width: 768px) {
+    .a-text-align-center-_min_width__768px_ {
+      text-align: center
+    }
+    .a-color-blue-_min_width__768px_ {
+      color: blue
+    }
+  }
+  .a-color-yellow {
+    color: #ff0
+  }
 }
-@media (min-width:769px){
-  .a-color-yellow-_min_width__769px_{color:#ff0}
+
+@media (min-width: 768px) {
+  button {
+    color: blue
+  }
 }
-  
 `.replace(/\s+/g, "");

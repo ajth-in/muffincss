@@ -3,6 +3,11 @@
  */
 export type AtomizerOptions = {
   /**
+   * Directory to store the generated styled system.
+   * @default'muffincss'
+   */
+  outDir?: string;
+  /**
    * If true, compiles all CSS styles into atomic utility classes.
    * @default true
    */
@@ -41,6 +46,11 @@ export type AtomizerOptions = {
    * Defaults to true.
    */
   hash?: boolean;
+  /**
+   * Enables debug mode.
+   * for the plugin outputs additional logging and diagnostic
+   */
+  debug?: boolean;
 };
 
 export interface AtomicRule {
@@ -49,8 +59,8 @@ export interface AtomicRule {
 }
 
 export type ProcessorContext = {
-  mediaAtRuleStore: Map<string, Map<string, AtomicRule>>;
-  selectorToAtomicClassesStore: Map<string, string[]>;
+  mediaAtRuleMap: Map<string, Map<string, AtomicRule>>;
+  resolvedClassesMap: Map<string, string[]>;
   options: Required<AtomizerOptions>;
-  atomicRules: Map<string, AtomicRule>;
+  rulesMap: Map<string, AtomicRule>;
 };

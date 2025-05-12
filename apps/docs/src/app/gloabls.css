@@ -1,63 +1,13 @@
-@muffincss;
-
-/* Base styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
+.greeting-container {
+  text-align: center;
+  margin-top: 50px;
+  background-color: #f0f4f8;
   padding: 20px;
-  background-color: #f4f4f4;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Media query for tablets (768px and up) */
-@media (min-width: 768px) {
-  .container {
-    padding: 40px;
-  }
-
-  h1 {
-    font-size: 2.5em;
-  }
-
-  .grid {
-    display: flex;
-    gap: 20px;
-  }
-
-  .grid-item {
-    flex: 1;
-  }
-}
-
-/* Media query for desktops (1024px and up) */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 960px;
-  }
-
-  h1 {
-    font-size: 3em;
-  }
-}
-
-/* Media query for mobile (max-width: 767px) */
-@media (max-width: 767px) {
-  .container {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 1.5em;
-  }
-
-  .grid-item {
-    margin-bottom: 20px;
-  }
+.greeting-title {
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

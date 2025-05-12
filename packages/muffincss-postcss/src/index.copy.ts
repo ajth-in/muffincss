@@ -25,7 +25,6 @@ function tailwindcss(
       const demandedStyles: Array<{ selector: string; decl: Declaration_ }> =
         [];
       const selectorsSet = new Set<string>();
-      console.log(__dirname);
       root.walkRules((rule) => {
         if (rule.selector.startsWith(".")) {
           rule.walkDecls((decl) => {
@@ -37,12 +36,7 @@ function tailwindcss(
           rule.remove();
         }
       });
-      console.log(
-        "STYLES",
-        demandedStyles.map(({ selector, decl }) => {
-          return { selector, value: decl.prop + ":" + decl.value };
-        }),
-      );
+
       const newRules = demandedStyles.map(({ selector, decl }) => {
         const newRule = rule({ selector: `.${selector}` });
 

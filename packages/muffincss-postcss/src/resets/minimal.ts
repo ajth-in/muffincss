@@ -1,6 +1,6 @@
-import postcss from "postcss";
+import type { StyleRule } from ".";
 
-const styleRules = [
+const minimalReset: StyleRule[] = [
   {
     selector: "*, *::before, *::after",
     declarations: { "box-sizing": "border-box" },
@@ -57,26 +57,4 @@ const styleRules = [
   },
 ];
 
-export const getResetStyles = () =>
-  styleRules.map((entry) => {
-    if (entry.atRule) {
-      const atRule = postcss.atRule({
-        name: entry.atRule.name,
-        params: entry.atRule.params,
-      });
-      entry.atRule.rules.forEach((rule) => {
-        const ruleNode = postcss.rule({ selector: rule.selector });
-        for (const [prop, value] of Object.entries(rule.declarations)) {
-          ruleNode.append(postcss.decl({ prop, value }));
-        }
-        atRule.append(ruleNode);
-      });
-      return atRule;
-    } else {
-      const rule = postcss.rule({ selector: entry.selector });
-      for (const [prop, value] of Object.entries(entry.declarations)) {
-        rule.append(postcss.decl({ prop, value }));
-      }
-      return rule;
-    }
-  });
+export default minimalReset;
