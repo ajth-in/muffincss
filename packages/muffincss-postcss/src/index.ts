@@ -69,7 +69,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         resolvedClassesMap,
         path.join(absolutePath, "__generated"),
       ),
-      DEBUG && I.end("write_to_file_system");
+        DEBUG && I.end("write_to_file_system");
       DEBUG && I.end(" Compiled all CSS files");
       DEBUG && I.report();
     },
