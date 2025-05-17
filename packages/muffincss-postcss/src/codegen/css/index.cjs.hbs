@@ -1,0 +1,7 @@
+"use strict";
+const classMap = require("../_resolved");
+const generateCss = require("@muffincss/utils");
+function css(classNames) {
+  return generateCss(classMap, classNames);
+}
+module.exports = css;
