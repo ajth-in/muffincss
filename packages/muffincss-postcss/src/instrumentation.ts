@@ -1,5 +1,5 @@
 import { hrtime } from "process";
-import styleMessage from "./lib/chalk";
+import chalk from "./utils/chalk";
 
 type Timer = {
   id: string;
@@ -79,8 +79,8 @@ export class Instrumentation {
         const lastPart = label.split("//").pop();
 
         output.push(
-          `${styleMessage("success", `[${ms.padStart(maxLength)}]`)}${this.indent(label, true)}${lastPart} ${
-            hits > 1 ? styleMessage("info", `× ${hits}`) : ""
+          `${chalk("success", `[${ms.padStart(maxLength)}]`)}${this.indent(label, true)}${lastPart} ${
+            hits > 1 ? chalk("info", `× ${hits}`) : ""
           }`.trimEnd(),
         );
       }

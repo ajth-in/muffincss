@@ -1,7 +1,5 @@
 import muffincssPostcssPlugin from "./index.ts";
 
-// This is used instead of `export default` to work around a bug in
-// `postcss-load-config`
-
+//  to work around a bug in `postcss-load-config`:: as in tailwindcss
 // @ts-ignore
 export = muffincssPostcssPlugin;

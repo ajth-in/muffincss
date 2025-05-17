@@ -1,11 +1,11 @@
 import processMediaRules from "./processors/media";
 import type { AtomicRule, AtomizerOptions, ProcessorContext } from "./types";
 import { atRule, Root, type Plugin } from "postcss";
-import { generateAtomicRule, generateMediaRules } from "./utils";
+import { generateAtomicRule, generateMediaRules } from "./utils/generate-rules";
 import processRules from "./processors/rule";
 import { Instrumentation } from "./instrumentation";
 import { getResetStyles } from "./resets";
-import { ensureOutDirStructure } from "./utils/create-dir-structure";
+import { ensureOutDirStructure } from "./utils/ensure-out-dir";
 import generateModuleVersionsWithType from "./generate/maps";
 const path = require("path");
 
