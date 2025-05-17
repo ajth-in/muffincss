@@ -1,9 +1,16 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} **/
-module.exports = {
-  testEnvironment: "node",
 
-  watchPathIgnorePatterns: ["<rootDir>/muffincss/"],
+module.exports = {
+  preset: "ts-jest/presets/default-esm",
   transform: {
-    "^.+\.tsx?$": ["ts-jest", {}],
+    "^.+\\.tsx?$": ["ts-jest", { useESM: true }],
+  },
+  watchPathIgnorePatterns: ["<rootDir>/muffincss/"],
+
+  extensionsToTreatAsEsm: [".ts"],
+  // Removed globals here
+
+  moduleNameMapper: {
+    "^(\\.{1,2}/.*)\\.js$": "$1",
   },
 };

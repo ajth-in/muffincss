@@ -6,7 +6,8 @@ import processRules from "./processors/rule";
 import { Instrumentation } from "./instrumentation";
 import { getResetStyles } from "./resets";
 import { ensureOutDirStructure } from "./utils/ensure-out-dir";
-import generateModuleVersionsWithType from "./codegen/maps";
+import { generateResolvedClasses } from "./codegen/_resolved/generator";
+import { generateCSSModule } from "./codegen/css/generator";
 const path = require("path");
 
 const I = new Instrumentation();
@@ -59,18 +60,18 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         rulesMap.forEach((data, className) => {
           utilitiesLayer.append(generateAtomicRule(className, data));
         });
-        node.replaceWith(utilitiesLayer);
+        node.replaceWith(resetLayer, utilitiesLayer);
         node.remove();
       });
-      console.log(resolvedClassesMap);
-
       DEBUG && I.start("write_to_file_system");
 
-      generateModuleVersionsWithType(
+      generateResolvedClasses(
         resolvedClassesMap,
-        path.join(absolutePath, "__generated"),
-      ),
-        DEBUG && I.end("write_to_file_system");
+        path.join(options.outDir, "_resolved"),
+      );
+
+      generateCSSModule(path.join(options.outDir, "css"));
+      DEBUG && I.end("write_to_file_system");
       DEBUG && I.end(" Compiled all CSS files");
       DEBUG && I.report();
     },

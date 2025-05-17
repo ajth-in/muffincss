@@ -43,13 +43,13 @@ describe("MuffinCSS-PostCSS", () => {
       `,
       {
         hash: false,
-        reset: "default",
+        reset: "off",
         debug: true,
       },
     );
 
     expect(result).toBe(
-      `
+      ` @layer reset;
         @layer utilities {
           @media (min-width: 768px) {
             .a-text-align-center-_min_width__768px_-hover:hover {
@@ -85,11 +85,12 @@ describe("MuffinCSS-PostCSS", () => {
           color: red
         }
       `,
-      { hash: false, reset: "minimal" },
+      { hash: false, reset: "off" },
     );
 
     expect(result).toBe(
       `
+       @layer reset;
         @layer utilities {
           .a-background-color-red {
             background-color: red

@@ -1,0 +1,6 @@
+import classMap from "../_resolved";
+import generateCss from "@muffincss/utils";
+function css(classNames) {
+  return generateCss(classMap, classNames);
+}
+export default css;

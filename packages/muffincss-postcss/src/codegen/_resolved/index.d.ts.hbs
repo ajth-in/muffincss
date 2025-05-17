@@ -1,0 +1,7 @@
+declare const obj: Record<
+  {{#each keys}}
+    "{{cleanKey this}}"{{#unless @last}} | {{/unless}}
+  {{/each}},
+  string[]
+>;
+export default obj;
