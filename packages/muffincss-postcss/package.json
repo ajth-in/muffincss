@@ -11,6 +11,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "typecheck": "tsc  --noEmit",
     "build": "tsup",
     "gen:css": "tsup src/generate/css.ts --format cjs,esm --dts --external:./_generated --out-dir ./dist"
   },
@@ -52,6 +53,7 @@
     "murmurhash3js": "^3.0.1",
     "postcss": "^8.4.27",
     "postcss-import": "^16.1.0",
+    "prettier-plugin-embed": "^0.5.0",
     "ts-jest": "^29.3.2",
     "tsup": "^8.4.0",
     "typescript": "5.5.4"

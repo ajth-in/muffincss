@@ -5,12 +5,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "test": "turbo run test",
-
     "lint": "turbo run lint",
+    "typecheck": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
-
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build --filter=@muffincss/docs^... && changeset publish"
@@ -22,6 +21,7 @@
     "eslint": "^8.57.0",
     "lefthook": "^1.11.12",
     "prettier": "^3.5.3",
+    "prettier-plugin-embed": "^0.5.0",
     "turbo": "^2.5.2"
   },
   "packageManager": "pnpm@8.15.6",
