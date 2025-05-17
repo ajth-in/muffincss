@@ -32,7 +32,7 @@ describe("MuffinCSS-PostCSS", () => {
           color: yellow;
         }
         @media (min-width: 768px) {
-          .header {
+          .header:hover {
             text-align: center;
             color: blue;
           }
@@ -52,10 +52,10 @@ describe("MuffinCSS-PostCSS", () => {
       `
         @layer utilities {
           @media (min-width: 768px) {
-            .a-text-align-center-_min_width__768px_ {
+            .a-text-align-center-_min_width__768px_-hover:hover {
               text-align: center
             }
-            .a-color-blue-_min_width__768px_ {
+            .a-color-blue-_min_width__768px_-hover:hover {
               color: blue
             }
           }

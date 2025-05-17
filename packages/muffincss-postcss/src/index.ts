@@ -42,7 +42,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         options,
       };
       DEBUG && I.start("compile_at_rules");
-      root.walkAtRules("media", processMediaRules(context));
+      root.walkAtRules(processMediaRules(context));
       DEBUG && I.end("compile_at_rules");
       DEBUG && I.start("compile_rules");
       root.walkRules(processRules(context));

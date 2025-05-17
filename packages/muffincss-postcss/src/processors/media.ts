@@ -1,9 +1,11 @@
 import { type AtRule, type Declaration, type Rule } from "postcss/lib/postcss";
 import type { AtomicRule, ProcessorContext } from "../types";
 import { stringifyDeclaration } from "../utils";
+import { getPseudoClass } from "../utils/psedo-class";
 
 const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
   const { options, mediaAtRuleMap, resolvedClassesMap } = context;
+  if (atRule.name !== "media" && atRule.name !== "container") return;
   let isAtRuleRemovable = true;
   const mediaQuery = atRule.params;
   const {
@@ -28,6 +30,8 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
     }
     const atomicClassesForSelector: string[] = [];
     let isRuleRemovable = true;
+    const psedo = getPseudoClass(rule.selector);
+
     rule.walkDecls((declaration: Declaration) => {
       if (properties.some((regex) => regex.test(declaration.prop))) {
         isRuleRemovable = false;
@@ -39,6 +43,7 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
         prefix,
         options.hash,
         mediaQuery,
+        psedo,
       );
       atomicClassesForSelector.push(className);
       mediaAtRuleMap.get(mediaQuery)!.set(className, {

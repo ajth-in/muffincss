@@ -1,6 +1,7 @@
 import type { AtRule, Declaration, Rule } from "postcss";
 import type { ProcessorContext } from "../types";
 import { stringifyDeclaration } from "../utils";
+import { getPseudoClass, removePseudoClasses } from "../utils/psedo-class";
 
 const processRules = (context: ProcessorContext) => (rule: Rule) => {
   const { options, resolvedClassesMap, rulesMap } = context;
@@ -51,12 +52,4 @@ const processRules = (context: ProcessorContext) => (rule: Rule) => {
   if (isRuleRemovable) rule.remove();
 };
 
-function getPseudoClass(selector: string): string | undefined {
-  const index = selector.indexOf(":");
-  if (index === -1) return;
-  return selector.slice(index + 1);
-}
-function removePseudoClasses(selector: string): string {
-  return selector.replace(/:{1,2}[a-zA-Z0-9_-]+/g, "");
-}
 export default processRules;
