@@ -1,12 +1,12 @@
 import processMediaRules from "./processors/media";
 import type { AtomicRule, AtomizerOptions, ProcessorContext } from "./types";
 import { atRule, Root, type Plugin } from "postcss";
-import { generateAtomicRule, generateMediaRules } from "./utils";
+import { generateAtomicRule, generateMediaRules } from "./utils/generate-rules";
 import processRules from "./processors/rule";
 import { Instrumentation } from "./instrumentation";
 import { getResetStyles } from "./resets";
-import { ensureOutDirStructure } from "./utils/create-dir-structure";
-import generateModuleVersionsWithType from "./generate/maps";
+import { ensureOutDirStructure } from "./utils/ensure-out-dir";
+import generateModuleVersionsWithType from "./codegen/maps";
 const path = require("path");
 
 const I = new Instrumentation();
@@ -42,7 +42,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         options,
       };
       DEBUG && I.start("compile_at_rules");
-      root.walkAtRules("media", processMediaRules(context));
+      root.walkAtRules(processMediaRules(context));
       DEBUG && I.end("compile_at_rules");
       DEBUG && I.start("compile_rules");
       root.walkRules(processRules(context));
@@ -62,6 +62,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         node.replaceWith(utilitiesLayer);
         node.remove();
       });
+      console.log(resolvedClassesMap);
 
       DEBUG && I.start("write_to_file_system");
 

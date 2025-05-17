@@ -5,6 +5,8 @@ pre-commit:
       run: pnpm run lint
     format:
       run: pnpm run format
+    typecheck:
+      run: pnpm run typecheck
 commit-msg:
   commands:
     commitlint:
