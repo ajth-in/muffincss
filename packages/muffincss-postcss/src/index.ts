@@ -6,7 +6,7 @@ import processRules from "./processors/rule";
 import { Instrumentation } from "./instrumentation";
 import { getResetStyles } from "./resets";
 import { ensureOutDirStructure } from "./utils/ensure-out-dir";
-import generateModuleVersionsWithType from "./generate/maps";
+import generateModuleVersionsWithType from "./codegen/maps";
 const path = require("path");
 
 const I = new Instrumentation();
