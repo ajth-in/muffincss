@@ -28,7 +28,7 @@ describe("MuffinCSS-PostCSS", () => {
     const result = await postcssPipeline(
       `
         @muffincss;
-        .header {
+        .header:hover {
           color: yellow;
         }
         @media (min-width: 768px) {
@@ -59,7 +59,7 @@ describe("MuffinCSS-PostCSS", () => {
               color: blue
             }
           }
-          .a-color-yellow {
+          .a-color-yellow-hover:hover {
             color: #ff0
           }
         }

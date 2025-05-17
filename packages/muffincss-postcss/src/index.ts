@@ -62,6 +62,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         node.replaceWith(utilitiesLayer);
         node.remove();
       });
+      console.log(resolvedClassesMap);
 
       DEBUG && I.start("write_to_file_system");
 

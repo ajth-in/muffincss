@@ -9,6 +9,7 @@ export const stringifyDeclaration = (
   prefix: string,
   hash: boolean,
   mediaQueryParam?: string,
+  psedoClass?: string,
 ): string => {
   const declarationId = `${decl.prop}-${formatToId(decl.value)}`;
   const out = mediaQueryParam
@@ -18,6 +19,10 @@ export const stringifyDeclaration = (
   const result = hash
     ? `${prefix}${x86.hash32(out).toString(16)}`
     : `${prefix}${out}`;
+
+  if (psedoClass) {
+    return `${result}-${formatToId(psedoClass)}:${psedoClass}`;
+  }
 
   return result;
 };
