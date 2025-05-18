@@ -9,7 +9,6 @@ export const generateMediaRules = (
 
   rules.forEach((data, className) => {
     let selector = `.${className}`;
-
     const newRule = new Rule({ selector });
     newRule.append(new Declaration({ prop: data.prop, value: data.value }));
     mediaRule.append(newRule);

@@ -1,8 +1,10 @@
-import atomize from "../../muffincss/css.mjs";
+import css from "../muffincss/css";
+
 const Greeting: React.FC = () => {
   return (
-    <div className={atomize("greeting-container")}>
-      <h1 className={atomize("greeting-title")}>Hello, welcome to my site!</h1>
+    <div className={css(["greeting-container"])}>
+      <h1 className={css(["greeting-title"])}>Hello, welcome to my site!</h1>
+      <button className={css(["button"])}>Hello</button>
     </div>
   );
 };

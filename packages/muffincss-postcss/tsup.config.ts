@@ -1,18 +1,20 @@
 import { defineConfig } from "tsup";
 
+const sharedOptions = {
+  minify: true,
+  cjsInterop: true,
+  dts: true,
+};
+
 export default defineConfig([
   {
+    ...sharedOptions,
     format: ["esm"],
-    minify: true,
-    cjsInterop: true,
-    dts: true,
-    entry: ["src/index.ts"],
+    entry: ["src/index.ts", "src/tools/index.ts"],
   },
   {
+    ...sharedOptions,
     format: ["cjs"],
-    minify: true,
-    cjsInterop: true,
-    dts: true,
-    entry: ["src/index.cts"],
+    entry: ["src/index.cts", "src/tools/index.ts"],
   },
 ]);
