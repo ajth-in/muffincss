@@ -1,7 +1,7 @@
 import { type AtRule, type Declaration, type Rule } from "postcss/lib/postcss";
 import type { AtomicRule, ProcessorContext } from "../types";
 import { stringifyDeclaration } from "../utils";
-import { getPseudoClass } from "../utils/psedo-class";
+import { getPseudoClass, removePseudoClasses } from "../utils/psedo-class";
 
 const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
   const { options, mediaAtRuleMap, resolvedClassesMap } = context;
@@ -54,10 +54,15 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
     if (isAtRuleRemovable) rule.remove();
     if (atomicClassesForSelector.length > 0) {
       const prevKeys = resolvedClassesMap.get(rule.selector) ?? [];
-      resolvedClassesMap.set(rule.selector, [
-        ...prevKeys,
-        ...atomicClassesForSelector,
-      ]);
+      const selector = psedo
+        ? removePseudoClasses(rule.selector)
+        : rule.selector;
+
+      if (resolvedClassesMap.has(selector)) {
+        resolvedClassesMap.get(selector)!.push(...atomicClassesForSelector);
+      } else {
+        resolvedClassesMap.set(selector, atomicClassesForSelector);
+      }
     }
   });
   if (isAtRuleRemovable) atRule.remove();

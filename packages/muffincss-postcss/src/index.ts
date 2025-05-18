@@ -52,7 +52,9 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
       root.walkAtRules("muffincss", (node) => {
         const resetLayer = atRule({ name: "layer", params: "reset" });
         const utilitiesLayer = atRule({ name: "layer", params: "utilities" });
-        getResetStyles(options.reset).map((style) => resetLayer.append(style));
+        getResetStyles(options.reset).forEach((style) =>
+          resetLayer.append(style),
+        );
         mediaAtRuleMap.forEach((rules, mediaQuery) => {
           const mediaRule = generateMediaRules(rules, mediaQuery);
           utilitiesLayer.append(mediaRule);
@@ -64,11 +66,8 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         node.remove();
       });
       DEBUG && I.start("write_to_file_system");
-
-      generateResolvedClasses(
-        resolvedClassesMap,
-        path.join(options.outDir, "_resolved"),
-      );
+      const resolvedOutDirPath = path.join(options.outDir, "_resolved");
+      generateResolvedClasses(resolvedClassesMap, resolvedOutDirPath);
 
       generateCSSModule(path.join(options.outDir, "css"));
       DEBUG && I.end("write_to_file_system");
