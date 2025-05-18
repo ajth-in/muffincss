@@ -79,8 +79,6 @@ importers:
         specifier: 5.5.4
         version: 5.5.4
 
-  packages/acme-tsconfig: {}
-
   packages/eslint-config:
     devDependencies:
       '@next/eslint-plugin-next':

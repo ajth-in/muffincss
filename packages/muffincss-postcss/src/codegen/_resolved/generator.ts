@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Handlebars from "handlebars";
+import { cjsTemplate, dtSTemplate, mjsTemplate } from "./templates";
 
 Handlebars.registerHelper("json", (context) =>
   JSON.stringify(context, null, 2),
@@ -25,9 +26,9 @@ export function generateResolvedClasses(
   const keys = Array.from(map.keys());
 
   const files = [
-    { name: "index.cjs", context: obj },
-    { name: "index.mjs", context: obj },
-    { name: "index.d.ts", context: { keys } },
+    { content: cjsTemplate, context: obj, name: "index.cjs" },
+    { content: mjsTemplate, context: obj, name: "index.mjs" },
+    { content: dtSTemplate, context: { keys }, name: "index.d.ts" },
   ];
 
   const outputDirPath = path.resolve(process.cwd(), outDir);
@@ -36,9 +37,7 @@ export function generateResolvedClasses(
   }
 
   for (const file of files) {
-    const templatePath = path.resolve(__dirname, `./${file.name}.hbs`);
-    const templateSource = fs.readFileSync(templatePath, "utf-8");
-    const compiled = Handlebars.compile(templateSource);
+    const compiled = Handlebars.compile(file.content);
     const result = compiled(file.context);
 
     const outputPath = path.join(outputDirPath, file.name);

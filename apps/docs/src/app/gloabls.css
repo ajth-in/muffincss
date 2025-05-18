@@ -1,3 +1,5 @@
+@muffincss;
+
 .greeting-container {
   text-align: center;
   margin-top: 50px;
@@ -10,4 +12,14 @@
 .greeting-title {
   color: #333;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button {
+  background-color: red;
+  color: yellow;
+}
+
+.button:hover {
+  background-color: blue;
+  color: green;
 }
