@@ -1,22 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --primary: #1d4ed8;
+}
 
-@layer base {
-  html {
-    color-scheme: light dark;
-  }
+.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --primary: #3b82f6; /* blue-500 */
+}
 
-  * {
-    @apply border-gray-200 dark:border-gray-800;
-  }
+body {
+  font-family: "Titillium Web", sans-serif;
+}
 
-  html,
-  body {
-    @apply text-gray-900 bg-gray-50 dark:bg-gray-950 dark:text-gray-200;
-  }
-
-  .using-mouse * {
-    outline: none !important;
-  }
+button {
+  background-color: var(--primary);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
 }
