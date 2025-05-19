@@ -23,6 +23,5 @@ export const stringifyDeclaration = (
   if (psedoClass) {
     return `${result}-${formatToId(psedoClass)}:${psedoClass}`;
   }
-
   return result;
 };
