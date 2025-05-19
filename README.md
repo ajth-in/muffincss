@@ -1,20 +1,61 @@
 ![NPM Version](https://img.shields.io/npm/v/@muffincss/postcss) ![GitHub License](https://img.shields.io/github/license/ajth-in/muffincss)
 
-# MuffinCSS
+<div align="center">
 
-**MuffinCSS** is a lightweight, modular CSS package designed to help you create small, reusable CSS classes that scale as your website grows. Write plain old CSS, and MuffinCSS will automatically convert it into atomic CSS, enabling you to keep your codebase clean, maintainable, and efficient.
+# 🧁 MuffinCSS
 
-> **Warning**: This package is in its early development stage. Features and APIs may change without notice.
+_Transform plain CSS into atomic, type-safe utilities — effortlessly._
 
-## Features
+</div>
 
-- **Atomic CSS Generation**: MuffinCSS allows you to write regular CSS, and it transforms it into atomic, reusable classes.
-- **Scalable**: As your project grows, MuffinCSS helps maintain a clean structure by breaking down complex styles into small, modular classes.
-- **Simplicity**: No need to learn complex concepts or frameworks; just write CSS like you normally would.
-- **Customizable**: Easily extend or override default configurations to suit your needs.
+## ✨ Features
 
-## How It Works
+- ✅ Write styles in plain CSS files and reference them in your code using `muffin-utilities` with full type safety.
+- 🧬 Automatic conversion of all styles into atomic CSS for maximum performance and minimal duplication.
+- 🎛️ `@cv` at-rule for authoring styles in a **class-variants** pattern — intuitive and scalable.
+- 🧩 `@pattern` at-rule for defining and reusing **custom utility patterns** across your project.
 
-1. Write your standard CSS as you normally would.
-2. MuffinCSS processes your CSS and extracts atomic classes.
-3. Each atomic class is optimized for reusability and performance.
+## 📚 Documentation
+
+For detailed usage instructions, API reference, and examples, please visit the [official MuffinCSS docs](https://muffincss.ajth.in).
+
+## 🛠️ Installation
+
+Install the PostCSS plugin using your preferred package manager:
+
+```bash
+pnpm add @muffincss/postcss
+```
+
+Then, add this to your postcss configuration:
+
+```js
+// postcss.config.js
+module.exports = {
+  plugins: {
+    "@muffincss/postcss": {
+      outDir: "src/muffincss",
+    },
+  },
+};
+```
+
+## 🚀 Usage
+
+In your global CSS file, add the following directive:
+
+```css
+@muffincss;
+```
+
+When using the generated styles in your code, import and use the css function from the generated file (located in the configured outDir, e.g., src/muffincss/css.ts):
+
+```css
+import { css } from "@/muffincss/css";
+
+<div className={css(["header", "header-primary"])} />
+```
+
+## 📝 License
+
+MIT License © 2025–Present [ajth.in](https://ajth.in)
