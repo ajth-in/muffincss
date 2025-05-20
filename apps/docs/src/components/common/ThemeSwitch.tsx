@@ -19,16 +19,16 @@ export default function ThemeSwitch() {
   useEffect(() => {
     if (darkMode === null) return; // Don't apply theme until darkMode is determined
     const root = document.documentElement;
-    const classes = css(["dark"]).split(" ")
+    const classes = css(["dark"]).split(" ");
     if (darkMode) {
-      classes.forEach(item=>{
+      classes.forEach((item) => {
         root.classList.add(item);
-      })
+      });
       localStorage.setItem("theme", "dark");
     } else {
-      classes.forEach(item=>{
+      classes.forEach((item) => {
         root.classList.remove(item);
-      });  
+      });
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
