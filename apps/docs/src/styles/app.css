@@ -1,23 +1,23 @@
+@muffincss;
 :root {
   --bg: #ffffff;
   --text: #000000;
   --primary: #1d4ed8;
 }
 
-.dark {
-  --bg: #0f172a;
-  --text: #f1f5f9;
-  --primary: #3b82f6; /* blue-500 */
+@media (prefers-color-scheme: dark) {
+  .dark {
+    --bg: #0f172a;
+    --text: #f1f5f9;
+    --primary: #3b82f6; /* blue-500 */
+  }
 }
 
 body {
   font-family: "Titillium Web", sans-serif;
 }
 
-button {
-  background-color: var(--primary);
-  color: var(--bg);
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
+.btn {
+  color: red;
+  background-color: yellow;
 }

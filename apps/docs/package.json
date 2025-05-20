@@ -17,6 +17,7 @@
     "vinxi": "0.5.3"
   },
   "devDependencies": {
+    "@muffincss/postcss": "workspace:*",
     "@types/node": "^22.5.4",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",

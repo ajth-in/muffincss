@@ -1,3 +1,5 @@
 export default {
-  plugins: {},
-}
+  plugins: {
+    "@muffincss/postcss": { debug: true, outDir: "src/muffin" },
+  },
+};

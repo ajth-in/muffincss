@@ -54,6 +54,9 @@ importers:
         specifier: 0.5.3
         version: 0.5.3(@types/node@22.15.14)(db0@0.3.2)(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
     devDependencies:
+      '@muffincss/postcss':
+        specifier: workspace:*
+        version: link:../../packages/muffincss-postcss
       '@types/node':
         specifier: ^22.5.4
         version: 22.15.14
