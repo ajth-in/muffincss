@@ -53,7 +53,7 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
     });
     if (isAtRuleRemovable) rule.remove();
     if (atomicClassesForSelector.length > 0) {
-      const selector = removePseudoClasses(rule.selector)
+      const selector = removePseudoClasses(rule.selector);
 
       if (resolvedClassesMap.has(selector)) {
         resolvedClassesMap.get(selector)!.push(...atomicClassesForSelector);

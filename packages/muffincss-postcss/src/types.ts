@@ -2,8 +2,6 @@
  * Configuration options for the CSS atomizer.
  */
 export type AtomizerOptions = {
-
-
   /**
    * Directory to store the generated styled system.
    * @default'muffincss'
