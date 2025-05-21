@@ -45,7 +45,7 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
         mediaQuery,
         psedo,
       );
-      atomicClassesForSelector.push(className);
+      atomicClassesForSelector.push(removePseudoClasses(className));
       mediaAtRuleMap.get(mediaQuery)!.set(className, {
         prop: declaration.prop,
         value: declaration.value,
@@ -53,9 +53,7 @@ const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
     });
     if (isAtRuleRemovable) rule.remove();
     if (atomicClassesForSelector.length > 0) {
-      const selector = psedo
-        ? removePseudoClasses(rule.selector)
-        : rule.selector;
+      const selector = removePseudoClasses(rule.selector)
 
       if (resolvedClassesMap.has(selector)) {
         resolvedClassesMap.get(selector)!.push(...atomicClassesForSelector);

@@ -38,7 +38,7 @@ const processRules = (context: ProcessorContext) => (rule: Rule) => {
         prop: declaration.prop,
         value: declaration.value,
       });
-    atomicClassesForSelector.push(className);
+    atomicClassesForSelector.push(removePseudoClasses(className));
   });
 
   if (atomicClassesForSelector.length > 0) {
