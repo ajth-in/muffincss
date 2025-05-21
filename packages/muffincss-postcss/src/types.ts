@@ -51,6 +51,10 @@ export type AtomizerOptions = {
    * for the plugin outputs additional logging and diagnostic
    */
   debug?: boolean;
+  /**
+   * Glob pattern or array of glob patterns to specify which files the plugin should process.
+   */
+  includedFiles?: string | string[];
 };
 
 export interface AtomicRule {

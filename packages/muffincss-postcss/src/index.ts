@@ -9,6 +9,7 @@ import { ensureOutDirStructure } from "./utils/ensure-out-dir";
 import { generateResolvedClasses } from "./codegen/_resolved/generator";
 import { generateCSSModule } from "./codegen/css/generator";
 const path = require("path");
+const micromatch = require("micromatch");
 
 const I = new Instrumentation();
 
@@ -22,12 +23,22 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
     hash: true,
     debug: false,
     exclude: { selectors: [], properties: [] },
+    includedFiles: undefined,
     ...opts,
   };
   const DEBUG = options.debug || process.env.NODE_ENV === "development";
   return {
     postcssPlugin: "@muffincss/postcss",
     Once(root: Root, { result }) {
+      const filePath = root.source?.input?.file;
+
+      if (options.includedFiles && options.includedFiles.length > 0 && filePath) {
+        const patterns = Array.isArray(options.includedFiles) ? options.includedFiles : [options.includedFiles];
+        if (!micromatch.isMatch(filePath, patterns)) {
+          return;
+        }
+      }
+
       I.start(" Compiled all CSS files");
       const absolutePath = path.resolve(process.cwd(), options.outDir);
       ensureOutDirStructure(absolutePath);

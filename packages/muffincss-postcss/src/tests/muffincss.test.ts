@@ -13,9 +13,10 @@ export async function postcssPipeline(
       properties: [],
     },
   },
+  filePath?: string,
 ): Promise<string> {
   const result = await postcss([myPlugin(options), cssnano()]).process(input, {
-    from: undefined,
+    from: filePath,
   });
   expect(result.warnings()).toHaveLength(0);
 
@@ -105,5 +106,75 @@ describe("MuffinCSS-PostCSS", () => {
         }
       `.replace(/\s+/g, ""),
     );
+  });
+
+  describe("includedFiles option", () => {
+    const sampleCss = `
+      @muffincss;
+      .test-class { color: red; }
+    `;
+    const expectedOutputProcessed = `@layerreset;@layerutilities{.a-color-red{color:red}}`;
+    const expectedOutputSkipped = ``; // Or minimal if cssnano still runs
+
+    test("No includedFiles provided: processes the file", async () => {
+      const result = await postcssPipeline(sampleCss, { hash: false, reset: "off" }, "src/components/style.css");
+      expect(result.replace(/\s+/g, "")).toBe(expectedOutputProcessed);
+    });
+
+    test("includedFiles as string (match): processes the file", async () => {
+      const result = await postcssPipeline(
+        sampleCss,
+        { hash: false, reset: "off", includedFiles: "src/**/*.css" },
+        "src/components/style.css",
+      );
+      expect(result.replace(/\s+/g, "")).toBe(expectedOutputProcessed);
+    });
+
+    test("includedFiles as string (no match): skips the file", async () => {
+      const result = await postcssPipeline(
+        sampleCss,
+        { hash: false, reset: "off", includedFiles: "src/**/*.css" },
+        "vendor/vendor.css",
+      );
+      // If skipped, our plugin does nothing. cssnano might still process it to an empty string or minimal output.
+      // For simplicity, expecting an empty string after our plugin does nothing.
+      expect(result.replace(/\s+/g, "")).toBe(expectedOutputSkipped);
+    });
+
+    test("includedFiles as array (match): processes the file", async () => {
+      const result = await postcssPipeline(
+        sampleCss,
+        { hash: false, reset: "off", includedFiles: ["src/**/*.css", "styles/*.css"] },
+        "styles/main.css",
+      );
+      expect(result.replace(/\s+/g, "")).toBe(expectedOutputProcessed);
+    });
+
+    test("includedFiles as array (no match): skips the file", async () => {
+      const result = await postcssPipeline(
+        sampleCss,
+        { hash: false, reset: "off", includedFiles: ["src/**/*.css", "styles/*.css"] },
+        "lib/legacy.css",
+      );
+      expect(result.replace(/\s+/g, "")).toBe(expectedOutputSkipped);
+    });
+
+    test("includedFiles with empty array: skips the file", async () => {
+      const result = await postcssPipeline(
+        sampleCss,
+        { hash: false, reset: "off", includedFiles: [] },
+        "src/components/style.css",
+      );
+      expect(result.replace(/\s+/g, "")).toBe(expectedOutputSkipped);
+    });
+
+    test("includedFiles with non-matching pattern: skips the file", async () => {
+      const result = await postcssPipeline(
+        sampleCss,
+        { hash: false, reset: "off", includedFiles: "nothing_matches_this/**/*.css" },
+        "src/components/style.css",
+      );
+      expect(result.replace(/\s+/g, "")).toBe(expectedOutputSkipped);
+    });
   });
 });
