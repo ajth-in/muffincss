@@ -2,24 +2,27 @@ import path from "path";
 import fs from "fs";
 
 import Handlebars from "handlebars";
-import { cjsTemplate, dtsTemplate, mjsTemplate } from "./templates";
+import { templates } from "./templates";
+import BaseGenerator from "../base";
+import type { FileType } from "../../types";
+import type Options from "../../core/options-manager";
+import { CSS_OUTPUT_PATH } from "../../core/options-manager";
 
-export function generateCSSModule(outDir: string): void {
-  const files = [
-    { content: cjsTemplate, name: "index.cjs" },
-    { content: mjsTemplate, name: "index.mjs" },
-    { content: dtsTemplate, name: "index.d.ts" },
-  ];
-  const outputDirPath = path.resolve(process.cwd(), outDir);
-  if (!fs.existsSync(outputDirPath)) {
-    fs.mkdirSync(outputDirPath, { recursive: true });
+export default class CssModuleGenerator extends BaseGenerator {
+  constructor(options: Options["options"]) {
+    super(templates, options);
   }
+  generate(): void {
+    for (const file of this.files) {
+      const compiled = Handlebars.compile(file.content);
+      const result = compiled(this.getContext(file.type));
+      const outputDirPath = this.outDirPath(CSS_OUTPUT_PATH);
 
-  for (const file of files) {
-    const compiled = Handlebars.compile(file.content);
-    const result = compiled({});
-
-    const outputPath = path.join(outputDirPath, file.name);
-    fs.writeFileSync(outputPath, result, "utf-8");
+      const outputPath = path.join(outputDirPath, this.getFileName(file.type));
+      fs.writeFileSync(outputPath, result, "utf-8");
+    }
+  }
+  getContext(fileType: FileType) {
+    return {};
   }
 }
