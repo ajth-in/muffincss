@@ -1,8 +1,8 @@
 import type {
   AtomicRule,
   AtomizerOptions,
-  ATRULE_KEY,
-  CLASS_NAME_KEY,
+  AtRuleKey,
+  ClassNameKey,
   ProcessorContext,
 } from "../types";
 
@@ -14,9 +14,9 @@ export default class CSSProcessor {
   }
   private initializeContext(): ProcessorContext {
     return {
-      processedAtRules: new Map<ATRULE_KEY, Map<string, AtomicRule>>(),
+      processedAtRules: new Map<AtRuleKey, Map<string, AtomicRule>>(),
       rulesMap: new Map<string, AtomicRule>(),
-      resolvedClassesMap: new Map<CLASS_NAME_KEY, string[]>(),
+      resolvedClassesMap: new Map<ClassNameKey, string[]>(),
       options: this.options,
     };
   }

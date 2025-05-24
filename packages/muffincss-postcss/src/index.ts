@@ -3,12 +3,12 @@ import type { AtomicRule, AtomizerOptions, ProcessorContext } from "./types";
 import { atRule, Root, type Plugin } from "postcss";
 import { generateAtomicRule, generateMediaRules } from "./utils/generate-rules";
 import processRules from "./processors/rule";
-import { Instrumentation } from "./instrumentation";
+import { Instrumentation } from "./core/instrumentation";
 import { getResetStyles } from "./resets";
 import { generateResolvedClasses } from "./codegen/_resolved/generator";
 import { generateCSSModule } from "./codegen/css/generator";
-import Options from "./util/options-manager";
-import { PostCSSErrorCollector } from "./util/error-handler";
+import Options from "./core/options-manager";
+import { PostCSSErrorCollector } from "./core/error-handler";
 const path = require("path");
 
 const I = new Instrumentation();
@@ -44,6 +44,7 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         getResetStyles(options.reset).forEach((style) =>
           resetLayer.append(style),
         );
+
         mediaAtRuleMap.forEach((rules, mediaQuery) => {
           const mediaRule = generateMediaRules(rules, mediaQuery);
           utilitiesLayer.append(mediaRule);

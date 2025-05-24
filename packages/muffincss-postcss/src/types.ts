@@ -65,6 +65,6 @@ export type ProcessorContext = {
   rulesMap: Map<string, AtomicRule>;
 };
 
-export type ATRULE_KEY = `${"media" | "container"} | ${string & {}}`;
-
-export type CLASS_NAME_KEY = `.${string & {}}`;
+type AtRules = "media" | "container";
+export type AtRuleKey = `${AtRules}#${ClassNameKey}`;
+export type ClassNameKey = `.${string & {}}`;

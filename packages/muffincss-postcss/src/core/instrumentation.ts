@@ -1,5 +1,5 @@
 import { hrtime } from "process";
-import chalk from "./utils/chalk";
+import chalk from "../utils/chalk";
 
 type Timer = {
   id: string;
