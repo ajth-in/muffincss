@@ -1,4 +1,4 @@
-import type { AtRule, Declaration, Root } from "postcss";
+import { type AtRule, type Declaration, type Root } from "postcss";
 import BaseProcessor from "./base";
 import type { Instrumentation } from "../core/instrumentation";
 import type { PostCSSErrorCollector } from "../core/error-handler";
@@ -25,6 +25,7 @@ export default class RulesProcessor extends BaseProcessor {
         value: declaration.value,
       });
   }
+
   walk(root: Root) {
     root.walkRules((rule) => {
       const atomicClassList: string[] = [];

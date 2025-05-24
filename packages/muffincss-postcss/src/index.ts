@@ -34,12 +34,9 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
       const context = {
         processedAtRules: mediaAtRuleMap,
         resolvedClassesMap,
-
         options,
       } as const;
-      options.debug && instrumentation.start("compile_at_rules");
       root.walkAtRules(processMediaRules(context));
-      options.debug && instrumentation.end("compile_at_rules");
       const { parsedRules } = new RulesProcessor(...processorContext).walk(
         root,
       );

@@ -1,4 +1,4 @@
-import type { AtRule, Declaration, Root } from "postcss";
+import { Declaration, type AtRule, type Root } from "postcss";
 import type { PostCSSErrorCollector } from "../core/error-handler";
 import type { Instrumentation } from "../core/instrumentation";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
