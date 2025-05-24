@@ -62,7 +62,6 @@ export type ProcessorContext = {
   processedAtRules: Map<string, Map<string, AtomicRule>>;
   resolvedClassesMap: Map<string, string[]>;
   options: Required<AtomizerOptions>;
-  rulesMap: Map<string, AtomicRule>;
 };
 
 type AtRules = "media" | "container";

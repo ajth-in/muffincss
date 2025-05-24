@@ -15,7 +15,6 @@ export default class CSSProcessor {
   private initializeContext(): ProcessorContext {
     return {
       processedAtRules: new Map<AtRuleKey, Map<string, AtomicRule>>(),
-      rulesMap: new Map<string, AtomicRule>(),
       resolvedClassesMap: new Map<ClassNameKey, string[]>(),
       options: this.options,
     };
