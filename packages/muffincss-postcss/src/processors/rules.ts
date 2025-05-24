@@ -1,7 +1,5 @@
 import { type AtRule, type Declaration, type Root } from "postcss";
 import BaseProcessor from "./base";
-import type { Instrumentation } from "../core/instrumentation";
-import type { PostCSSErrorCollector } from "../core/error-handler";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
 import type { AtomicRule } from "../types";
@@ -10,12 +8,10 @@ export default class RulesProcessor extends BaseProcessor {
   parsedRules: Map<string, AtomicRule>;
 
   constructor(
-    instrumentation: Instrumentation,
-    errorHandler: PostCSSErrorCollector,
     resultCollector: ResolvedClassListCollector,
     options: Options["options"],
   ) {
-    super(instrumentation, errorHandler, resultCollector, options);
+    super(resultCollector, options);
     this.parsedRules = new Map<string, AtomicRule>();
   }
   private addToParsedRules(className: string, declaration: Declaration) {

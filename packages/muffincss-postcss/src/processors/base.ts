@@ -1,6 +1,4 @@
-import { Declaration, type AtRule, type Root } from "postcss";
-import type { PostCSSErrorCollector } from "../core/error-handler";
-import type { Instrumentation } from "../core/instrumentation";
+import { Declaration, Rule, type AtRule, type Root } from "postcss";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
 import { x86 } from "murmurhash3js";
@@ -8,8 +6,6 @@ import { x86 } from "murmurhash3js";
 export default abstract class BaseProcessor {
   private handledAtRules: string[] = ["media", "container", "pattern", "cv"];
   constructor(
-    protected instrumentation: Instrumentation,
-    protected errorHandler: PostCSSErrorCollector,
     protected resultCollector: ResolvedClassListCollector,
     protected options: Options["options"],
   ) {}
@@ -21,16 +17,21 @@ export default abstract class BaseProcessor {
       regex.test(declaration.prop),
     );
   }
+  isExcludedSelector(rule: Rule) {
+    return this.options.exclude.selectors.some((regex) =>
+      regex.test(rule.selector),
+    );
+  }
   static formatToId = (input: string) => input.replace(/[^a-zA-Z0-9]/g, "_");
 
   constructAtomicClassName(
     decl: Declaration,
     options: {
-      atruleParam?: string;
+      atRuleParam?: string;
       pseudoClass?: string;
     } = {},
   ): string {
-    const { atruleParam, pseudoClass } = options;
+    const { atRuleParam: atruleParam, pseudoClass } = options;
     const declarationId = `${decl.prop}-${BaseProcessor.formatToId(decl.value)}`;
     const out = atruleParam
       ? `${declarationId}-${BaseProcessor.formatToId(atruleParam)}`
