@@ -59,8 +59,15 @@ export interface AtomicRule {
 }
 
 export type ProcessorContext = {
-  mediaAtRuleMap: Map<string, Map<string, AtomicRule>>;
+  processedAtRules: Map<string, Map<string, AtomicRule>>;
   resolvedClassesMap: Map<string, string[]>;
   options: Required<AtomizerOptions>;
-  rulesMap: Map<string, AtomicRule>;
 };
+
+type AtRules = "media" | "container";
+export type AtRuleKey = `${AtRules}#${ClassNameKey}`;
+export type ClassNameKey = `.${string & {}}`;
+
+export type FileType = "cjs" | "esm" | "dts";
+
+export type FileGenType = { content: string; type: FileType };

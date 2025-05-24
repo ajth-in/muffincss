@@ -1,31 +1,28 @@
 {
-  "name": "@muffincss/docs",
-  "version": "0.0.0",
+  "name": "tanstack-start-example-basic",
   "private": true,
+  "sideEffects": false,
+  "type": "module",
   "scripts": {
-    "build": "next build",
-    "install-run": "pnpm install && next dev",
-    "start": "next start ",
-    "dev": "next dev -p 3002",
-    "lint": "next lint",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start"
   },
   "dependencies": {
-    "next": "^14.1.1",
-    "path": "^0.12.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@tanstack/react-router": "^1.120.5",
+    "@tanstack/react-router-devtools": "^1.120.6",
+    "@tanstack/react-start": "^1.120.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vinxi": "0.5.3"
   },
   "devDependencies": {
-    "@muffincss/eslint-config": "workspace:*",
     "@muffincss/postcss": "workspace:*",
-    "@muffincss/tsconfig": "workspace:*",
-    "@next/eslint-plugin-next": "^14.1.1",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "cssnano": "^7.0.7",
-    "postcss": "^8.4.31",
-    "typescript": "5.5.4"
+    "@types/node": "^22.5.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "postcss": "^8.5.1",
+    "typescript": "^5.7.2",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

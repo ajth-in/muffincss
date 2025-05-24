@@ -1,4 +1,4 @@
-import postcss from "postcss/lib/postcss";
+import postcss, { atRule } from "postcss/lib/postcss";
 import type { AtomizerOptions } from "../types";
 import defaultReset from "./default";
 import minimalReset from "./minimal";
@@ -33,7 +33,9 @@ const createRuleNode = (
   return ruleNode;
 };
 
-export const getResetStyles = (level: AtomizerOptions["reset"]) => {
+export const createResetLayer = (level: AtomizerOptions["reset"]) => {
+  const resetLayer = atRule({ name: "layer", params: "reset" });
+
   const styleRules: StyleRule[] =
     level === "default"
       ? defaultReset
@@ -41,7 +43,7 @@ export const getResetStyles = (level: AtomizerOptions["reset"]) => {
         ? minimalReset
         : [];
 
-  return styleRules.map((entry) => {
+  styleRules.forEach((entry) => {
     if ("atRule" in entry) {
       const { name, params, rules } = entry.atRule;
       const atRuleNode = postcss.atRule({ name, params });
@@ -53,7 +55,7 @@ export const getResetStyles = (level: AtomizerOptions["reset"]) => {
 
       return atRuleNode;
     }
-
-    return createRuleNode(entry.selector, entry.declarations);
+    resetLayer.append(createRuleNode(entry.selector, entry.declarations));
   });
+  return resetLayer;
 };
