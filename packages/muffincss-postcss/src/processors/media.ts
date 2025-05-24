@@ -4,7 +4,11 @@ import { stringifyDeclaration } from "../utils";
 import { getPseudoClass, removePseudoClasses } from "../utils/psedo-class";
 
 const processMediaRules = (context: ProcessorContext) => (atRule: AtRule) => {
-  const { options, mediaAtRuleMap, resolvedClassesMap } = context;
+  const {
+    options,
+    processedAtRules: mediaAtRuleMap,
+    resolvedClassesMap,
+  } = context;
   if (atRule.name !== "media" && atRule.name !== "container") return;
   let isAtRuleRemovable = true;
   const mediaQuery = atRule.params;

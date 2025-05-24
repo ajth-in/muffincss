@@ -5,49 +5,38 @@ import { generateAtomicRule, generateMediaRules } from "./utils/generate-rules";
 import processRules from "./processors/rule";
 import { Instrumentation } from "./instrumentation";
 import { getResetStyles } from "./resets";
-import { ensureOutDirStructure } from "./utils/ensure-out-dir";
 import { generateResolvedClasses } from "./codegen/_resolved/generator";
 import { generateCSSModule } from "./codegen/css/generator";
+import Options from "./util/options-manager";
+import { PostCSSErrorCollector } from "./util/error-handler";
 const path = require("path");
 
 const I = new Instrumentation();
 
 const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
-  const options: Required<AtomizerOptions> = {
-    outDir: "./muffincss",
-    prefix: "a-",
-    optimize: true,
-    purge: true,
-    reset: "default",
-    hash: true,
-    debug: false,
-    exclude: { selectors: [], properties: [] },
-    ...opts,
-  };
-  const DEBUG = options.debug || process.env.NODE_ENV === "development";
   return {
     postcssPlugin: "@muffincss/postcss",
     Once(root: Root, { result }) {
-      I.start(" Compiled all CSS files");
-      const absolutePath = path.resolve(process.cwd(), options.outDir);
-      ensureOutDirStructure(absolutePath);
+      const errorCollector = new PostCSSErrorCollector(result);
+      const { options } = new Options(opts).prepare(errorCollector);
 
+      I.start(" Compiled all CSS files");
       const mediaAtRuleMap = new Map<string, Map<string, AtomicRule>>();
       const rulesMap = new Map<string, AtomicRule>();
       const resolvedClassesMap = new Map<string, string[]>();
 
       const context: ProcessorContext = {
-        mediaAtRuleMap,
+        processedAtRules: mediaAtRuleMap,
         resolvedClassesMap,
         rulesMap,
         options,
       };
-      DEBUG && I.start("compile_at_rules");
+      options.debug && I.start("compile_at_rules");
       root.walkAtRules(processMediaRules(context));
-      DEBUG && I.end("compile_at_rules");
-      DEBUG && I.start("compile_rules");
+      options.debug && I.end("compile_at_rules");
+      options.debug && I.start("compile_rules");
       root.walkRules(processRules(context));
-      DEBUG && I.end("compile_rules");
+      options.debug && I.end("compile_rules");
 
       root.walkAtRules("muffincss", (node) => {
         const resetLayer = atRule({ name: "layer", params: "reset" });
@@ -65,14 +54,14 @@ const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
         node.replaceWith(resetLayer, utilitiesLayer);
         node.remove();
       });
-      DEBUG && I.start("write_to_file_system");
+      options.debug && I.start("write_to_file_system");
       const resolvedOutDirPath = path.join(options.outDir, "_resolved");
       generateResolvedClasses(resolvedClassesMap, resolvedOutDirPath);
 
       generateCSSModule(path.join(options.outDir, "css"));
-      DEBUG && I.end("write_to_file_system");
-      DEBUG && I.end(" Compiled all CSS files");
-      DEBUG && I.report();
+      options.debug && I.end("write_to_file_system");
+      options.debug && I.end(" Compiled all CSS files");
+      options.debug && I.report();
     },
   };
 };

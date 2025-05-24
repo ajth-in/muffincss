@@ -59,8 +59,12 @@ export interface AtomicRule {
 }
 
 export type ProcessorContext = {
-  mediaAtRuleMap: Map<string, Map<string, AtomicRule>>;
+  processedAtRules: Map<string, Map<string, AtomicRule>>;
   resolvedClassesMap: Map<string, string[]>;
   options: Required<AtomizerOptions>;
   rulesMap: Map<string, AtomicRule>;
 };
+
+export type ATRULE_KEY = `${"media" | "container"} | ${string & {}}`;
+
+export type CLASS_NAME_KEY = `.${string & {}}`;
