@@ -1,0 +1,30 @@
+.toggle {
+  all: unset;
+  color: var(--color-primary);
+  padding: var(--spacing-xxs);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  cursor: pointer;
+  background-color: transparent;
+  outline: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle:hover {
+  color: var(--color-primary-hover);
+}
+.toggle:focus {
+  outline: none;
+}
+
+.toggle:active {
+  box-shadow: var(--shadow-md);
+}
+
+.toggle:disabled {
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

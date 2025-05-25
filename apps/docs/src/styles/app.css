@@ -1,27 +1,143 @@
+@import url("./content-grid.css");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import url("../components/common/headrer/header.muffin.css");
+@import url("../components/Link/link.muffin.css");
+@import url("../components/common/ThemeSwitch/toggle.muffin.css");
+
 @muffincss;
+
 :root {
-  --bg: #ffffff;
-  --text: #000000;
-  --primary: #c5d4ff;
+  /* Colors - Pink Theme */
+  --color-primary: #ff69b4;
+  --color-primary-hover: #ff0180;
+  --color-primary-focus: #ff85c1;
+  --color-primary-pressed: #e0559f;
+
+  --color-secondary: #e89acb;
+  --color-success: #ff85c1;
+  --color-danger: #ff4d6d;
+  --color-warning: #ffb3c6;
+  --color-info: #ff99cc;
+
+  --color-bg: #fff0f5;
+  --color-surface: #ffe4f1;
+  --color-border: #ffcde6;
+  --color-text: #3b0a2e;
+  --color-muted: #a85d85;
+
+  /* Input Colors */
+  --input-bg: #ffffff;
+  --input-border: #ffb6d2;
+  --input-hover: #ffa6c9;
+  --input-focus: #ff85c1;
+  --input-text: #3b0a2e;
+
+  /* Button Colors */
+  --button-bg: var(--color-primary);
+  --button-text: #fff;
+  --button-hover: var(--color-primary-hover);
+  --button-focus: var(--color-primary-focus);
+  --button-pressed: var(--color-primary-pressed);
+  --button-border: var(--color-border);
+
+  /* Typography */
+  --font-family-sans: "Titillium Web", sans-serif;
+  --font-family-mono: "Fira Code", monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Letter Spacings */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.5px;
+
+  /* Spacing */
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(255, 105, 180, 0.1);
+  --shadow-md: 0 4px 6px rgba(255, 105, 180, 0.15);
+  --shadow-lg: 0 10px 15px rgba(255, 105, 180, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.1s ease;
+  --transition-normal: 0.4s ease;
+  --transition-slow: 0.6s ease;
+
+  /* Breakpoints */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 @media (prefers-color-scheme: dark) {
   .dark {
-    --bg: #0f172a;
-    --text: #f1f5f9;
-    --primary: #3b82f6; /* blue-500 */
+    --color-bg: #1a0d17;
+    --color-surface: #2c1124;
+    --color-border: #4a1e3a;
+    --color-text: #ffe4f1;
+    --color-muted: #d28db3;
+
+    --color-primary: #ff85c1;
+    --color-primary-hover: #ff2893;
+    --color-primary-focus: #ffa6d1;
+    --color-primary-pressed: #e86caa;
+
+    --color-secondary: #cc6699;
+    --color-success: #ffb3d9;
+    --color-danger: #ff3366;
+    --color-warning: #ffaacc;
+    --color-info: #ff99cc;
+
+    --input-bg: #2c1124;
+    --input-border: #cc6699;
+    --input-hover: #e680b3;
+    --input-focus: #ff85c1;
+    --input-text: #ffe4f1;
+
+    --button-bg: var(--color-primary);
+    --button-text: #fff;
+    --button-hover: var(--color-primary-hover);
+    --button-focus: var(--color-primary-focus);
+    --button-pressed: var(--color-primary-pressed);
+    --button-border: var(--color-border);
   }
 }
 
 body {
-  font-family: "Titillium Web", sans-serif;
-}
-
-.btn {
-  color: var(--bg);
-  background-color: var(--primary);
-}
-.btn:hover {
-  color: yellow;
-  background-color: red;
+  font-family: var(--font-family-sans);
+  max-width: var(--breakpoint-xl);
+  margin-inline: auto;
+  padding-inline: var(--spacing-xs);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
