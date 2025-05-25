@@ -5,20 +5,53 @@
 :root {
   --font-family-sans: "Ubuntu", sans-serif;
   --breakpoint-xl: 1200px;
-  --spacing-md: 8px;
-  --spacing-lg: 12px;
+
+  --spacing-xs: 0.125rem;
+  --spacing-sm: 0.25rem;
+  --spacing-md: 0.5rem;
+  --spacing-lg: 0.75rem;
+  --spacing-xl: 1rem;
+  --spacing-2xl: 1.25rem;
+  --spacing-3xl: 1.5rem;
+  --spacing-4xl: 1.75rem;
+  --spacing-4xl: 2rem;
+  --spacing-5xl: 3rem;
+  --spacing-6xl: 4rem;
+
+  --radii-sm: 0.5rem;
+  --radii-md: 0.25rem;
+
+  --color-brand: #ff6565;
 
   --text-primary: #000;
   --text-warning: rgb(255, 255, 68);
   --text-info: rgb(68, 211, 255);
+  --text-muted: #b19eb2;
 
-  --surface-primary: #fff;
+  --surface-primary: #fff3f3;
+  --surface-critical: #f7afaf;
+
+  --font-xs: 0.7rem;
+  --font-sm: 1rem;
+  --font-md: 1.25rem;
 
   --font-lg: 1.5rem;
+  --font-xl: 2rem;
+  --font-2xl: 2.5rem;
+  --font-3xl: 3rem;
+
+  --font-extrabold: 800;
+  --font-bold: 700;
+  --font-semibold: 600;
 }
 @media (prefers-color-scheme: dark) {
   .dark {
-    --surface-primary: #1b1b1f;
+    --surface-primary: #1f1b1f;
+    --surface-critical: #d14949;
+
+    --color-brand: #ff8282;
+
+    --text-muted: #bda5be;
 
     --text-primary: #fff;
     --text-warning: rgb(218, 218, 33);

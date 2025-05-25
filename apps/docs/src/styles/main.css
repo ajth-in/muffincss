@@ -4,12 +4,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: var(--spacing-lg);
+  padding-block: var(--spacing-3xl);
 }
 
 .logo {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-lg);
+  position: relative;
+}
+.logo::after {
+  content: "Beta";
+  color: var(--text-primary);
+  font-size: var(--font-xs);
+  background-color: var(--surface-critical);
+  position: absolute;
+  border-radius: var(--radii-sm);
+  padding-inline: var(--spacing-sm);
+  padding-block: var(--spacing-xs);
+  top: calc(-1 * var(--spacing-lg));
+  right: 0;
 }
 
 .nav {
