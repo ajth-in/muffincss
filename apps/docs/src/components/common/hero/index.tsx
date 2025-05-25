@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import css from "~/muffin/css";
+import css from "~/_muffin/css";
 import CodeViewer from "./CodeViewer";
 const actions = [
   {

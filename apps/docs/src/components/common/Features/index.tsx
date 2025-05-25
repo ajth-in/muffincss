@@ -1,4 +1,4 @@
-import css from "~/muffin/css";
+import css from "~/_muffin/css";
 
 const features = [
   {

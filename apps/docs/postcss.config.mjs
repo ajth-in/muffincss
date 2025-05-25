@@ -3,7 +3,7 @@ export default {
     "@muffincss/postcss": {
       debug: true,
       reset: "default",
-      outDir: "src/muffin",
+      outDir: "src/_muffin",
       exclude: {
         selectors: ["dark"],
       },
