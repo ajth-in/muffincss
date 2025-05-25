@@ -1,7 +1,7 @@
 import { MoonStar, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "react-aria-components";
-import css from "~/muffin/css";
+import css from "~/_muffin/css";
 
 export default function ThemeSwitch() {
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
