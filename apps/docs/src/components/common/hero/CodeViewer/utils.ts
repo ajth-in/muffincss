@@ -12,7 +12,9 @@ export const input = {
 }
 `,
   js: `
-<div className={css(["box"])}>Hello</div>;
+<div className={css(["box"])}>
+  Hello
+</div>;
   `,
 };
 

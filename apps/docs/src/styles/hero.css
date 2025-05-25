@@ -2,8 +2,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: var(--spacing-6xl);
+  padding-block: var(--spacing-4xl);
   gap: var(--spacing-6xl);
+  min-height: 500px;
+}
+
+@media screen and (max-width: 444px) {
+  .hero-title {
+    font-size: var(--font-md) !important;
+  }
+}
+@media screen and (max-width: 952px) {
+  .hero {
+    flex-direction: column;
+    gap: var(--spacing-4xl);
+  }
+  .hero-content {
+    text-align: center;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-title {
+    font-size: var(--font-3xl);
+  }
 }
 
 .hero-content {

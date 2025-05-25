@@ -3,12 +3,12 @@ import css from "~/muffin/css";
 import CodeViewer from "./CodeViewer";
 const actions = [
   {
-    href: "/getting-started",
+    href: "/",
     text: "Get Started",
     variant: "primary",
   },
   {
-    href: "/installation",
+    href: "/",
     text: "Installation",
     variant: "secondary",
   },

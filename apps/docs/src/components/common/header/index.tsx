@@ -7,14 +7,10 @@ const Header = () => {
   const links = [
     {
       to: "/",
-      text: "Home",
-    },
-    {
-      to: "/docs",
       text: "Docs",
     },
     {
-      to: "https://github.com/your-repo",
+      to: "https://github.com/ajth-in/muffincss",
       target: "_blank",
       rel: "noopener noreferrer",
       text: <Github />,

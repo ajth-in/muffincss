@@ -22,7 +22,6 @@ const renderCodeBlocks = (code: { css: string; js: string }) => (
     <SyntaxHighlighter
       language="css"
       style={theme}
-      showLineNumbers
       customStyle={{ fontSize: "12px" }}
     >
       {code.css}
@@ -30,7 +29,6 @@ const renderCodeBlocks = (code: { css: string; js: string }) => (
     <SyntaxHighlighter
       language="javascript"
       style={theme}
-      showLineNumbers
       customStyle={{ fontSize: "12px" }}
     >
       {code.js}
