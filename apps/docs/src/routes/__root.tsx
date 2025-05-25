@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
+import Header from "~/components/common/header";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
 import appCss from "~/styles/app.css?url";
@@ -23,8 +24,8 @@ export const Route = createRootRoute({
       },
       ...seo({
         title:
-          "TanStack Start | Type-Safe, Client-First, Full-Stack React Framework",
-        description: `TanStack Start is a type-safe, client-first, full-stack React framework. `,
+          "MuffinCSS | Transform plain CSS into atomic, type-safe utilities ",
+        description: `CSS pre-processor to transform plain CSS into atomic, type-safe utilities`,
       }),
     ],
     links: [
@@ -33,23 +34,7 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap",
       },
-      {
-        rel: "apple-touch-icon",
-        sizes: "180x180",
-        href: "/apple-touch-icon.png",
-      },
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "32x32",
-        href: "/favicon-32x32.png",
-      },
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "16x16",
-        href: "/favicon-16x16.png",
-      },
+
       { rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
       { rel: "icon", href: "/favicon.ico" },
     ],
@@ -80,8 +65,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <div className="p-2 flex gap-2 text-lg">Hello</div>
-        <hr />
+        <Header />
         {children}
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />

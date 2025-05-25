@@ -1,4 +1,6 @@
+import { MoonStar, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Button } from "react-aria-components";
 import css from "~/muffin/css";
 
 export default function ThemeSwitch() {
@@ -36,11 +38,15 @@ export default function ThemeSwitch() {
   if (darkMode === null) return null; // Optionally render a loading state
 
   return (
-    <button
-      className={css(["btn"])}
+    <Button
+      className={css(["toggle"])}
       onClick={() => setDarkMode((prev) => !prev)}
     >
-      Toggle {darkMode ? "Light" : "Dark"} Mode
-    </button>
+      {darkMode ? (
+        <Sun className={css(["toggle--icon", "toggle--icon-light"])} />
+      ) : (
+        <MoonStar className={css(["toggle--icon", "toggle--icon-dark"])} />
+      )}
+    </Button>
   );
 }

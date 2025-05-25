@@ -10,7 +10,6 @@ import ResolvedClassListCollector from "./core/resolved-classlist-collector";
 import RulesProcessor from "./processors/rules";
 import AtRuleProcessor from "./processors/at-rules";
 import createUtilititylayer from "./core/utility-layer";
-const path = require("path");
 
 const instrumentation = new Instrumentation();
 

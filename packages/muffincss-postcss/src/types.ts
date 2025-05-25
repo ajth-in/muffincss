@@ -38,8 +38,7 @@ export type AtomizerOptions = {
    * List of CSS selectors and properties to exclude from processing.
    */
   exclude?: {
-    selectors: RegExp[];
-    properties: RegExp[];
+    selectors?: string[];
   };
   /**
    * Whether to hash all class names.

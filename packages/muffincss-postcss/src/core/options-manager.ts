@@ -23,7 +23,7 @@ export default class Options {
       reset: "default",
       hash: true,
       debug: false,
-      exclude: { selectors: [], properties: [] },
+      exclude: { selectors: [] },
     };
   }
 

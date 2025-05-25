@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ThemeSwitch from "~/components/common/ThemeSwitch";
+import FeaturesSection from "~/components/common/Features";
+import Hero from "~/components/common/hero";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -7,9 +8,10 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="p-2">
-      <h3>Welcome Home!!!</h3>
-      <ThemeSwitch />
-    </div>
+    <main>
+      <Hero />
+      <FeaturesSection />
+      <footer>MIT License © {new Date().getFullYear()}-Present ajth.in</footer>
+    </main>
   );
 }
