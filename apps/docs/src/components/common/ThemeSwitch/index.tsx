@@ -43,9 +43,9 @@ export default function ThemeSwitch() {
       onClick={() => setDarkMode((prev) => !prev)}
     >
       {darkMode ? (
-        <Sun className={css(["toggle--icon"])} />
+        <Sun className={css(["toggle--icon", "toggle--icon-light"])} />
       ) : (
-        <MoonStar className={css(["toggle--icon"])} />
+        <MoonStar className={css(["toggle--icon", "toggle--icon-dark"])} />
       )}
     </Button>
   );
