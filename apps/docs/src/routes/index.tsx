@@ -11,6 +11,7 @@ function Home() {
     <main>
       <Hero />
       <FeaturesSection />
+      <footer>MIT License © {new Date().getFullYear()}-Present ajth.in</footer>
     </main>
   );
 }

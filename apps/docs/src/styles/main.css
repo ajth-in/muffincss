@@ -52,3 +52,9 @@
 .toggle--icon-dark {
   color: var(--text-info);
 }
+
+footer {
+  color: var(--text-primary);
+  text-align: center;
+  padding-block: var(--spacing-3xl);
+}
