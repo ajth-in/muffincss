@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import css from "~/muffin/css";
+import CodeViewer from "./CodeViewer";
 const actions = [
   {
     href: "/getting-started",
@@ -37,7 +38,9 @@ export default function Hero() {
           ))}
         </div>
       </div>
-      <div className={css(["hero-codeblock"])}>hi</div>
+      <div className={css(["hero-codeblock"])}>
+        <CodeViewer />
+      </div>
     </section>
   );
 }
