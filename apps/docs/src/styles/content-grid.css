@@ -1,8 +1,0 @@
-.btn {
-  color: var(--bg);
-  background-color: var(--color-warning);
-}
-.btn:hover {
-  color: yellow;
-  background-color: red;
-}
