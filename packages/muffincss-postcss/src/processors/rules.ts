@@ -31,14 +31,11 @@ export default class RulesProcessor extends BaseProcessor {
       const isParentHandled =
         rule.parent?.type === "atrule" &&
         this.isAtRuleHandled(rule.parent as AtRule);
-      if (isParentHandled || !isClassSelector) return;
+      if (isParentHandled || !isClassSelector || this.isExcludedSelector(rule))
+        return;
       const pseudoClass = BaseProcessor.getPseudoClass(rule.selector);
 
       rule.walkDecls((declaration: Declaration) => {
-        if (this.isExcludedDeclaration(declaration)) {
-          isRuleRemovable = false;
-          return;
-        }
         const atomicClassName = this.constructAtomicClassName(declaration, {
           pseudoClass,
         });

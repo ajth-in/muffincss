@@ -2,7 +2,7 @@
 :root {
   --bg: #ffffff;
   --text: #000000;
-  --primary: #1d4ed8;
+  --primary: #c5d4ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,11 +18,10 @@ body {
 }
 
 .btn {
-  color: red;
-  background-color: yellow;
+  color: var(--bg);
+  background-color: var(--primary);
 }
 .btn:hover {
   color: yellow;
-
   background-color: red;
 }

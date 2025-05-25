@@ -46,10 +46,6 @@ export default class AtRuleProcessor extends BaseProcessor {
         }
         const pseudoClass = BaseProcessor.getPseudoClass(rule.selector);
         rule.walkDecls((declaration) => {
-          if (this.isExcludedDeclaration(declaration)) {
-            isRuleRemovable = false;
-            return;
-          }
           const atomicClassName = this.constructAtomicClassName(declaration, {
             pseudoClass,
             atRuleParam,

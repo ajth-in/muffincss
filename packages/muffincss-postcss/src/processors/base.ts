@@ -12,14 +12,10 @@ export default abstract class BaseProcessor {
   isAtRuleHandled(atRule: AtRule) {
     return this.handledAtRules.includes(atRule.name);
   }
-  isExcludedDeclaration(declaration: Declaration) {
-    return this.options.exclude.properties.some((regex) =>
-      regex.test(declaration.prop),
-    );
-  }
+
   isExcludedSelector(rule: Rule) {
-    return this.options.exclude.selectors.some((regex) =>
-      regex.test(rule.selector),
+    return this.options.exclude.selectors?.some((regex) =>
+      new RegExp(regex).test(rule.selector),
     );
   }
   static formatToId = (input: string) => input.replace(/[^a-zA-Z0-9]/g, "_");

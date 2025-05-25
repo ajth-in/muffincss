@@ -10,7 +10,6 @@ export async function postcssPipeline(
   options: PluginOptions = {
     exclude: {
       selectors: [],
-      properties: [],
     },
   },
 ): Promise<string> {
