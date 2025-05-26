@@ -40,11 +40,6 @@ describe("MuffinCSS-PostCSS", () => {
           }
         }
       `,
-      {
-        hash: false,
-        reset: "off",
-        debug: true,
-      },
     );
 
     expect(result).toBe(
@@ -84,7 +79,6 @@ describe("MuffinCSS-PostCSS", () => {
           color: red
         }
       `,
-      { hash: false, reset: "off" },
     );
 
     expect(result).toBe(

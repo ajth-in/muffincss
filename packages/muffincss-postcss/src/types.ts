@@ -1,7 +1,7 @@
 /**
  * Configuration options for the CSS atomizer.
  */
-export type AtomizerOptions = {
+export type MuffinConfig = {
   /**
    * Directory to store the generated styled system.
    * @default'muffincss'
@@ -60,7 +60,7 @@ export interface AtomicRule {
 export type ProcessorContext = {
   processedAtRules: Map<string, Map<string, AtomicRule>>;
   resolvedClassesMap: Map<string, string[]>;
-  options: Required<AtomizerOptions>;
+  options: Required<MuffinConfig>;
 };
 
 type AtRules = "media" | "container";

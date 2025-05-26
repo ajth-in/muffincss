@@ -1,5 +1,5 @@
 import postcss, { atRule } from "postcss/lib/postcss";
-import type { AtomizerOptions } from "../types";
+import type { MuffinConfig } from "../types";
 import defaultReset from "./default";
 import minimalReset from "./minimal";
 
@@ -33,7 +33,7 @@ const createRuleNode = (
   return ruleNode;
 };
 
-export const createResetLayer = (level: AtomizerOptions["reset"]) => {
+export const createResetLayer = (level: MuffinConfig["reset"]) => {
   const resetLayer = atRule({ name: "layer", params: "reset" });
 
   const styleRules: StyleRule[] =

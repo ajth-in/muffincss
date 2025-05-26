@@ -8,18 +8,19 @@ import createUtilititylayer from "./core/utility-layer";
 import AtRuleProcessor from "./processors/at-rules";
 import RulesProcessor from "./processors/rules";
 import { createResetLayer } from "./resets";
-import type { AtomizerOptions } from "./types";
+import type { MuffinConfig } from "./types";
 import { Root, type Plugin } from "postcss";
 const path = require("path");
 
 const instrumentation = new Instrumentation();
 
-const postcssAtomizer = (opts: AtomizerOptions = {}): Plugin => {
+const postcssAtomizer = (opts: MuffinConfig = {}): Plugin => {
   return {
     postcssPlugin: "@muffincss/postcss",
-    Once(root: Root, { result }) {
+    async Once(root: Root, { result }) {
       const errorHandler = new PostCSSErrorCollector(result);
-      const { options } = new Options(opts).prepare(errorHandler);
+      const { options } = await new Options(errorHandler).prepare();
+
       const resultCollector = new ResolvedClassListCollector();
       instrumentation.start(" Compiled all CSS files");
       const processorContext = [resultCollector, options] as const;

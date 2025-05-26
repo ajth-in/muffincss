@@ -1,20 +1,27 @@
 import path from "path";
-import type { AtomizerOptions } from "../types";
+import type { MuffinConfig } from "../types";
 import fs from "fs";
 import type { PostCSSErrorCollector } from "./error-handler";
+import { lilconfig } from "lilconfig";
+import loaders from "./utils/options-loader";
 
 export const RESOLVED_CLASS_STORE_PATH = "_resolved";
 export const CSS_OUTPUT_PATH = "css";
 
 export default class Options {
-  options: Required<AtomizerOptions>;
-
-  constructor(options: AtomizerOptions = {}) {
-    const merged = Options.merge(options);
-    this.options = merged;
+  options: Required<MuffinConfig>;
+  private possibleConfigFiles = [
+    "muffin.config.js",
+    "muffin.config.ts",
+    "muffin.config.mjs",
+    "muffin.config.cjs",
+    "muffin.config.json",
+  ];
+  constructor(private errorCollector: PostCSSErrorCollector) {
+    this.options = Options.getDefaults();
   }
 
-  static getDefaults(): Required<AtomizerOptions> {
+  static getDefaults(): Required<MuffinConfig> {
     return {
       outDir: "./muffincss",
       prefix: "a-",
@@ -27,14 +34,67 @@ export default class Options {
     };
   }
 
-  static merge(options: AtomizerOptions = {}): Required<AtomizerOptions> {
-    return {
-      ...this.getDefaults(),
+  async merge() {
+    const options = await this.getContent();
+    this.options = {
+      ...Options.getDefaults(),
       ...options,
-    };
+    } as Required<MuffinConfig>;
+
+    return this;
   }
 
-  ensureDefaultDirStructure(errorCollector: PostCSSErrorCollector) {
+  async getConfigFile(startDir?: string): Promise<string | null> {
+    const searchDir = startDir || process.cwd();
+
+    const explorer = lilconfig("muffin", {
+      searchPlaces: this.possibleConfigFiles,
+      loaders,
+      stopDir: path.resolve(searchDir, ".."),
+    });
+
+    try {
+      const result = await explorer.search(searchDir);
+      return result ? result.filepath : null;
+    } catch (error) {
+      this.errorCollector.error("Error finding muffin config");
+      return null;
+    }
+  }
+
+  async getContent(startDir?: string): Promise<Required<MuffinConfig> | null> {
+    const configPath = await this.getConfigFile(startDir);
+    if (!configPath) {
+      return null;
+    }
+    const searchDir = startDir || process.cwd();
+    const explorer = lilconfig("muffin", {
+      searchPlaces: this.possibleConfigFiles,
+      loaders,
+    });
+
+    try {
+      const result = await explorer.search(searchDir);
+      if (!result) {
+        return null;
+      }
+
+      const { config } = result;
+
+      if (!config || typeof config !== "object") {
+        throw new Error(
+          `Invalid config file: Expected an object, got ${typeof config}`,
+        );
+      }
+
+      return config as Required<MuffinConfig>;
+    } catch (error) {
+      this.errorCollector.error("Error loading config content:");
+      return null;
+    }
+  }
+
+  ensureDefaultDirStructure() {
     try {
       const absolutePath = this.getOutputPath();
       fs.mkdirSync(absolutePath, { recursive: true });
@@ -42,12 +102,15 @@ export default class Options {
         fs.mkdirSync(path.join(absolutePath, dir), { recursive: true });
       });
     } catch (err) {
-      errorCollector.error("Failed to create the initial directory structure!");
+      this.errorCollector.error(
+        "Failed to create the initial directory structure!",
+      );
     }
   }
 
-  prepare(errorCollector: PostCSSErrorCollector) {
-    this.ensureDefaultDirStructure(errorCollector);
+  async prepare() {
+    this.ensureDefaultDirStructure();
+    await this.merge();
     this.options.debug =
       this.options.debug === true ||
       process.env.NODE_ENV === "development" ||
