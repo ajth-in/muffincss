@@ -1,6 +1,15 @@
+import GenerateResolvedClassListModule from "./codegen/_resolved/generator";
+import CssModuleGenerator from "./codegen/css/generator";
+import { PostCSSErrorCollector } from "./core/error-handler";
+import { Instrumentation } from "./core/instrumentation";
+import Options from "./core/options-manager";
+import ResolvedClassListCollector from "./core/resolved-classlist-collector";
+import createUtilititylayer from "./core/utility-layer";
+import AtRuleProcessor from "./processors/at-rules";
+import RulesProcessor from "./processors/rules";
+import { createResetLayer } from "./resets";
 import type { AtomizerOptions } from "./types";
 import { Root, type Plugin } from "postcss";
-import { Instrumentation } from "./instrumentation";
 const path = require("path");
 
 const instrumentation = new Instrumentation();

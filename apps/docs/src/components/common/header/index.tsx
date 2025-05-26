@@ -1,4 +1,4 @@
-import css from "~/_muffin/css";
+import css from "~/muffin/css";
 import ThemeSwitch from "../ThemeSwitch";
 import { Github } from "lucide-react";
 import { Link } from "@tanstack/react-router";
