@@ -3,17 +3,8 @@ import myPlugin from ".."; // Adjust this path
 import { describe, expect, test } from "@jest/globals";
 const cssnano = require("cssnano");
 
-type PluginOptions = Parameters<typeof myPlugin>[0];
-
-export async function postcssPipeline(
-  input: string,
-  options: PluginOptions = {
-    exclude: {
-      selectors: [],
-    },
-  },
-): Promise<string> {
-  const result = await postcss([myPlugin(options), cssnano()]).process(input, {
+export async function postcssPipeline(input: string): Promise<string> {
+  const result = await postcss([myPlugin(), cssnano()]).process(input, {
     from: undefined,
   });
   expect(result.warnings()).toHaveLength(0);

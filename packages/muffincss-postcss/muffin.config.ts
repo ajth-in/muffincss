@@ -1,4 +1,4 @@
-import type { MuffinConfig } from "./src/types";
+import type { MuffinConfig } from "../muffincss-core/src/types";
 
 const config: MuffinConfig = {
   reset: "off",

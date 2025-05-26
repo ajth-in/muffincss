@@ -1,20 +1,19 @@
-import GenerateResolvedClassListModule from "./codegen/_resolved/generator";
-import CssModuleGenerator from "./codegen/css/generator";
-import { PostCSSErrorCollector } from "./core/error-handler";
-import { Instrumentation } from "./core/instrumentation";
-import Options from "./core/options-manager";
-import ResolvedClassListCollector from "./core/resolved-classlist-collector";
-import createUtilititylayer from "./core/utility-layer";
-import AtRuleProcessor from "./processors/at-rules";
-import RulesProcessor from "./processors/rules";
-import { createResetLayer } from "./resets";
-import type { MuffinConfig } from "./types";
+import { Instrumentation } from "@muffincss/core/core/instrumentation";
+
 import { Root, type Plugin } from "postcss";
-const path = require("path");
+import { PostCSSErrorCollector } from "@muffincss/core/core/error-handler";
+import Options from "@muffincss/core/core/options-manager";
+import ResolvedClassListCollector from "@muffincss/core/core/resolved-classlist-collector";
+import AtRuleProcessor from "@muffincss/core/processors/at-rules";
+import RulesProcessor from "@muffincss/core/processors/rules";
+import { createResetLayer } from "@muffincss/core/resets/index";
+import createUtilititylayer from "@muffincss/core/core/utility-layer";
+import GenerateResolvedClassListModule from "@muffincss/core/codegen/_resolved/generator";
+import CssModuleGenerator from "@muffincss/core/codegen/css/generator";
 
 const instrumentation = new Instrumentation();
 
-const postcssAtomizer = (opts: MuffinConfig = {}): Plugin => {
+const postcssAtomizer = (): Plugin => {
   return {
     postcssPlugin: "@muffincss/postcss",
     async Once(root: Root, { result }) {
