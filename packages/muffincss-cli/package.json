@@ -1,0 +1,25 @@
+{
+  "name": "@muffincss/cli",
+  "version": "0.0.0",
+  "description": "cli tool for muffincss",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "muffin": "./dist/index.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.5",
+    "@types/node": "^22.15.21",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
