@@ -1,5 +1,8 @@
 import { Command } from "commander";
-
+import Options, {
+  RESOLVED_CLASS_STORE_PATH,
+  CSS_OUTPUT_PATH,
+} from "@muffincss/core/core/options-manager";
 const program = new Command();
 
 program
@@ -8,13 +11,10 @@ program
   .version("0.0.0");
 
 program
-  .command("greet")
-  .description("Greet a user")
-  .argument("<name>", "Name to greet")
-  .option("-u, --uppercase", "Print in uppercase")
-  .action((name: string, options: { uppercase?: boolean }) => {
-    const message = `Hello, ${name}!`;
-    console.log(options.uppercase ? message.toUpperCase() : message);
+  .command("codegen")
+  .description(`Generate ${RESOLVED_CLASS_STORE_PATH} and ${CSS_OUTPUT_PATH}`)
+  .action(async () => {
+    const { options } = await new Options().prepare();
   });
 
 program.parse(process.argv);

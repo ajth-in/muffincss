@@ -132,6 +132,9 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0
     devDependencies:
+      '@muffincss/core':
+        specifier: workspace:*
+        version: link:../muffincss-core
       '@types/commander':
         specifier: ^2.12.5
         version: 2.12.5
