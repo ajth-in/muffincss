@@ -12,7 +12,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=@muffincss/docs^... && changeset publish"
+    "build:packages": "turbo run build --filter=@muffincss/docs^...",
+    "release": "pnpm run build:packages && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",

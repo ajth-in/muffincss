@@ -17,7 +17,7 @@ export default class Options {
     "muffin.config.cjs",
     "muffin.config.json",
   ];
-  constructor(private errorCollector: PostCSSErrorCollector) {
+  constructor(private errorCollector?: PostCSSErrorCollector) {
     this.options = Options.getDefaults();
   }
 
@@ -57,7 +57,7 @@ export default class Options {
       const result = await explorer.search(searchDir);
       return result ? result.filepath : null;
     } catch (error) {
-      this.errorCollector.error("Error finding muffin config");
+      this.errorCollector?.error("Error finding muffin config");
       return null;
     }
   }
@@ -89,7 +89,7 @@ export default class Options {
 
       return config as Required<MuffinConfig>;
     } catch (error) {
-      this.errorCollector.error("Error loading config content:");
+      this.errorCollector?.error("Error loading config content:");
       return null;
     }
   }
@@ -102,7 +102,7 @@ export default class Options {
         fs.mkdirSync(path.join(absolutePath, dir), { recursive: true });
       });
     } catch (err) {
-      this.errorCollector.error(
+      this.errorCollector?.error(
         "Failed to create the initial directory structure!",
       );
     }

@@ -4,7 +4,8 @@ const sharedOptions = {
   minify: true,
   cjsInterop: true,
   dts: true,
-  entry: ["src/**/*.ts"],
+  entry: ["src/index.ts"],
+  external: ["esbuild"],
 };
 
 export default defineConfig([

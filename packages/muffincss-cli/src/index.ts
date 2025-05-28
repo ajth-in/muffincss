@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import Options, {
+import {
   RESOLVED_CLASS_STORE_PATH,
   CSS_OUTPUT_PATH,
 } from "@muffincss/core/core/options-manager";
@@ -14,7 +14,7 @@ program
   .command("codegen")
   .description(`Generate ${RESOLVED_CLASS_STORE_PATH} and ${CSS_OUTPUT_PATH}`)
   .action(async () => {
-    const { options } = await new Options().prepare();
+    // const { options } = await new Options().prepare();
   });
 
 program.parse(process.argv);
