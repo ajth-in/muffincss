@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "muffin codegen",
+    "gen:css": "muffin codegen --gencss out",
     "dev": "vinxi dev",
     "build": "muffin codegen && vinxi build --preset vercel",
     "start": "vinxi start"
