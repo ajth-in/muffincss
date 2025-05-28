@@ -4,10 +4,10 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "prepare": "muffin codegen",
+    "prepare": "turbo run build --filter=@muffincss/cli && muffin codegen",
     "gen:css": "muffin codegen --gencss out",
     "dev": "vinxi dev",
-    "build": "muffin codegen && vinxi build --preset vercel",
+    "build": "vinxi build --preset vercel",
     "start": "vinxi start"
   },
   "dependencies": {

@@ -30,7 +30,6 @@ export default class CssModuleGenerator extends BaseGenerator {
           this.getFileName(file.type),
         );
         fs.writeFileSync(outputPath, result, "utf-8");
-        console.log(`Successfully wrote file: ${outputPath}`);
       } catch (error) {
         console.error(`Error processing file ${file.type}:`, error);
       }
