@@ -84,6 +84,9 @@ importers:
       '@types/react-syntax-highlighter':
         specifier: ^15.5.13
         version: 15.5.13
+      cssnano:
+        specifier: ^7.0.7
+        version: 7.0.7(postcss@8.5.3)
       postcss:
         specifier: ^8.5.1
         version: 8.5.3
