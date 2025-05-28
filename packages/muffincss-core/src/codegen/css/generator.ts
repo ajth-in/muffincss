@@ -14,12 +14,26 @@ export default class CssModuleGenerator extends BaseGenerator {
   }
   generate(): void {
     for (const file of this.files) {
-      const compiled = Handlebars.compile(file.content);
-      const result = compiled(this.getContext(file.type));
-      const outputDirPath = this.outDirPath(CSS_OUTPUT_PATH);
+      try {
+        const compiled = Handlebars.compile(file.content);
 
-      const outputPath = path.join(outputDirPath, this.getFileName(file.type));
-      fs.writeFileSync(outputPath, result, "utf-8");
+        const result = compiled(this.getContext(file.type));
+
+        const outputDirPath = this.outDirPath(CSS_OUTPUT_PATH);
+        if (!fs.existsSync(outputDirPath)) {
+          fs.mkdirSync(outputDirPath, { recursive: true });
+          console.log(`Created directory: ${outputDirPath}`);
+        }
+
+        const outputPath = path.join(
+          outputDirPath,
+          this.getFileName(file.type),
+        );
+        fs.writeFileSync(outputPath, result, "utf-8");
+        console.log(`Successfully wrote file: ${outputPath}`);
+      } catch (error) {
+        console.error(`Error processing file ${file.type}:`, error);
+      }
     }
   }
   getContext(fileType: FileType) {

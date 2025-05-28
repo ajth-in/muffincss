@@ -55,6 +55,7 @@ export default class Options {
 
     try {
       const result = await explorer.search(searchDir);
+
       return result ? result.filepath : null;
     } catch (error) {
       this.errorCollector?.error("Error finding muffin config");
@@ -67,6 +68,7 @@ export default class Options {
     if (!configPath) {
       return null;
     }
+
     const searchDir = startDir || process.cwd();
     const explorer = lilconfig("muffin", {
       searchPlaces: this.possibleConfigFiles,
@@ -75,6 +77,7 @@ export default class Options {
 
     try {
       const result = await explorer.search(searchDir);
+
       if (!result) {
         return null;
       }
@@ -102,6 +105,8 @@ export default class Options {
         fs.mkdirSync(path.join(absolutePath, dir), { recursive: true });
       });
     } catch (err) {
+      console.log("FILE", err);
+
       this.errorCollector?.error(
         "Failed to create the initial directory structure!",
       );

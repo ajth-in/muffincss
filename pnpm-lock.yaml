@@ -135,12 +135,21 @@ importers:
       '@muffincss/core':
         specifier: workspace:*
         version: link:../muffincss-core
+      '@muffincss/postcss':
+        specifier: workspace:*
+        version: link:../muffincss-postcss
       '@types/commander':
         specifier: ^2.12.5
         version: 2.12.5
       '@types/node':
         specifier: ^22.15.21
         version: 22.15.21
+      cssnano:
+        specifier: ^7.0.7
+        version: 7.0.7(postcss@8.5.3)
+      postcss:
+        specifier: ^8.5.3
+        version: 8.5.3
       tsup:
         specifier: ^8.4.0
         version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)

@@ -36,8 +36,9 @@ const postcssAtomizer = (): Plugin => {
         node.remove();
       });
 
-      new GenerateResolvedClassListModule(resultCollector, options).generate();
       new CssModuleGenerator(options).generate();
+
+      new GenerateResolvedClassListModule(resultCollector, options).generate();
 
       options.debug && instrumentation.end(" Compiled all CSS files");
       options.debug && instrumentation.report();
