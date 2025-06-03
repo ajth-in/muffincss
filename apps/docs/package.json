@@ -4,11 +4,12 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "prepare": "turbo run build --filter=@muffincss/cli",
+    "prepare": "muffin codegen",
     "gen:css": "muffin codegen --gencss out",
     "dev": "vinxi dev",
-    "build": "muffin codegen && vinxi build --preset vercel",
-    "start": "vinxi start"
+    "build": "vinxi build --preset vercel",
+    "start": "vinxi start",
+    "typecheck": "tsc  --noEmit"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.120.5",
