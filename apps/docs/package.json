@@ -4,10 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "prepare": "turbo run build --filter=@muffincss/cli",
     "gen:css": "muffin codegen --gencss out",
     "dev": "vinxi dev",
-    "build": "vinxi build --preset vercel",
+    "build": "muffin codegen && vinxi build --preset vercel",
     "start": "vinxi start"
   },
   "dependencies": {
