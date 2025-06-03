@@ -1,0 +1,40 @@
+{
+  "name": "@muffincss/core",
+  "version": "0.0.0",
+  "description": "Core utilities for muffincss",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.js"
+    }
+  },
+  "peerDependencies": {
+    "postcss": "^8.4.27"
+  },
+  "devDependencies": {
+    "@types/murmurhash3js": "^3.0.7",
+    "@types/node": "^22.15.21",
+    "postcss": "^8.4.27",
+    "tsup": "^8.4.0"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "esbuild": "^0.25.4",
+    "handlebars": "^4.7.8",
+    "lilconfig": "^3.1.3",
+    "murmurhash3js": "^3.0.1"
+  }
+}
