@@ -4,7 +4,6 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "prepare": "muffin codegen",
     "gen:css": "muffin codegen --gencss out",
     "dev": "vinxi dev",
     "build": "vinxi build --preset vercel",
