@@ -4,6 +4,8 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "prepare": "turbo run build --filter=@muffincss/cli",
+    "gen:css": "muffin codegen --gencss out",
     "dev": "vinxi dev",
     "build": "vinxi build --preset vercel",
     "start": "vinxi start"
@@ -20,11 +22,14 @@
     "vinxi": "0.5.3"
   },
   "devDependencies": {
+    "@muffincss/cli": "workspace:*",
+    "@muffincss/core": "workspace:*",
     "@muffincss/postcss": "workspace:*",
     "@types/node": "^22.5.4",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "cssnano": "^7.0.7",
     "postcss": "^8.5.1",
     "shiki": "^3.4.2",
     "typescript": "^5.7.2",

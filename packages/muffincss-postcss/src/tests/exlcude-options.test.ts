@@ -13,14 +13,6 @@ describe("Exclude options", () => {
             color: red;
         }
       `,
-      {
-        hash: false,
-        reset: "off",
-        debug: true,
-        exclude: {
-          selectors: ["btn"],
-        },
-      },
     );
 
     expect(result).toBe(
