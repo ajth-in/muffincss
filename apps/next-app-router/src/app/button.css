@@ -1,0 +1,43 @@
+@muffincss;
+
+:root {
+  --btn-bg: #1d4ed8;
+  --btn-text: #ffffff;
+  --btn-border: transparent;
+  --btn-bg-hover: #2563eb;
+  --btn-bg-active: #1e40af;
+  --btn-bg-disabled: #cbd5e1;
+  --btn-text-disabled: #94a3b8;
+  --btn-border-focus: #93c5fd;
+  --btn-shadow-focus: 0 0 0 3px rgba(147, 197, 253, 0.5);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.25;
+  border: 1px solid var(--btn-border);
+  border-radius: 0.5rem;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.1s;
+  text-decoration: none;
+  user-select: none;
+}
+
+.button:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+.button:active {
+  background-color: var(--btn-bg-active);
+}
