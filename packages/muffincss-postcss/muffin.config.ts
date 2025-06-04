@@ -3,7 +3,10 @@ import { type MuffinConfig } from "@muffincss/core/types";
 const config: MuffinConfig = {
   reset: "off",
   hash: false,
-  debug: true,
+  debug: false,
+  exclude: {
+    selectors: ["btn"],
+  },
 };
 
 export default config;
