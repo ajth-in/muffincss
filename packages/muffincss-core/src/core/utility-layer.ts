@@ -1,8 +1,8 @@
 import { atRule } from "postcss";
-import type RulesProcessor from "../processors/rules";
-import type AtRuleProcessor from "../processors/at-rules";
 import { AtRule, Declaration, Rule } from "postcss";
 import type { AtomicRule } from "../types";
+import type ParsedAtRulesManager from "./parsed-atrules-collector";
+import type ParsedRulesManager from "./parsed-rules-manager";
 
 export const generateMediaRules = (
   rules: Map<string, AtomicRule>,
@@ -26,15 +26,15 @@ export const generateAtomicRule = (className: string, data: AtomicRule) => {
   return newRule;
 };
 const createUtilititylayer = (
-  rules: RulesProcessor["parsedRules"],
-  atRules: AtRuleProcessor["parsedAtRules"],
+  rules: ParsedRulesManager,
+  atRules: ParsedAtRulesManager,
 ) => {
   const utilitiesLayer = atRule({ name: "layer", params: "utilities" });
-  atRules.forEach((rules, mediaQuery) => {
+  atRules.getAll().forEach((rules, mediaQuery) => {
     const mediaRule = generateMediaRules(rules, mediaQuery);
     utilitiesLayer.append(mediaRule);
   });
-  rules.forEach((data, className) => {
+  rules.getAll().forEach((data, className) => {
     utilitiesLayer.append(generateAtomicRule(className, data));
   });
   return utilitiesLayer;
