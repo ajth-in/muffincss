@@ -2,6 +2,8 @@ import { Declaration, Rule, type AtRule, type Root } from "postcss";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
 import { x86 } from "murmurhash3js";
+import type ParsedAtRulesManager from "../core/parsed-atrules-collector";
+import type ParsedRulesManager from "../core/parsed-rules-manager";
 
 export default abstract class BaseProcessor {
   private handledAtRules: string[] = ["media", "container", "pattern", "cv"];
@@ -52,5 +54,8 @@ export default abstract class BaseProcessor {
     return selector.replace(/:{1,2}[a-zA-Z0-9_-]+/g, "");
   }
 
-  abstract walk(root: Root): void;
+  abstract walk(
+    root: Root,
+    parsedAtRulesManager?: ParsedAtRulesManager | ParsedRulesManager,
+  ): void;
 }

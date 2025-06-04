@@ -8,30 +8,35 @@ import AtRuleProcessor from "@muffincss/core/processors/at-rules";
 import RulesProcessor from "@muffincss/core/processors/rules";
 import { createResetLayer } from "@muffincss/core/resets/index";
 import createUtilititylayer from "@muffincss/core/core/utility-layer";
+import ParsedAtRulesCollector from "@muffincss/core/core/parsed-atrules-collector";
+
 import GenerateResolvedClassListModule from "@muffincss/core/codegen/_resolved/generator";
 import CssModuleGenerator from "@muffincss/core/codegen/css/generator";
+import ParsedRulesManager from "@muffincss/core/core/parsed-rules-manager";
 
 const instrumentation = new Instrumentation();
 
 const postcssAtomizer = (): Plugin => {
+  const resultCollector = new ResolvedClassListCollector();
+  const parsedAtRulesManager = new ParsedAtRulesCollector();
+  const parsedRulesManager = new ParsedRulesManager();
+
   return {
     postcssPlugin: "@muffincss/postcss",
     async Once(root: Root, { result }) {
       const errorHandler = new PostCSSErrorCollector(result);
       const { options } = await new Options(errorHandler).prepare();
 
-      const resultCollector = new ResolvedClassListCollector();
       instrumentation.start(" Compiled all CSS files");
       const processorContext = [resultCollector, options] as const;
-      const { parsedAtRules } = new AtRuleProcessor(...processorContext).walk(
-        root,
-      );
-      const { parsedRules } = new RulesProcessor(...processorContext).walk(
-        root,
-      );
+      new AtRuleProcessor(...processorContext).walk(root, parsedAtRulesManager);
+      new RulesProcessor(...processorContext).walk(root, parsedRulesManager);
       root.walkAtRules("muffincss", (node) => {
         const resetLayer = createResetLayer(options.reset);
-        const utilitiesLayer = createUtilititylayer(parsedRules, parsedAtRules);
+        const utilitiesLayer = createUtilititylayer(
+          parsedRulesManager,
+          parsedAtRulesManager,
+        );
         node.replaceWith(resetLayer, utilitiesLayer);
         node.remove();
       });

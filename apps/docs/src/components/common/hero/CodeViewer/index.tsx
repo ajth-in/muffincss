@@ -26,6 +26,7 @@ const renderCodeBlocks = (code: { css: string; js: string }) => (
     >
       {code.css}
     </SyntaxHighlighter>
+
     <SyntaxHighlighter
       language="javascript"
       style={theme}

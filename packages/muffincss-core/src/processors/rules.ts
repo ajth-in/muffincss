@@ -2,27 +2,17 @@ import { type AtRule, type Declaration, type Root } from "postcss";
 import BaseProcessor from "./base";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
-import type { AtomicRule } from "../types";
+import type ParsedRulesManager from "../core/parsed-rules-manager";
 
 export default class RulesProcessor extends BaseProcessor {
-  parsedRules: Map<string, AtomicRule>;
-
   constructor(
     resultCollector: ResolvedClassListCollector,
     options: Options["options"],
   ) {
     super(resultCollector, options);
-    this.parsedRules = new Map<string, AtomicRule>();
-  }
-  private addToParsedRules(className: string, declaration: Declaration) {
-    if (!this.parsedRules.has(className))
-      this.parsedRules.set(className, {
-        prop: declaration.prop,
-        value: declaration.value,
-      });
   }
 
-  walk(root: Root) {
+  walk(root: Root, parsedRulesManager: ParsedRulesManager) {
     root.walkRules((rule) => {
       const atomicClassList: string[] = [];
       let isRuleRemovable = true;
@@ -39,7 +29,7 @@ export default class RulesProcessor extends BaseProcessor {
         const atomicClassName = this.constructAtomicClassName(declaration, {
           pseudoClass,
         });
-        this.addToParsedRules(atomicClassName, declaration);
+        parsedRulesManager.add(atomicClassName, declaration);
         atomicClassList.push(
           BaseProcessor.removePseudoClasses(atomicClassName),
         );
