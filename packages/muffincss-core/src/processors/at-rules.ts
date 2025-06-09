@@ -1,39 +1,25 @@
-import type { Declaration, Root } from "postcss";
+import type { Root } from "postcss";
 import BaseProcessor from "./base";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
-import type { AtomicRule } from "../types";
+import type ParsedAtRulesManager from "../core/parsed-atrules-collector";
 
 export default class AtRuleProcessor extends BaseProcessor {
-  parsedAtRules: Map<string, Map<string, AtomicRule>>;
-
   constructor(
     resultCollector: ResolvedClassListCollector,
     options: Options["options"],
   ) {
     super(resultCollector, options);
-    this.parsedAtRules = new Map<string, Map<string, AtomicRule>>();
   }
-  initParsedAtRules(atRuleParams: string) {
-    if (!this.parsedAtRules.has(atRuleParams)) {
-      this.parsedAtRules.set(atRuleParams, new Map<string, AtomicRule>());
-    }
-  }
-  addToParsedAtRules(
-    atRuleParams: string,
-    className: string,
-    declaration: Declaration,
-  ) {
-    this.parsedAtRules.get(atRuleParams)!.set(className, declaration);
-  }
-  walk(root: Root) {
+
+  walk(root: Root, parsedAtRulesManager: ParsedAtRulesManager) {
     root.walkAtRules((atRule) => {
       let isAtRuleRemovable = true;
       if (!this.isAtRuleHandled(atRule)) {
         return;
       }
       const atRuleParam = atRule.params;
-      this.initParsedAtRules(atRuleParam);
+      parsedAtRulesManager.init(atRuleParam);
       atRule.walkRules((rule) => {
         let isRuleRemovable = true;
         const atomicClassList: string[] = [];
@@ -53,7 +39,7 @@ export default class AtRuleProcessor extends BaseProcessor {
           atomicClassList.push(
             BaseProcessor.removePseudoClasses(atomicClassName),
           );
-          this.addToParsedAtRules(atRuleParam, atomicClassName, declaration);
+          parsedAtRulesManager.add(atRuleParam, atomicClassName, declaration);
         });
         if (isRuleRemovable) rule.remove();
         if (atomicClassList.length > 0) {

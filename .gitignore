@@ -12,5 +12,7 @@ server/dist
 public/dist
 .turbo
 
-**/muffincss
-**/muffin
+**/.vinxi/*
+**/.vercel/*
+
+
