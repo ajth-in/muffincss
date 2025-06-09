@@ -4,4 +4,6 @@ coverage
 *.hbs
 
 **/muffin/*
+**/_muffin/*
+
 **/muffincss/*
