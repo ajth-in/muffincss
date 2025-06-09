@@ -2,3 +2,13 @@
 build
 coverage
 *.hbs
+
+**/muffin/*
+**/_muffin/*
+
+**/muffincss/*
+
+**/build
+**/public
+**/pnpm-lock.yaml
+**/routeTree.gen.ts
