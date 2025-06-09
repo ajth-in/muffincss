@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "path": "apps/docs",
+    },
+    {
+      "path": "packages/muffincss-postcss",
+    },
+	 {
+      "path": "packages/muffincss-core",
+    },
+	 {
+      "path": "packages/muffincss-cli",
+    },
+	 {
+      "path": ".",
+    },
+  ],
+  "settings": {},
+}

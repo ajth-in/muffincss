@@ -2,3 +2,6 @@
 build
 coverage
 *.hbs
+
+**/muffin/*
+**/muffincss/*
