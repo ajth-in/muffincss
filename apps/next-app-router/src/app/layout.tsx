@@ -10,18 +10,17 @@ export const metadata: Metadata = {
   description: "My App Description",
 };
 
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies()
-  const theme = cookieStore.get('theme')
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("theme");
   return (
     <html lang="en" className={theme?.value}>
       <body>
-        <Header/>
+        <Header />
         <main>{children}</main>
       </body>
     </html>

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import { MoonStar, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "react-aria-components";
 import css from "~/_muffin/css";
 import Cookies from "js-cookie";
-const THEME_KEY = "theme"
+const THEME_KEY = "theme";
 export default function ThemeSwitch() {
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
 

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Tabs, TabList, Tab, TabPanel } from "react-aria-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { hopscotch as theme } from "react-syntax-highlighter/dist/esm/styles/prism";
