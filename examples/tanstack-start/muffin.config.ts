@@ -1,7 +1,7 @@
 import { MuffinConfig } from "@muffincss/core/types";
 const config: MuffinConfig = {
   debug: true,
-  hash: true,
+  hash: false,
   reset: "default",
   outDir: "src/_muffin",
   exclude: {

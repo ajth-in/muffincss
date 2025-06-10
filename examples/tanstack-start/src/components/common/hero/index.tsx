@@ -1,6 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import css from "~/_muffin/css";
 import CodeViewer from "./CodeViewer";
-import Link from "next/link";
 const actions = [
   {
     href: "/",
@@ -31,7 +31,7 @@ export default function Hero() {
             <Link
               className={css(["button", `button--${action.variant}`])}
               key={action.text}
-              href={action.href}
+              to={action.href}
             >
               {action.text}
             </Link>

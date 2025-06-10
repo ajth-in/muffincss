@@ -1,16 +1,16 @@
 import css from "~/_muffin/css";
 import ThemeSwitch from "../ThemeSwitch";
 import { Github } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 
 const Header = () => {
   const links = [
     {
-      to: "/",
+      href: "/",
       text: "Docs",
     },
     {
-      to: "https://github.com/ajth-in/muffincss",
+      href: "https://github.com/ajth-in/muffincss",
       target: "_blank",
       rel: "noopener noreferrer",
       text: <Github />,
@@ -21,7 +21,7 @@ const Header = () => {
       <div className={css(["logo"])}>MuffinCSS</div>
       <nav className={css(["nav"])}>
         {links.map(({ text, ...args }) => (
-          <Link key={args.to} {...args} className={css(["nav-link"])}>
+          <Link key={args.href} {...args} className={css(["nav-link"])}>
             {text}
           </Link>
         ))}

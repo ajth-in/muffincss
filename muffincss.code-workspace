@@ -12,9 +12,6 @@
     {
       "path": "packages/muffincss-cli",
     },
-    {
-      "path": "apps/next-app-router",
-    },
   ],
   "settings": {},
 }

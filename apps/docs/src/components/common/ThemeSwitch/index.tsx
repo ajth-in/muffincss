@@ -1,14 +1,16 @@
+"use client";
 import { MoonStar, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "react-aria-components";
 import css from "~/_muffin/css";
-
+import Cookies from "js-cookie";
+const THEME_KEY = "theme";
 export default function ThemeSwitch() {
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
 
   // Set initial theme after component mounts (client-side only)
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
+    const theme = Cookies.get(THEME_KEY);
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)",
     ).matches;
@@ -26,12 +28,12 @@ export default function ThemeSwitch() {
       classes.forEach((item) => {
         root.classList.add(item);
       });
-      localStorage.setItem("theme", "dark");
+      Cookies.set(THEME_KEY, "dark");
     } else {
       classes.forEach((item) => {
         root.classList.remove(item);
       });
-      localStorage.setItem("theme", "light");
+      Cookies.set(THEME_KEY, "light");
     }
   }, [darkMode]);
 
