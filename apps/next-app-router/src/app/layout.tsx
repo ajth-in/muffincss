@@ -1,32 +1,27 @@
 // eslint-disable-next-line @next/next/no-duplicate-head
 
-import { Geist, Geist_Mono } from "next/font/google";
+import Header from "~/components/common/header";
 import "./globals.css";
 import { Metadata } from "next";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
-  title: "My App",
+  title: "MuffinCSS",
   description: "My App Description",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies()
+  const theme = cookieStore.get('theme')
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={theme?.value}>
       <body>
+        <Header/>
         <main>{children}</main>
       </body>
     </html>

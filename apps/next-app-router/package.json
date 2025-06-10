@@ -5,24 +5,31 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "muffin:codegen": "muffin codegen"
   },
   "dependencies": {
+    "js-cookie": "^3.0.5",
+    "lucide-react": "^0.511.0",
+    "next": "15.3.3",
     "react": "^19.0.0",
+    "react-aria-components": "^1.9.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.3"
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@muffincss/cli": "workspace:*",
     "@muffincss/core": "workspace:*",
     "@muffincss/postcss": "workspace:*",
-    "cssnano": "^7.0.7",
-    "typescript": "^5",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "cssnano": "^7.0.7",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
-    "@eslint/eslintrc": "^3"
+    "typescript": "^5"
   }
 }
