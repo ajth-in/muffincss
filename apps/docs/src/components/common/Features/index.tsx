@@ -1,5 +1,4 @@
 import css from "~/_muffin/css";
-
 const features = [
   {
     icon: "🧬",

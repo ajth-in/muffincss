@@ -12,7 +12,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "build:packages": "turbo run build --filter=@muffincss/docs^...",
+    "build:packages": "turbo run build --filter=@muffincss/example-tanstack --filter=@muffincss/docs^...",
     "release": "pnpm run build:packages && changeset publish"
   },
   "devDependencies": {

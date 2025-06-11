@@ -114,7 +114,6 @@ export default class Options {
   }
 
   async prepare() {
-    this.ensureDefaultDirStructure();
     await this.merge();
     this.options.debug =
       this.options.debug === true ||
