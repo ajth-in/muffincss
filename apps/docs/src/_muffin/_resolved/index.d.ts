@@ -1,14 +1,15 @@
 
 declare const obj: Record<
+      "header" | 
+      "logo" | 
+      "nav" | 
+      "nav-link" | 
+      "toggle" | 
+      "toggle--icon-light" | 
       "hero-title" | 
       "hero" | 
       "hero-content" | 
       "hero-actions" | 
-      "features-container" | 
-      "feature-card" | 
-      "feature-icon" | 
-      "feature-title" | 
-      "feature-description" | 
       "hero-brand" | 
       "hero-subtitle" | 
       "button" | 
@@ -20,12 +21,11 @@ declare const obj: Record<
       "react-aria-Tab" | 
       "react-aria-Tab-selected" | 
       "react-aria-TabPanel" | 
-      "header" | 
-      "logo" | 
-      "nav" | 
-      "nav-link" | 
-      "toggle" | 
-      "toggle--icon-light"
+      "features-container" | 
+      "feature-card" | 
+      "feature-icon" | 
+      "feature-title" | 
+      "feature-description"
 ,
   string[]
 >;

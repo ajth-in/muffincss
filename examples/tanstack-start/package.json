@@ -1,5 +1,5 @@
 {
-  "name": "muffincss-tanstack-start-example",
+  "name": "@muffincss/example-tanstack",
   "private": true,
   "sideEffects": false,
   "type": "module",
