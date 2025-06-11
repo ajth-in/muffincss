@@ -18,12 +18,12 @@ const instrumentation = new Instrumentation();
 
 const postcssAtomizer = (): Plugin => {
   const resultCollector = new ResolvedClassListCollector();
-  const parsedAtRulesManager = new ParsedAtRulesCollector();
-  const parsedRulesManager = new ParsedRulesManager();
 
   return {
     postcssPlugin: "@muffincss/postcss",
     async Once(root: Root, { result }) {
+      const parsedAtRulesManager = new ParsedAtRulesCollector();
+      const parsedRulesManager = new ParsedRulesManager();
       const errorHandler = new PostCSSErrorCollector(result);
       const { options } = await new Options(errorHandler).prepare();
 
@@ -31,15 +31,14 @@ const postcssAtomizer = (): Plugin => {
       const processorContext = [resultCollector, options] as const;
       new AtRuleProcessor(...processorContext).walk(root, parsedAtRulesManager);
       new RulesProcessor(...processorContext).walk(root, parsedRulesManager);
-      root.walkAtRules("muffincss", (node) => {
-        const resetLayer = createResetLayer(options.reset);
-        const utilitiesLayer = createUtilititylayer(
-          parsedRulesManager,
-          parsedAtRulesManager,
-        );
-        node.replaceWith(resetLayer, utilitiesLayer);
-        node.remove();
-      });
+
+      const resetLayer = createResetLayer(options.reset);
+      const utilitiesLayer = createUtilititylayer(
+        parsedRulesManager,
+        parsedAtRulesManager,
+      );
+      root.prepend(resetLayer, utilitiesLayer);
+
       new CssModuleGenerator(options).generate();
       new GenerateResolvedClassListModule(resultCollector, options).generate();
 
