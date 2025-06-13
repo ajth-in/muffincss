@@ -1,4 +1,4 @@
-import { type AtRule, type Declaration, type Root } from "postcss";
+import { type AtRule, type Declaration } from "postcss";
 import BaseProcessor from "./base";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
@@ -12,7 +12,7 @@ export default class RulesProcessor extends BaseProcessor {
     super(resultCollector, options);
   }
 
-  walk(root: Root, parsedRulesManager: ParsedRulesManager) {
+  walk(root: AtRule, parsedRulesManager: ParsedRulesManager) {
     root.walkRules((rule) => {
       const atomicClassList: string[] = [];
       let isRuleRemovable = true;

@@ -3,7 +3,6 @@
 @import url("../styles/main.css");
 @import url("../styles/hero.css");
 
-@muffincss;
 
 :root {
   --font-family-sans: "Ubuntu", sans-serif;

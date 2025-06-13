@@ -1,4 +1,4 @@
-import type { Root } from "postcss";
+import type { AtRule } from "postcss";
 import BaseProcessor from "./base";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
@@ -12,7 +12,7 @@ export default class AtRuleProcessor extends BaseProcessor {
     super(resultCollector, options);
   }
 
-  walk(root: Root, parsedAtRulesManager: ParsedAtRulesManager) {
+  walk(root: AtRule, parsedAtRulesManager: ParsedAtRulesManager) {
     root.walkAtRules((atRule) => {
       let isAtRuleRemovable = true;
       if (!this.isAtRuleHandled(atRule)) {
