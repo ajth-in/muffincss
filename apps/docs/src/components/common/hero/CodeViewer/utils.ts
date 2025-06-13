@@ -1,13 +1,14 @@
 export const input = {
   css: `
-@muffincss;
-.box {
-  width: 150px;
-}
-
-@media (max-width: 600px) {
+@muffincss {
   .box {
-    background: lightcoral;
+    width: 150px;
+  }
+
+  @media (max-width: 600px) {
+    .box {
+      background: lightcoral;
+    }
   }
 }
 `,

@@ -1,4 +1,4 @@
-import { Declaration, Rule, type AtRule, type Root } from "postcss";
+import { Declaration, Rule, type AtRule } from "postcss";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
 import { x86 } from "murmurhash3js";
@@ -55,7 +55,7 @@ export default abstract class BaseProcessor {
   }
 
   abstract walk(
-    root: Root,
+    root: AtRule,
     parsedAtRulesManager?: ParsedAtRulesManager | ParsedRulesManager,
   ): void;
 }

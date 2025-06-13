@@ -1,7 +1,6 @@
 import { Instrumentation } from "@muffincss/core/core/instrumentation";
 
 import { Root, type Plugin } from "postcss";
-import { PostCSSErrorCollector } from "@muffincss/core/core/error-handler";
 import Options from "@muffincss/core/core/options-manager";
 import ResolvedClassListCollector from "@muffincss/core/core/resolved-classlist-collector";
 import AtRuleProcessor from "@muffincss/core/processors/at-rules";
@@ -15,23 +14,30 @@ import CssModuleGenerator from "@muffincss/core/codegen/css/generator";
 import ParsedRulesManager from "@muffincss/core/core/parsed-rules-manager";
 
 const instrumentation = new Instrumentation();
-
 const postcssAtomizer = (): Plugin => {
   const resultCollector = new ResolvedClassListCollector();
+  const optionsManager = new Options();
 
   return {
     postcssPlugin: "@muffincss/postcss",
     async Once(root: Root, { result }) {
       const parsedAtRulesManager = new ParsedAtRulesCollector();
       const parsedRulesManager = new ParsedRulesManager();
-      const errorHandler = new PostCSSErrorCollector(result);
-      const { options } = await new Options(errorHandler).prepare();
-
-      instrumentation.start(" Compiled all CSS files");
+      const { options } = await optionsManager.prepare();
       const processorContext = [resultCollector, options] as const;
-      new AtRuleProcessor(...processorContext).walk(root, parsedAtRulesManager);
-      new RulesProcessor(...processorContext).walk(root, parsedRulesManager);
+      options.debug && instrumentation.start("Processing source CSS");
 
+      root.walkAtRules("layer", (atRule) => {
+        if (atRule.params !== "muffin") return;
+        new AtRuleProcessor(...processorContext).walk(
+          atRule,
+          parsedAtRulesManager,
+        );
+        new RulesProcessor(...processorContext).walk(
+          atRule,
+          parsedRulesManager,
+        );
+      });
       const resetLayer = createResetLayer(options.reset);
       const utilitiesLayer = createUtilititylayer(
         parsedRulesManager,
@@ -39,10 +45,14 @@ const postcssAtomizer = (): Plugin => {
       );
       root.prepend(resetLayer, utilitiesLayer);
 
+      options.debug && instrumentation.end("Processing source CSS");
+    },
+    async OnceExit(root: Root, { result }) {
+      const { options } = await optionsManager.prepare();
+      options.debug && instrumentation.start("Generating type definitions");
       new CssModuleGenerator(options).generate();
       new GenerateResolvedClassListModule(resultCollector, options).generate();
-
-      options.debug && instrumentation.end(" Compiled all CSS files");
+      options.debug && instrumentation.end("Generating type definitions");
       options.debug && instrumentation.report();
     },
   };
