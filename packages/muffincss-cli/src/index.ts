@@ -27,7 +27,7 @@ const program = new Command();
 
 program
   .name("muffin")
-  .description("An example CLI built with Commander.js and TypeScript")
+  .description("MuffinCSS cli tool to generate styles")
   .version("0.0.0");
 
 program
