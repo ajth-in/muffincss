@@ -17,6 +17,7 @@ describe("MuffinCSS-PostCSS", () => {
   test("Should transform all media classNames to atomic styles, should not purge media at rules with unprocessed rules", async () => {
     const result = await postcssPipeline(
       `
+            @layer muffin{
         .header:hover {
           color: yellow;
         }
@@ -29,6 +30,7 @@ describe("MuffinCSS-PostCSS", () => {
             color: blue;
           }
         }
+    }
       `,
     );
 
@@ -47,11 +49,13 @@ describe("MuffinCSS-PostCSS", () => {
             color: #ff0
           }
         }
+          @layer muffin {
         @media (min-width: 768px) {
           button {
             color: blue
           }
         }
+    }
       `.replace(/\s+/g, ""),
     );
   });
@@ -59,8 +63,7 @@ describe("MuffinCSS-PostCSS", () => {
   test("Should compile all class selectors to atomic styles, and should not purge non class selector styles", async () => {
     const result = await postcssPipeline(
       `
-        @muffincss;
-
+      @layer muffin{
         .button {
           background-color: red;
           color: blue
@@ -68,6 +71,7 @@ describe("MuffinCSS-PostCSS", () => {
         button {
           color: red
         }
+    }
       `,
     );
 
@@ -82,10 +86,11 @@ describe("MuffinCSS-PostCSS", () => {
             color: blue
           }
         }
-
+        @layer muffin{
         button {
           color: red
         }
+    }
       `.replace(/\s+/g, ""),
     );
   });

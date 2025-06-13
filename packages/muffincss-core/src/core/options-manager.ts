@@ -96,8 +96,6 @@ export default class Options {
     }
   }
 
-
-
   async prepare() {
     await this.merge();
     this.options.debug =
