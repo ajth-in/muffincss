@@ -23,37 +23,39 @@ _Transform plain CSS into atomic, type-safe utilities — effortlessly._
 Install the PostCSS plugin and CLI using your preferred package manager:
 
 **pnpm**
----bash---
-pnpm add @muffincss/postcss @muffincss/cli -D
 
----
+```bash
+pnpm add @muffincss/postcss @muffincss/cli -D
+```
 
 **npm**
----bash---
-npm install @muffincss/postcss @muffincss/cli --save-dev
 
----
+```bash
+npm install @muffincss/postcss @muffincss/cli --save-dev
+```
 
 **yarn**
----bash---
-yarn add @muffincss/postcss @muffincss/cli --dev
 
----
+```bash
+yarn add @muffincss/postcss @muffincss/cli --dev
+```
 
 Next, create a configuration file at the root of your project. MuffinCSS supports `muffin.config.ts`, `muffin.config.js`, or `muffin.config.json`.
 
 **`muffin.config.ts`**
----ts---
+
+```ts
 import { type MuffinConfig } from "@muffincss/core/types";
 
 const config: MuffinConfig = {
-reset: "off",
-hash: false,
-debug: true,
-exclude: {
-selectors: ["btn"],
-},
+  reset: "off",
+  hash: false,
+  debug: true,
+  exclude: {
+    selectors: ["btn"],
+  },
 };
+```
 
 ## export default config;
 
