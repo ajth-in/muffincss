@@ -28,7 +28,7 @@ const program = new Command();
 program
   .name("muffin")
   .description("MuffinCSS cli tool to generate styles and typedefinitions")
-  .version("0.0.0");
+  .version("0.0.1");
 
 program
   .command("codegen")
