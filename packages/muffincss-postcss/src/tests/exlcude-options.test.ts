@@ -4,7 +4,6 @@ describe("Exclude options", () => {
   test("Should transform all media classNames to atomic styles, should not purge media at rules with unprocessed rules", async () => {
     const result = await postcssPipeline(
       `
-        @muffincss;
         .header:hover {
           color: yellow;
           background-color:red;

@@ -1,7 +1,7 @@
 
     export default {
-  ".button": [
-    "a-background-color-red",
-    "a-color-blue"
+  ".header": [
+    "a-color-yellow-hover",
+    "a-background-color-red-hover"
   ]
 };

@@ -1,6 +1,5 @@
 import path from "path";
 import type { MuffinConfig } from "../types";
-import fs from "fs";
 import type { PostCSSErrorCollector } from "./error-handler";
 import { lilconfig } from "lilconfig";
 import loaders from "./utils/options-loader";
@@ -97,21 +96,7 @@ export default class Options {
     }
   }
 
-  ensureDefaultDirStructure() {
-    try {
-      const absolutePath = this.getOutputPath();
-      fs.mkdirSync(absolutePath, { recursive: true });
-      [RESOLVED_CLASS_STORE_PATH, CSS_OUTPUT_PATH].forEach((dir) => {
-        fs.mkdirSync(path.join(absolutePath, dir), { recursive: true });
-      });
-    } catch (err) {
-      console.log("FILE", err);
 
-      this.errorCollector?.error(
-        "Failed to create the initial directory structure!",
-      );
-    }
-  }
 
   async prepare() {
     await this.merge();
