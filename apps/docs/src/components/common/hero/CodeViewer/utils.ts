@@ -1,6 +1,6 @@
 export const input = {
   css: `
-@muffincss {
+@layer muffin{
   .box {
     width: 150px;
   }
