@@ -11,6 +11,7 @@ declare const obj: Record<
       "nav-link" | 
       "toggle" | 
       "toggle--icon-light" | 
+      "toggle--icon-dark" | 
       "hero-title" | 
       "hero" | 
       "hero-content" | 

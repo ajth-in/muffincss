@@ -1,4 +1,4 @@
-import { Declaration, Rule, type AtRule } from "postcss";
+import { Declaration, type AtRule } from "postcss";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
 import { x86 } from "murmurhash3js";
@@ -15,11 +15,6 @@ export default abstract class BaseProcessor {
     return this.handledAtRules.includes(atRule.name);
   }
 
-  isExcludedSelector(rule: Rule) {
-    return this.options.exclude.selectors?.some((regex) =>
-      new RegExp(regex).test(rule.selector),
-    );
-  }
   static formatToId = (input: string) => input.replace(/[^a-zA-Z0-9]/g, "_");
 
   constructAtomicClassName(

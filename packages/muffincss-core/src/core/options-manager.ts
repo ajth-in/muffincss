@@ -24,12 +24,9 @@ export default class Options {
     return {
       outDir: "./muffincss",
       prefix: "a-",
-      optimize: true,
-      purge: true,
       reset: "default",
       hash: true,
       debug: false,
-      exclude: { selectors: [] },
     };
   }
 

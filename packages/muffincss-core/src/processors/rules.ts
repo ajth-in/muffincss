@@ -21,8 +21,8 @@ export default class RulesProcessor extends BaseProcessor {
       const isParentHandled =
         rule.parent?.type === "atrule" &&
         this.isAtRuleHandled(rule.parent as AtRule);
-      if (isParentHandled || !isClassSelector || this.isExcludedSelector(rule))
-        return;
+      if (isParentHandled || !isClassSelector) return;
+
       const pseudoClass = BaseProcessor.getPseudoClass(rule.selector);
 
       rule.walkDecls((declaration: Declaration) => {

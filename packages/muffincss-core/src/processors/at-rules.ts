@@ -26,7 +26,7 @@ export default class AtRuleProcessor extends BaseProcessor {
 
         const isClassSelector = rule.selector.startsWith(".");
 
-        if (this.isExcludedSelector(rule) || !isClassSelector) {
+        if (!isClassSelector) {
           isAtRuleRemovable = false;
           return;
         }
