@@ -28,22 +28,29 @@ const postcssAtomizer = (): Plugin => {
       options.debug && instrumentation.start("Processing source CSS");
 
       root.walkAtRules("layer", (atRule) => {
-        if (atRule.params !== "muffin") return;
-        new AtRuleProcessor(...processorContext).walk(
-          atRule,
-          parsedAtRulesManager,
-        );
-        new RulesProcessor(...processorContext).walk(
-          atRule,
-          parsedRulesManager,
-        );
+        switch (atRule.params.trim()) {
+          case "muffin":
+            new AtRuleProcessor(...processorContext).walk(
+              atRule,
+              parsedAtRulesManager,
+            );
+            new RulesProcessor(...processorContext).walk(
+              atRule,
+              parsedRulesManager,
+            );
+            break;
+          case "reset":
+            const resetLayer = createResetLayer(options.reset);
+            if (resetLayer.nodes?.length) {
+              atRule.replaceWith(resetLayer);
+            }
+        }
       });
-      const resetLayer = createResetLayer(options.reset);
       const utilitiesLayer = createUtilititylayer(
         parsedRulesManager,
         parsedAtRulesManager,
       );
-      root.prepend(resetLayer, utilitiesLayer);
+      if (utilitiesLayer.nodes?.length) root.prepend(utilitiesLayer);
 
       options.debug && instrumentation.end("Processing source CSS");
     },
