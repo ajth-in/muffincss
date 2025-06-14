@@ -59,12 +59,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
-**/muffin
-**/_muffin
-**/_muffincss
-
-apps/docs/src/_muffin/_resolved/index.cjs
-apps/docs/src/_muffin/_resolved/index.cjs
-apps/docs/src/_muffin/_resolved/index.d.ts
-apps/docs/src/_muffin/_resolved/index.mjs

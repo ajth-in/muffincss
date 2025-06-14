@@ -4,8 +4,6 @@
  */
 module.exports = {
   plugins: [
-
-    'autoprefixer',
     ['@muffincss/postcss', {}],
     /**
      * cssnano is used for CSS minification.
