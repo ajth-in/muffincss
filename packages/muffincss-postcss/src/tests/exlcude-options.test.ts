@@ -17,7 +17,7 @@ describe("Exclude options", () => {
     );
 
     expect(result).toBe(
-      `@layerreset;@layerutilities{.a-color-yellow-hover:hover{color:#ff0}.a-background-color-red-hover:hover{background-color:red}}
+      `@layerutilities{.a-color-yellow-hover:hover{color:#ff0}.a-background-color-red-hover:hover{background-color:red}}
       @layer muffin{ .btn{color:red} }`.replace(/\s+/g, ""),
     );
   });

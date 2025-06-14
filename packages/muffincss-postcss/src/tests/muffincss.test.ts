@@ -35,8 +35,8 @@ describe("MuffinCSS-PostCSS", () => {
     );
 
     expect(result).toBe(
-      ` @layer reset;
-        @layer utilities {
+      ` 
+      @layer utilities {
           @media (min-width: 768px) {
             .a-text-align-center-_min_width__768px_-hover:hover {
               text-align: center
@@ -77,7 +77,6 @@ describe("MuffinCSS-PostCSS", () => {
 
     expect(result).toBe(
       `
-       @layer reset;
         @layer utilities {
           .a-background-color-red {
             background-color: red
