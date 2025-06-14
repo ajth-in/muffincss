@@ -44,6 +44,7 @@ const postcssAtomizer = (): Plugin => {
             if (resetLayer.nodes?.length) {
               atRule.replaceWith(resetLayer);
             }
+            break;
         }
       });
       const utilitiesLayer = createUtilititylayer(
