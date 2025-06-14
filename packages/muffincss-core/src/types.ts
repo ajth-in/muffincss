@@ -8,18 +8,6 @@ export type MuffinConfig = {
    */
   outDir?: string;
   /**
-   * If true, compiles all CSS styles into atomic utility classes.
-   * @default true
-   */
-  optimize?: boolean;
-
-  /**
-   * If true, removes all unused CSS styles during the build process.
-   * @default true
-   */
-  purge?: boolean;
-
-  /**
    * Specifies the CSS reset strategy to apply.
    * - "minimal": Applies a minimal reset.
    * - "default": Applies the default reset.
@@ -34,12 +22,6 @@ export type MuffinConfig = {
    */
   prefix?: string;
 
-  /**
-   * List of CSS selectors and properties to exclude from processing.
-   */
-  exclude?: {
-    selectors?: string[];
-  };
   /**
    * Whether to hash all class names.
    * Defaults to true.

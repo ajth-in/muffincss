@@ -1,6 +1,6 @@
 
 declare const obj: Record<
-      "header"
+      "button"
 ,
   string[]
 >;

@@ -38,6 +38,7 @@ const postcssAtomizer = (): Plugin => {
               atRule,
               parsedRulesManager,
             );
+
             break;
           case "reset":
             const resetLayer = createResetLayer(options.reset);

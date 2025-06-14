@@ -4,9 +4,6 @@ const config: MuffinConfig = {
   hash: true,
   reset: "default",
   outDir: "src/_muffin",
-  exclude: {
-    selectors: ["dark"],
-  },
 };
 
 export default config;

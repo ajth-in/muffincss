@@ -72,6 +72,9 @@
   ".toggle--icon-light": [
     "a-5aa9d7bb"
   ],
+  ".toggle--icon-dark": [
+    "a-fae0290f"
+  ],
   ".hero-title": [
     "a-b063feea",
     "a-ae6e293d",
