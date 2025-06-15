@@ -1,6 +1,6 @@
 import { Instrumentation } from "@muffincss/core/core/instrumentation";
 
-import { Root, Rule, type Plugin } from "postcss";
+import { Root, type Plugin } from "postcss";
 import Options from "@muffincss/core/core/options-manager";
 import ResolvedClassListCollector from "@muffincss/core/core/resolved-classlist-collector";
 import RulesProcessor from "@muffincss/core/processors/rules";
@@ -11,6 +11,7 @@ import ParsedAtRulesCollector from "@muffincss/core/core/parsed-atrules-collecto
 import GenerateResolvedClassListModule from "@muffincss/core/codegen/_resolved/generator";
 import CssModuleGenerator from "@muffincss/core/codegen/css/generator";
 import ParsedRulesManager from "@muffincss/core/core/parsed-rules-manager";
+import cleanupRoot from "@muffincss/core/core/utils/cleanup-root";
 
 const instrumentation = new Instrumentation();
 const postcssAtomizer = (): Plugin => {
@@ -53,47 +54,11 @@ const postcssAtomizer = (): Plugin => {
     },
     async OnceExit(root: Root, { result }) {
       const { options } = await optionsManager.prepare();
-
-      const cleanup = (rule: Rule) => {
-        const nonClassSelector = rule.selectors.filter(
-          (selector) => !selector.startsWith("."),
-        );
-        if (!nonClassSelector.length) {
-          rule.remove();
-        } else
-          rule.replaceWith(
-            rule.clone({
-              selector: nonClassSelector.join(","),
-            }),
-          );
-        if (rule.selectors.every((selector) => selector.startsWith("."))) {
-          rule.remove();
-        }
-      };
-      // cleanUp: remove unprocessed once
-      root.walkAtRules("layer", (muffinAtRule) => {
-        if (muffinAtRule.params.trim() === "muffin") {
-          muffinAtRule.walk((rule) => {
-            switch (rule.type) {
-              case "atrule":
-                rule.walkAtRules((atRule) => {
-                  atRule.walkRules((rule) => {
-                    cleanup(rule);
-                  });
-                  if (!atRule.nodes?.length) atRule.remove();
-                });
-                break;
-
-              case "rule":
-                cleanup(rule);
-            }
-          });
-        }
-      });
       options.debug && instrumentation.start("Generating type definitions");
       new CssModuleGenerator(options).generate();
       new GenerateResolvedClassListModule(resultCollector, options).generate();
       options.debug && instrumentation.end("Generating type definitions");
+      cleanupRoot(root);
       options.debug && instrumentation.report();
     },
   };
