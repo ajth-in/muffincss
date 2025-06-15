@@ -198,7 +198,7 @@
     display: none !important;
   }
 }
-@layer reset {
+@layer reset-min {
   *,
   *::before,
   *::after {
@@ -251,7 +251,7 @@
     isolation: isolate;
   }
 }
-@layer reset {
+@layer reset-def {
   *,
   ::after,
   ::before,

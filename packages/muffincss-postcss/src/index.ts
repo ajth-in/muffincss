@@ -14,13 +14,13 @@ const instrumentation = new Instrumentation();
 
 const postcssAtomizer = (): Plugin => {
   const resultCollector = new ResolvedClassListCollector();
-  const optionsManager = new Options();
+  const optionsManager = new Options().prepare();
 
   return {
     postcssPlugin: '@muffincss/postcss',
 
     async Once(root: Root, { result }) {
-      const { options } = await optionsManager.prepare();
+      const { options } = await optionsManager;
       const context = [resultCollector, options] as const;
       const rulesProcessor = new RulesProcessor(...context);
 
@@ -61,7 +61,7 @@ const postcssAtomizer = (): Plugin => {
     },
 
     async OnceExit(root: Root, { result }) {
-      const { options } = await optionsManager.prepare();
+      const { options } = await optionsManager;
       if (options.debug) instrumentation.start('Generating type definitions');
       new CssModuleGenerator(options).generate();
       new GenerateResolvedClassListModule(resultCollector, options).generate();
