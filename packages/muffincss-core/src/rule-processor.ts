@@ -43,6 +43,7 @@ export default class RulesProcessor {
 
   private _processRule(rule: Rule, context: ProcessingContext): void {
     for (const selector of rule.selectors) {
+      // todo: Same operation is repeated for multiple selector
       if (!selector.startsWith(".")) {
         continue;
       }
