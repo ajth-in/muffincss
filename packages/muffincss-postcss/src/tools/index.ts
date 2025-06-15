@@ -14,5 +14,5 @@ export function mergeResolved(
     }
   }
 
-  return Array.from(resultSet).join(" ");
+  return Array.from(resultSet).join(' ');
 }

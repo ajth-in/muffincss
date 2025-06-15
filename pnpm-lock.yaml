@@ -260,6 +260,9 @@ importers:
       postcss-import:
         specifier: ^16.1.0
         version: 16.1.0(postcss@8.5.3)
+      postcss-prettify:
+        specifier: ^0.3.4
+        version: 0.3.4
       prettier-plugin-embed:
         specifier: ^0.5.0
         version: 0.5.0
@@ -2740,6 +2743,9 @@ packages:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==, tarball: https://registry.npmjs.org/define-properties/-/define-properties-1.2.1.tgz}
     engines: {node: '>= 0.4'}
 
+  defined@1.0.0:
+    resolution: {integrity: sha512-Y2caI5+ZwS5c3RiNDJ6u53VhQHv+hHKwhkI1iHvceKUHw9Df6EK2zRLfjejRgMuCuxK7PfSWIMwWecceVvThjQ==, tarball: https://registry.npmjs.org/defined/-/defined-1.0.0.tgz}
+
   detect-indent@6.1.0:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==, tarball: https://registry.npmjs.org/detect-indent/-/detect-indent-6.1.0.tgz}
     engines: {node: '>=8'}
@@ -3357,6 +3363,10 @@ packages:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==, tarball: https://registry.npmjs.org/has-bigints/-/has-bigints-1.1.0.tgz}
     engines: {node: '>= 0.4'}
 
+  has-flag@1.0.0:
+    resolution: {integrity: sha512-DyYHfIYwAJmjAjSSPKANxI8bFY9YtFrgkAfinBojQ8YJTOuOuav64tMUJv584SES4xl74PmuaevIyaLESHdTAA==, tarball: https://registry.npmjs.org/has-flag/-/has-flag-1.0.0.tgz}
+    engines: {node: '>=0.10.0'}
+
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==, tarball: https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz}
     engines: {node: '>=8'}
@@ -3794,6 +3804,9 @@ packages:
   joycon@3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==, tarball: https://registry.npmjs.org/joycon/-/joycon-3.1.1.tgz}
     engines: {node: '>=10'}
+
+  js-base64@2.6.4:
+    resolution: {integrity: sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ==, tarball: https://registry.npmjs.org/js-base64/-/js-base64-2.6.4.tgz}
 
   js-cookie@3.0.5:
     resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==, tarball: https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.5.tgz}
@@ -4488,6 +4501,9 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
+  postcss-prettify@0.3.4:
+    resolution: {integrity: sha512-m2EKtpNyKBL7VNLrSzlDptHInaWe+BNHkYob/6yT0giTpQt3uw7GKvVSIE4S2S1a2UgnP8IMGU/C1cS37auqfQ==, tarball: https://registry.npmjs.org/postcss-prettify/-/postcss-prettify-0.3.4.tgz}
+
   postcss-reduce-initial@7.0.3:
     resolution: {integrity: sha512-RFvkZaqiWtGMlVjlUHpaxGqEL27lgt+Q2Ixjf83CRAzqdo+TsDyGPtJUbPx2MuYIJ+sCQc2TrOvRnhcXQfgIVA==, tarball: https://registry.npmjs.org/postcss-reduce-initial/-/postcss-reduce-initial-7.0.3.tgz}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
@@ -4518,6 +4534,10 @@ packages:
 
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==, tarball: https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz}
+
+  postcss@5.0.19:
+    resolution: {integrity: sha512-O5mZHjclPKM1qwIQEBXxVF1iqKB+8JE7Z7YWj0MJoOXfQ3EdIzHf8zEVuocvRXCsh8zX77sQPVcFSpj6Zs1zKg==, tarball: https://registry.npmjs.org/postcss/-/postcss-5.0.19.tgz}
+    engines: {node: '>=0.12'}
 
   postcss@8.4.31:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==, tarball: https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz}
@@ -4825,6 +4845,10 @@ packages:
   source-map-support@0.5.13:
     resolution: {integrity: sha512-SHSKFHadjVA5oR4PPqhtAVdcBWwRYVd6g6cAXnIbRiIwc2EhPrTuKUBdSLvlEKyIP3GCf89fltvcZiP9MMFA1w==, tarball: https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.13.tgz}
 
+  source-map@0.5.7:
+    resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==, tarball: https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz}
+    engines: {node: '>=0.10.0'}
+
   source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==, tarball: https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz}
     engines: {node: '>=0.10.0'}
@@ -4955,6 +4979,10 @@ packages:
     resolution: {integrity: sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==, tarball: https://registry.npmjs.org/sucrase/-/sucrase-3.35.0.tgz}
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
+
+  supports-color@3.2.3:
+    resolution: {integrity: sha512-Jds2VIYDrlp5ui7t8abHN2bjAu4LV/q4N2KivFPpGH0lrka0BMq/33AmECUXlKPcHigkNaqfXRENFju+rlcy+A==, tarball: https://registry.npmjs.org/supports-color/-/supports-color-3.2.3.tgz}
+    engines: {node: '>=0.8.0'}
 
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==, tarball: https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz}
@@ -8628,6 +8656,8 @@ snapshots:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
 
+  defined@1.0.0: {}
+
   detect-indent@6.1.0: {}
 
   detect-indent@7.0.1: {}
@@ -8899,7 +8929,7 @@ snapshots:
       tinyglobby: 0.2.13
       unrs-resolver: 1.7.2
     optionalDependencies:
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.27.0(jiti@2.4.2))
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.27.0(jiti@2.4.2))
     transitivePeerDependencies:
       - supports-color
 
@@ -9506,6 +9536,8 @@ snapshots:
       uglify-js: 3.19.3
 
   has-bigints@1.1.0: {}
+
+  has-flag@1.0.0: {}
 
   has-flag@4.0.0: {}
 
@@ -10227,6 +10259,8 @@ snapshots:
 
   joycon@3.1.1: {}
 
+  js-base64@2.6.4: {}
+
   js-cookie@3.0.5: {}
 
   js-tokens@4.0.0: {}
@@ -10830,6 +10864,11 @@ snapshots:
       postcss: 8.5.3
       postcss-value-parser: 4.2.0
 
+  postcss-prettify@0.3.4:
+    dependencies:
+      defined: 1.0.0
+      postcss: 5.0.19
+
   postcss-reduce-initial@7.0.3(postcss@8.5.3):
     dependencies:
       browserslist: 4.24.5
@@ -10858,6 +10897,12 @@ snapshots:
       postcss-selector-parser: 7.1.0
 
   postcss-value-parser@4.2.0: {}
+
+  postcss@5.0.19:
+    dependencies:
+      js-base64: 2.6.4
+      source-map: 0.5.7
+      supports-color: 3.2.3
 
   postcss@8.4.31:
     dependencies:
@@ -11334,6 +11379,8 @@ snapshots:
       buffer-from: 1.1.2
       source-map: 0.6.1
 
+  source-map@0.5.7: {}
+
   source-map@0.6.1: {}
 
   source-map@0.8.0-beta.0:
@@ -11480,6 +11527,10 @@ snapshots:
       mz: 2.7.0
       pirates: 4.0.7
       ts-interface-checker: 0.1.13
+
+  supports-color@3.2.3:
+    dependencies:
+      has-flag: 1.0.0
 
   supports-color@7.2.0:
     dependencies:
