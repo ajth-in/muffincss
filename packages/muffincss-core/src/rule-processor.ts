@@ -42,12 +42,11 @@ export default class RulesProcessor {
   }
 
   private _processRule(rule: Rule, context: ProcessingContext): void {
-    const atomicClassList: string[] = [];
-
     for (const selector of rule.selectors) {
       if (!selector.startsWith(".")) {
         continue;
       }
+      const atomicClassList: string[] = [];
 
       const selectorComponents = parseSelector(selector);
       if (selectorComponents.combinator) {
