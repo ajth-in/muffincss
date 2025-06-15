@@ -27,5 +27,6 @@ export default function cleanupRoot(root: Root) {
         if (!node.nodes?.length) node.remove();
       }
     });
+    if (!layerAtRule.nodes?.length) layerAtRule.remove();
   });
 }
