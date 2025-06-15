@@ -1,0 +1,15 @@
+@layer muffin {
+  .header:hover,
+  button {
+    color: yellow;
+  }
+  @media (min-width: 768px) {
+    .header:hover {
+      text-align: center;
+      color: blue;
+    }
+    button {
+      color: blue;
+    }
+  }
+}

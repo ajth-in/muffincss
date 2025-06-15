@@ -2,10 +2,10 @@
     "use strict";
     module.exports = {
   ".header:hover": [
+    "a-text_aligncenter_hovermedia_min_width__768px_",
+    "a-colorblue_hovermedia_min_width__768px_",
     "a-coloryellow_hover",
-    "a-background_colorred_hover"
-  ],
-  ".btn": [
-    "a-colorred"
+    "a-text_aligncenter_hover",
+    "a-colorblue_hover"
   ]
 };
