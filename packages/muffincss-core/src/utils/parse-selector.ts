@@ -2,7 +2,10 @@ export interface SelectorComponents {
   base: string;
   pseudoClasses: string | null;
   pseudoElement: string | null;
-  combinator: { type: " " | ">" | "+" | "~"; selector: string } | null;
+  combinator: {
+    type: " " | ">" | "+" | "~";
+    selector: SelectorComponents;
+  } | null;
 }
 
 export const parseSelector = (selector: string): SelectorComponents => {
@@ -16,7 +19,7 @@ export const parseSelector = (selector: string): SelectorComponents => {
       ...parseSelector(leftSelector),
       combinator: {
         type: combinator,
-        selector: rightSelector,
+        selector: parseSelector(rightSelector),
       },
     };
   }
