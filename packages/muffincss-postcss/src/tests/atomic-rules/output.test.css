@@ -1,0 +1,29 @@
+@layer utilities {
+  @media (min-width: 768px) {
+    .m-minwidth768px_ta_c-hvr:hover {
+      text-align: center;
+    }
+    .m-minwidth768px_txc_blue-hvr:hover {
+      color: blue;
+    }
+  }
+  .txc_yellow-hvr:hover {
+    color: yellow;
+  }
+  .ta_c-hvr:hover {
+    text-align: center;
+  }
+  .txc_blue-hvr:hover {
+    color: blue;
+  }
+}
+@layer muffin {
+  button {
+    color: yellow;
+  }
+  @media (min-width: 768px) {
+    button {
+      color: blue;
+    }
+  }
+}

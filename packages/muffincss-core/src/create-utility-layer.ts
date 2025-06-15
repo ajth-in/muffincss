@@ -1,8 +1,8 @@
 import { atRule } from "postcss";
 import { AtRule, Declaration, Rule } from "postcss";
-import type { AtomicRule } from "../types";
-import type ParsedAtRulesManager from "./parsed-atrules-collector";
-import type ParsedRulesManager from "./parsed-rules-manager";
+import type { AtomicRule } from "./types";
+import type ParsedAtRulesManager from "./state/parsed-atrules-manager";
+import type ParsedRulesManager from "./state/parsed-rules-manager";
 
 export const generateMediaRules = (
   rules: Map<string, AtomicRule>,

@@ -1,12 +1,9 @@
-import { type MuffinConfig } from "@muffincss/core/types";
+import { type MuffinConfig } from '@muffincss/core/types';
 
 const config: MuffinConfig = {
-  reset: "off",
+  reset: 'default',
   hash: false,
   debug: false,
-  exclude: {
-    selectors: ["btn"],
-  },
 };
 
 export default config;

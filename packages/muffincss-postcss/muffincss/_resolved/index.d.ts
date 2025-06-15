@@ -1,7 +1,7 @@
 
 declare const obj: Record<
-      "button"
-,
+    string
+  ,
   string[]
 >;
 export default obj;

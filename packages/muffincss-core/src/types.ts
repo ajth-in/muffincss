@@ -17,10 +17,10 @@ export type MuffinConfig = {
   reset?: "minimal" | "default" | "off";
 
   /**
-   * Prefix to apply to all generated utility class names.
-   * @default "a-"
+   * Prefix to apply hashed atomic classNames, to avoid classNames starting with number.
+   * @default "mf"
    */
-  prefix?: string;
+  hashPrefix?: string;
 
   /**
    * Whether to hash all class names.
@@ -52,3 +52,30 @@ export type ClassNameKey = `.${string & {}}`;
 export type FileType = "cjs" | "esm" | "dts";
 
 export type FileGenType = { content: string; type: FileType };
+
+export type ResetDeclarations = {
+  [property: string]: string | number;
+};
+
+export type ResetRule = {
+  selector: string;
+  declarations: ResetDeclarations;
+};
+
+export type ResetAtRule = {
+  atRule: {
+    name: string;
+    params: string;
+    rules: ResetStyleItem[];
+  };
+};
+
+export type ResetStyleItem = ResetRule | ResetAtRule;
+
+/**
+ *
+ * - `"reset"`: Uses the reset level defined in the root config file .
+ * - `"reset-def"`: Forces the use of the **default** CSS reset, regardless of the root config.
+ * - `"reset-min"`: Forces the use of the **minimal** CSS reset, regardless of the root config.
+ */
+export type ResetLayer = "reset" | "reset-def" | "reset-min";

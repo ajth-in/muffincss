@@ -11,7 +11,7 @@ export default class ParsedAtRulesManager {
   }
 
   add(atRuleParams: string, className: string, declaration: Declaration) {
-    this.rulesMap.get(atRuleParams)!.set(className, declaration);
+    this.rulesMap.get(atRuleParams)!.set(className, declaration.clone());
   }
 
   getAll() {

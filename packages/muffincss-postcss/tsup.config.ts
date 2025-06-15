@@ -1,21 +1,21 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup';
 
 const sharedOptions = {
   minify: true,
   cjsInterop: true,
   dts: true,
 };
-const sharedEntries = ["src/tools/index.ts", "src/types.ts"];
+const sharedEntries = ['src/tools/index.ts', 'src/types.ts'];
 
 export default defineConfig([
   {
     ...sharedOptions,
-    format: ["esm"],
-    entry: ["src/index.ts", ...sharedEntries],
+    format: ['esm'],
+    entry: ['src/index.ts', ...sharedEntries],
   },
   {
     ...sharedOptions,
-    format: ["cjs"],
-    entry: ["src/index.cts", ...sharedEntries],
+    format: ['cjs'],
+    entry: ['src/index.cts', ...sharedEntries],
   },
 ]);

@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import Handlebars from "handlebars";
 import { templates } from "./templates";
-import type ResolvedClassListCollector from "../../core/resolved-classlist-collector";
-import type Options from "../../core/options-manager";
-import { RESOLVED_CLASS_STORE_PATH } from "../../core/options-manager";
+import type ResolvedClassListCollector from "../../state/resolved-classlist-collector";
+import type Options from "../../options-manager";
+import { RESOLVED_CLASS_STORE_PATH } from "../../options-manager";
 import BaseGenerator from "../base";
 import type { FileType } from "../../types";
 

@@ -1,176 +1,190 @@
 
     "use strict";
     module.exports = {
-  ".features-container": [
-    "a-2c72f058",
-    "a-32512556",
-    "a-2d08e1d6"
-  ],
-  ".feature-card": [
-    "a-594d4ca6",
-    "a-ac388d90",
-    "a-b5ee5f0c",
-    "a-ee1fbb9",
-    "a-8a776222",
-    "a-bfbc73c4",
-    "a-c2146154-hover"
-  ],
-  ".feature-icon": [
-    "a-c4026054",
-    "a-32cffe62",
-    "a-c3fec144",
-    "a-5e725668",
-    "a-82fc59f3",
-    "a-800df6e1",
-    "a-df5ab72",
-    "a-92eb224b",
-    "a-d3d8d47e"
-  ],
-  ".feature-title": [
-    "a-cb793a5",
-    "a-55517d2e",
-    "a-58addc7e"
-  ],
-  ".feature-description": [
-    "a-7a687507",
-    "a-95408a2e"
-  ],
-  ".header": [
-    "a-800df6e1",
-    "a-5fc67936",
-    "a-df5ab72",
-    "a-11f0b9b5"
-  ],
-  ".logo": [
-    "a-c1ed81cf",
-    "a-6116e129",
-    "a-138eaf32",
-    "a-fedb7846-_after",
-    "a-ee1fbb9-_after",
-    "a-cc3a7151-_after",
-    "a-be79dc1d-_after",
-    "a-1c6733e-_after",
-    "a-13c44541-_after",
-    "a-e736fce9-_after",
-    "a-489a92ef-_after",
-    "a-38949453-_after",
-    "a-1e5a0967-_after"
-  ],
-  ".nav": [
-    "a-800df6e1",
-    "a-a817d570",
-    "a-df5ab72"
-  ],
-  ".nav-link": [
-    "a-639db4d2",
-    "a-a1c710f7",
-    "a-d2aac2d2-hover"
-  ],
-  ".toggle": [
-    "a-7da32e8e",
-    "a-305d5b34"
-  ],
-  ".toggle--icon-light": [
-    "a-5aa9d7bb"
-  ],
-  ".toggle--icon-dark": [
-    "a-fae0290f"
-  ],
   ".hero-title": [
-    "a-b063feea",
-    "a-ae6e293d",
-    "a-8c4605fe",
-    "a-eb1fe29",
-    "a-e9fc180b",
-    "a-8f3819a9",
-    "a-d9749583",
-    "a-1b01e995"
+    "mfba9718b7",
+    "mfee3c3e58",
+    "mfa0a43b94",
+    "mf7a0f0011",
+    "mf7bf0374e",
+    "mf5a2ad7d3",
+    "mf6ebb3ae7"
   ],
   ".hero": [
-    "a-b3f1b5ad",
-    "a-4235df7c",
-    "a-800df6e1",
-    "a-df5ab72",
-    "a-5fc67936",
-    "a-be03de1a",
-    "a-4bdd1761",
-    "a-77cde121"
+    "mf8ac6db2a",
+    "mfdcf104d8",
+    "mf5aca63a",
+    "mfa5d78265",
+    "mfa6519be4",
+    "mf39119545",
+    "mfaf8cacdf",
+    "mf34032a42",
+    "mf885ff92c",
+    "mf69af9749",
+    "mf30d0edc4"
   ],
   ".hero-content": [
-    "a-cfbf6315",
-    "a-2beda3bf"
+    "mfe78794fa",
+    "mf2a095a84",
+    "mfc7bc356b"
   ],
   ".hero-actions": [
-    "a-d38e0838",
-    "a-800df6e1",
-    "a-c15e4636",
-    "a-d9a83c6e"
+    "mff46b9d04",
+    "mf2c4e68fe",
+    "mf5aca63a",
+    "mf64886f1c",
+    "mf6d5a2b95"
   ],
   ".hero-brand": [
-    "a-ebbf2e94",
-    "a-bcf0ae1d",
-    "a-138eaf32"
+    "mf33127027",
+    "mf74e9d9b8",
+    "mf9c951b64"
   ],
   ".hero-subtitle": [
-    "a-2d8aa488",
-    "a-47978dbe",
-    "a-4c7a86ff"
+    "mfa0a43b94",
+    "mfb4331f52",
+    "mf7b358c32"
   ],
   ".button": [
-    "a-75c0066d",
-    "a-73e405c6",
-    "a-ed89e907",
-    "a-6aa18f2a",
-    "a-639db4d2",
-    "a-3ed8c4e4",
-    "a-edf2e4bd"
+    "mf84c55cbf",
+    "mfccbd25b2",
+    "mfe3c0e4b9",
+    "mf719f4c9d",
+    "mf127e6e6e",
+    "mfda68b328",
+    "mfda0d34bc"
   ],
   ".button--primary": [
-    "a-e76ff149",
-    "a-3a3d40f7",
-    "a-2a058869-hover"
+    "mfca36b4d9",
+    "mf11824374"
+  ],
+  ".button--primary:hover": [
+    "mf9077aab5"
   ],
   ".button--secondary": [
-    "a-f31635f9",
-    "a-98e50379",
-    "a-50468742-hover"
+    "mfe9a253c",
+    "mf3c46ee41"
+  ],
+  ".button--secondary:hover": [
+    "mf4a3c916c"
   ],
   ".hero-codeblock": [
-    "a-f4c3b8ca",
-    "a-a16c5ea4"
+    "mff972ad63",
+    "mfbf2a992f"
   ],
   ".react-aria-Tabs": [
-    "a-800df6e1",
-    "a-53be3f04",
-    "a-ee1fbb9",
-    "a-8b0817e7"
+    "mf5aca63a",
+    "mf69af9749",
+    "mf44bc4656",
+    "mf96328d45"
   ],
   ".react-aria-TabList": [
-    "a-800df6e1",
-    "a-f5cda331"
+    "mf5aca63a",
+    "mfab721e22"
   ],
   ".react-aria-Tab": [
-    "a-2872c72a",
-    "a-65d73a94",
-    "a-36873d2b",
-    "a-138eaf32",
-    "a-ae9ef368",
-    "a-74612d17",
-    "a-665dbde9",
-    "a-3f70d719",
-    "a-39089978",
-    "a-305d5b34"
+    "mfcdf286d7",
+    "mfc3a391ae",
+    "mfc2c18090",
+    "mf9c951b64",
+    "mfd287e8a8",
+    "mffb1cbeab",
+    "mfd796727e",
+    "mfdd09b166",
+    "mf838b7052",
+    "mfe4a77ff1"
   ],
   ".react-aria-Tab-selected": [
-    "a-bc9d1e66",
-    "a-ebbf2e94"
+    "mf191ac493",
+    "mf33127027"
   ],
   ".react-aria-TabPanel": [
-    "a-1880ac41",
-    "a-2872c72a",
-    "a-13c44541",
-    "a-36873d2b",
-    "a-387c2204",
-    "a-39089978"
+    "mfac8b4fc2",
+    "mfcdf286d7",
+    "mfb605b219",
+    "mfc2c18090",
+    "mf9f94ce5b",
+    "mf838b7052"
+  ],
+  ".header": [
+    "mf5aca63a",
+    "mfa6519be4",
+    "mfa5d78265",
+    "mf847a60cf"
+  ],
+  ".logo": [
+    "mf547db468",
+    "mf5162174f",
+    "mf9c951b64"
+  ],
+  ".logo::after": [
+    "mfbc53f79b",
+    "mf4e0f56a3",
+    "mf401b3218",
+    "mf16b585c8",
+    "mfb4cd05fc",
+    "mf288f8b5b",
+    "mf9478b055",
+    "mf1898fb1b",
+    "mf858f7a14",
+    "mf4da9b5e6"
+  ],
+  ".nav": [
+    "mf5aca63a",
+    "mf8b353d5",
+    "mfa5d78265"
+  ],
+  ".nav-link": [
+    "mf127e6e6e",
+    "mfff066d89"
+  ],
+  ".nav-link:hover": [
+    "mf787a3169"
+  ],
+  ".toggle": [
+    "mf946fd623",
+    "mfe4a77ff1"
+  ],
+  ".toggle--icon-light": [
+    "mf45eb6fbc"
+  ],
+  ".toggle--icon-dark": [
+    "mfe169cda8"
+  ],
+  ".features-container": [
+    "mf9fd01530",
+    "mf6fbf52be",
+    "mf8068b116"
+  ],
+  ".feature-card": [
+    "mf80bebf78",
+    "mfe8196598",
+    "mf7da8f969",
+    "mf44bc4656",
+    "mf5282b934",
+    "mf797a5755"
+  ],
+  ".feature-card:hover": [
+    "mf6f97c994"
+  ],
+  ".feature-icon": [
+    "mf70b597f8",
+    "mf8c71d354",
+    "mf2f72e424",
+    "mfb427457b",
+    "mf20e3bc2f",
+    "mf5aca63a",
+    "mfa5d78265",
+    "mf2c4e68fe",
+    "mf640211ec"
+  ],
+  ".feature-title": [
+    "mfccdb0a9",
+    "mf3b74dd18",
+    "mfc6367020"
+  ],
+  ".feature-description": [
+    "mfb8ba1a4a",
+    "mf97130fa8"
   ]
 };

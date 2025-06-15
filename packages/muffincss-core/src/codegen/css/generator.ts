@@ -5,8 +5,8 @@ import Handlebars from "handlebars";
 import { templates } from "./templates";
 import BaseGenerator from "../base";
 import type { FileType } from "../../types";
-import type Options from "../../core/options-manager";
-import { CSS_OUTPUT_PATH } from "../../core/options-manager";
+import type Options from "../../options-manager";
+import { CSS_OUTPUT_PATH } from "../../options-manager";
 
 export default class CssModuleGenerator extends BaseGenerator {
   constructor(options: Options["options"]) {

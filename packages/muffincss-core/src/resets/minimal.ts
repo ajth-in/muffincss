@@ -1,6 +1,6 @@
-import type { StyleRule } from ".";
+import type { ResetStyleItem } from "../types";
 
-const minimalReset: StyleRule[] = [
+const minimalReset: ResetStyleItem[] = [
   {
     selector: "*, *::before, *::after",
     declarations: { "box-sizing": "border-box" },
