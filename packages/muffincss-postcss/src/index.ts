@@ -36,8 +36,12 @@ const postcssAtomizer = (): Plugin => {
           return;
         }
 
-        if (layer === 'reset') {
-          const resetLayer = createResetLayer(options.reset);
+        if (
+          layer === 'reset' ||
+          layer === 'reset-min' ||
+          layer === 'reset-def'
+        ) {
+          const resetLayer = createResetLayer(options.reset, layer);
           if (resetLayer.nodes?.length) {
             layerAtRule.replaceWith(resetLayer);
           }

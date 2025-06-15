@@ -71,3 +71,11 @@ export type ResetAtRule = {
 };
 
 export type ResetStyleItem = ResetRule | ResetAtRule;
+
+/**
+ *
+ * - `"reset"`: Uses the reset level defined in the root config file .
+ * - `"reset-def"`: Forces the use of the **default** CSS reset, regardless of the root config.
+ * - `"reset-min"`: Forces the use of the **minimal** CSS reset, regardless of the root config.
+ */
+export type ResetLayer = "reset" | "reset-def" | "reset-min";

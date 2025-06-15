@@ -1,5 +1,10 @@
 import postcss, { atRule } from "postcss/lib/postcss";
-import type { MuffinConfig, ResetRule, ResetStyleItem } from "./types";
+import type {
+  MuffinConfig,
+  ResetLayer,
+  ResetRule,
+  ResetStyleItem,
+} from "./types";
 import defaultReset from "./resets/default";
 import minimalReset from "./resets/minimal";
 
@@ -14,15 +19,21 @@ const createRuleNode = (
   return ruleNode;
 };
 
-export const createResetLayer = (level: MuffinConfig["reset"]) => {
+export const createResetLayer = (
+  level: MuffinConfig["reset"],
+  layer: ResetLayer,
+) => {
   const resetLayer = atRule({ name: "layer", params: "reset" });
 
-  const styleRules: ResetStyleItem[] =
-    level === "default"
+  const styleRules: ResetStyleItem[] = (() => {
+    if (layer === "reset-min") return minimalReset;
+    if (layer === "reset-def") return defaultReset;
+    return level === "default"
       ? defaultReset
       : level === "minimal"
         ? minimalReset
         : [];
+  })();
 
   styleRules.forEach((entry) => {
     if ("atRule" in entry) {
