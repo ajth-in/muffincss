@@ -1,19 +1,19 @@
 @layer utilities {
   @media (min-width: 768px) {
-    .text_aligncenter_hovermedia_min_width__768px_:hover {
+    .m-minwidth768px_ta_c-hvr:hover {
       text-align: center;
     }
-    .colorblue_hovermedia_min_width__768px_:hover {
+    .m-minwidth768px_txc_blue-hvr:hover {
       color: blue;
     }
   }
-  .coloryellow_hover:hover {
+  .txc_yellow-hvr:hover {
     color: yellow;
   }
-  .text_aligncenter_hover:hover {
+  .ta_c-hvr:hover {
     text-align: center;
   }
-  .colorblue_hover:hover {
+  .txc_blue-hvr:hover {
     color: blue;
   }
 }
