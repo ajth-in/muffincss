@@ -201,6 +201,10 @@ export const abbreviations: Record<string, string> = {
   stretch: "str",
 };
 
+export const atRuleAbbreviations: Record<string, string> = {
+  media: "m",
+  container: "c",
+};
 export const pseudoAbbreviations: Record<string, string> = {
   // Common User Action States
   ":hover": "hvr",
