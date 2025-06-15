@@ -3,7 +3,7 @@ import type { SelectorComponents } from "./parse-selector";
 import type { MuffinConfig } from "../../types";
 import { x86 } from "murmurhash3js";
 
-const formatToId = (input: string) => input.replace(/[^a-zA-Z0-9]/g, "-");
+const formatToId = (input: string) => input.replace(/[^a-zA-Z0-9]/g, "_");
 
 const constructUtilityClassName = (
   declaration: Declaration,
@@ -15,13 +15,13 @@ const constructUtilityClassName = (
   const utilityClassName = [
     declaration.prop,
     declaration.value,
-    selector.pseudoClasses?.replace(":", ""),
+    selector.pseudoClasses,
     parentAtRule?.name,
     parentAtRule?.params,
   ]
     .filter((item): item is string => !!item?.length)
     .map((item) => formatToId(item))
-    .join("-");
+    .join("");
 
   const withPrefix = (value: string) => `${options.prefix}${value}`;
   return options?.hash

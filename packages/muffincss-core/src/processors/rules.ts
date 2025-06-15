@@ -1,75 +1,102 @@
-import { type AtRule } from "postcss";
-import BaseProcessor from "./base";
+import { type AtRule, type Rule } from "postcss";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
-import type ParsedRulesManager from "../core/parsed-rules-manager";
-import { addPsedo, parseSelector } from "../core/utils/parse-selector";
+import ParsedRulesManager from "../core/parsed-rules-manager";
+import {
+  addPsedo,
+  parseSelector,
+  type SelectorComponents,
+} from "../core/utils/parse-selector";
 import constructUtilityClassName from "../core/utils/construct-utility-name";
-import type ParsedAtRulesManager from "../core/parsed-atrules-collector";
+import ParsedAtRulesManager from "../core/parsed-atrules-collector";
 
-export default class RulesProcessor extends BaseProcessor {
+interface ProcessingContext {
+  parentAtRule?: AtRule;
+}
+
+export default class RulesProcessor {
+  public readonly parsedRulesManager: ParsedRulesManager;
+  public readonly parsedAtRulesManager: ParsedAtRulesManager;
+
   constructor(
-    resultCollector: ResolvedClassListCollector,
-    options: Options["options"],
+    private resultCollector: ResolvedClassListCollector,
+    private options: Options["options"],
   ) {
-    super(resultCollector, options);
+    this.parsedAtRulesManager = new ParsedAtRulesManager();
+    this.parsedRulesManager = new ParsedRulesManager();
   }
-  walkAtRules(
-    muffinAtRule: AtRule,
-    parsedRulesManager: ParsedRulesManager,
-    parsedAtRulesManager: ParsedAtRulesManager,
-  ) {
-    muffinAtRule.walkAtRules((atRule) => {
-      parsedAtRulesManager.init(atRule.params);
-      this.walk(atRule, parsedRulesManager, parsedAtRulesManager, true);
+
+  public walkNestedAtRules(muffinAtRule: AtRule): this {
+    muffinAtRule.walkAtRules((nestedAtRule) => {
+      this.parsedAtRulesManager.init(nestedAtRule.params);
+      this.processRulesIn(nestedAtRule, { parentAtRule: nestedAtRule });
     });
     return this;
   }
-  walk(
-    muffinAtRule: AtRule,
-    parsedRulesManager: ParsedRulesManager,
-    parsedAtRulesManager: ParsedAtRulesManager,
-    isParent?: boolean,
-  ) {
-    muffinAtRule.walkRules((rule) => {
-      const { selectors } = rule;
-      selectors.forEach((selector) => {
-        const atomicClassList: string[] = [];
 
-        if (selector.startsWith(".")) {
-          const selectorComponents = parseSelector(selector);
-          if (selectorComponents.combinator) {
-            // handle relational selector
-          } else {
-            rule.walkDecls((declaration) => {
-              const utilityClassName = constructUtilityClassName(
-                declaration,
-                selectorComponents,
-                this.options,
-                isParent ? { parentAtRule: muffinAtRule } : {},
-              );
-              if (isParent) {
-                parsedAtRulesManager.add(
-                  muffinAtRule.params,
-                  addPsedo(utilityClassName, selectorComponents),
-                  declaration,
-                );
-              } else
-                parsedRulesManager.add(
-                  addPsedo(utilityClassName, selectorComponents),
-                  declaration,
-                );
-              atomicClassList.push(utilityClassName);
-            });
-            if (atomicClassList.length > 0)
-              this.resultCollector.add(selector, atomicClassList);
-          }
-        } else {
-          // target contains non class selector
-        }
-      });
+  public processRulesIn(atRule: AtRule, context: ProcessingContext = {}): this {
+    atRule.walkRules((rule) => {
+      this._processRule(rule, context);
+    });
+    return this;
+  }
+
+  private _processRule(rule: Rule, context: ProcessingContext): void {
+    const atomicClassList: string[] = [];
+
+    for (const selector of rule.selectors) {
+      if (!selector.startsWith(".")) {
+        continue;
+      }
+
+      const selectorComponents = parseSelector(selector);
+      if (selectorComponents.combinator) {
+        // TODO Here you can add logic for handling relational selectors like `>` or `+`.
+        continue;
+      }
+
+      const generatedClasses = this._processDeclarations(
+        rule,
+        selectorComponents,
+        context,
+      );
+      atomicClassList.push(...generatedClasses);
+      if (atomicClassList.length > 0) {
+        this.resultCollector.add(selector, atomicClassList);
+      }
+    }
+  }
+
+  private _processDeclarations(
+    rule: Rule,
+    selectorComponents: SelectorComponents,
+    context: ProcessingContext,
+  ): string[] {
+    const generatedClasses: string[] = [];
+
+    rule.walkDecls((declaration) => {
+      const utilityClassName = constructUtilityClassName(
+        declaration,
+        selectorComponents,
+        this.options,
+        context,
+      );
+
+      generatedClasses.push(utilityClassName);
+
+      const finalClassName = addPsedo(utilityClassName, selectorComponents);
+
+      if (context.parentAtRule) {
+        this.parsedAtRulesManager.add(
+          context.parentAtRule.params,
+          finalClassName,
+          declaration,
+        );
+      } else {
+        this.parsedRulesManager.add(finalClassName, declaration);
+      }
     });
 
-    return this;
+    return generatedClasses;
   }
 }

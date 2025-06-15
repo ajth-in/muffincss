@@ -2,10 +2,10 @@
     "use strict";
     module.exports = {
   ".header:hover": [
-    "a-color-yellow-hover",
-    "a-background-color-red-hover"
+    "a-coloryellow_hover",
+    "a-background_colorred_hover"
   ],
   ".btn": [
-    "a-color-red"
+    "a-colorred"
   ]
 };
