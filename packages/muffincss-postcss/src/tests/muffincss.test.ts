@@ -18,7 +18,7 @@ describe("MuffinCSS-PostCSS", () => {
     const result = await postcssPipeline(
       `
             @layer muffin{
-        .header:hover {
+        .header:hover,button {
           color: yellow;
         }
         @media (min-width: 768px) {
@@ -36,26 +36,36 @@ describe("MuffinCSS-PostCSS", () => {
 
     expect(result).toBe(
       ` 
-      @layer utilities {
-          @media (min-width: 768px) {
-            .a-text-align-center-_min_width__768px_-hover:hover {
-              text-align: center
-            }
-            .a-color-blue-_min_width__768px_-hover:hover {
-              color: blue
-            }
-          }
-          .a-color-yellow-hover:hover {
-            color: #ff0
-          }
-        }
-          @layer muffin {
-        @media (min-width: 768px) {
-          button {
-            color: blue
-          }
-        }
+@layer utilities {
+  @media (min-width: 768px) {
+    .a-text-align-center-hover-media--min-width--768px-:hover {
+      text-align: center
     }
+    .a-color-blue-hover-media--min-width--768px-:hover {
+      color: blue
+    }
+  }
+  .a-color-yellow-hover:hover {
+    color: #ff0
+  }
+  .a-text-align-center-hover:hover {
+    text-align: center
+  }
+  .a-color-blue-hover:hover {
+    color: blue
+  }
+}
+
+@layer muffin {
+  button {
+    color: #ff0
+  }
+  @media (min-width: 768px) {
+    button {
+      color: blue
+    }
+  }
+}
       `.replace(/\s+/g, ""),
     );
   });

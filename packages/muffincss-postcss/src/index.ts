@@ -1,9 +1,8 @@
 import { Instrumentation } from "@muffincss/core/core/instrumentation";
 
-import { Root, type Plugin } from "postcss";
+import { Root, Rule, type Plugin } from "postcss";
 import Options from "@muffincss/core/core/options-manager";
 import ResolvedClassListCollector from "@muffincss/core/core/resolved-classlist-collector";
-import AtRuleProcessor from "@muffincss/core/processors/at-rules";
 import RulesProcessor from "@muffincss/core/processors/rules";
 import { createResetLayer } from "@muffincss/core/resets/index";
 import createUtilititylayer from "@muffincss/core/core/utility-layer";
@@ -30,14 +29,9 @@ const postcssAtomizer = (): Plugin => {
       root.walkAtRules("layer", (atRule) => {
         switch (atRule.params.trim()) {
           case "muffin":
-            new AtRuleProcessor(...processorContext).walk(
-              atRule,
-              parsedAtRulesManager,
-            );
-            new RulesProcessor(...processorContext).walk(
-              atRule,
-              parsedRulesManager,
-            );
+            new RulesProcessor(...processorContext)
+              .walk(atRule, parsedRulesManager, parsedAtRulesManager)
+              .walkAtRules(atRule, parsedRulesManager, parsedAtRulesManager);
 
             break;
           case "reset":
@@ -48,6 +42,7 @@ const postcssAtomizer = (): Plugin => {
             break;
         }
       });
+
       const utilitiesLayer = createUtilititylayer(
         parsedRulesManager,
         parsedAtRulesManager,
@@ -58,6 +53,43 @@ const postcssAtomizer = (): Plugin => {
     },
     async OnceExit(root: Root, { result }) {
       const { options } = await optionsManager.prepare();
+
+      const cleanup = (rule: Rule) => {
+        const nonClassSelector = rule.selectors.filter(
+          (selector) => !selector.startsWith("."),
+        );
+        if (!nonClassSelector.length) {
+          rule.remove();
+        } else
+          rule.replaceWith(
+            rule.clone({
+              selector: nonClassSelector.join(","),
+            }),
+          );
+        if (rule.selectors.every((selector) => selector.startsWith("."))) {
+          rule.remove();
+        }
+      };
+      // cleanUp: remove unprocessed once
+      root.walkAtRules("layer", (muffinAtRule) => {
+        if (muffinAtRule.params.trim() === "muffin") {
+          muffinAtRule.walk((rule) => {
+            switch (rule.type) {
+              case "atrule":
+                rule.walkAtRules((atRule) => {
+                  atRule.walkRules((rule) => {
+                    cleanup(rule);
+                  });
+                  if (!atRule.nodes?.length) atRule.remove();
+                });
+                break;
+
+              case "rule":
+                cleanup(rule);
+            }
+          });
+        }
+      });
       options.debug && instrumentation.start("Generating type definitions");
       new CssModuleGenerator(options).generate();
       new GenerateResolvedClassListModule(resultCollector, options).generate();

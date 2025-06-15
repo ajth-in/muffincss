@@ -1,6 +1,7 @@
 
 declare const obj: Record<
-      "button"
+      "header:hover" | 
+      "btn"
 ,
   string[]
 >;

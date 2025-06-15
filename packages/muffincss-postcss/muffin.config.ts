@@ -4,9 +4,6 @@ const config: MuffinConfig = {
   reset: "off",
   hash: false,
   debug: false,
-  exclude: {
-    selectors: ["btn"],
-  },
 };
 
 export default config;

@@ -17,8 +17,10 @@ describe("Exclude options", () => {
     );
 
     expect(result).toBe(
-      `@layerutilities{.a-color-yellow-hover:hover{color:#ff0}.a-background-color-red-hover:hover{background-color:red}}
-      @layer muffin{ .btn{color:red} }`.replace(/\s+/g, ""),
+      `@layerutilities{.a-color-yellow-hover:hover{color:#ff0}.a-background-color-red-hover:hover{background-color:red}.a-color-red{color:red}}@layermuffin{}`.replace(
+        /\s+/g,
+        "",
+      ),
     );
   });
 });

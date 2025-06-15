@@ -1,8 +1,11 @@
-import { type AtRule, type Declaration } from "postcss";
+import { type AtRule } from "postcss";
 import BaseProcessor from "./base";
 import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
 import type Options from "../core/options-manager";
 import type ParsedRulesManager from "../core/parsed-rules-manager";
+import { addPsedo, parseSelector } from "../core/utils/parse-selector";
+import constructUtilityClassName from "../core/utils/construct-utility-name";
+import type ParsedAtRulesManager from "../core/parsed-atrules-collector";
 
 export default class RulesProcessor extends BaseProcessor {
   constructor(
@@ -11,37 +14,62 @@ export default class RulesProcessor extends BaseProcessor {
   ) {
     super(resultCollector, options);
   }
-
-  walk(root: AtRule, parsedRulesManager: ParsedRulesManager) {
-    root.walkRules((rule) => {
-      const atomicClassList: string[] = [];
-      let isRuleRemovable = true;
-
-      const isClassSelector = rule.selector.startsWith(".");
-      const isParentHandled =
-        rule.parent?.type === "atrule" &&
-        this.isAtRuleHandled(rule.parent as AtRule);
-      if (isParentHandled || !isClassSelector) return;
-
-      const pseudoClass = BaseProcessor.getPseudoClass(rule.selector);
-
-      rule.walkDecls((declaration: Declaration) => {
-        const atomicClassName = this.constructAtomicClassName(declaration, {
-          pseudoClass,
-        });
-        parsedRulesManager.add(atomicClassName, declaration);
-        atomicClassList.push(
-          BaseProcessor.removePseudoClasses(atomicClassName),
-        );
-      });
-      if (atomicClassList.length > 0) {
-        const selector = pseudoClass
-          ? BaseProcessor.removePseudoClasses(rule.selector)
-          : rule.selector;
-        this.resultCollector.add(selector, atomicClassList);
-      }
-      if (isRuleRemovable) rule.remove();
+  walkAtRules(
+    muffinAtRule: AtRule,
+    parsedRulesManager: ParsedRulesManager,
+    parsedAtRulesManager: ParsedAtRulesManager,
+  ) {
+    muffinAtRule.walkAtRules((atRule) => {
+      parsedAtRulesManager.init(atRule.params);
+      this.walk(atRule, parsedRulesManager, parsedAtRulesManager, true);
     });
+    return this;
+  }
+  walk(
+    muffinAtRule: AtRule,
+    parsedRulesManager: ParsedRulesManager,
+    parsedAtRulesManager: ParsedAtRulesManager,
+    isParent?: boolean,
+  ) {
+    muffinAtRule.walkRules((rule) => {
+      const { selectors } = rule;
+      selectors.forEach((selector) => {
+        const atomicClassList: string[] = [];
+
+        if (selector.startsWith(".")) {
+          const selectorComponents = parseSelector(selector);
+          if (selectorComponents.combinator) {
+            // handle relational selector
+          } else {
+            rule.walkDecls((declaration) => {
+              const utilityClassName = constructUtilityClassName(
+                declaration,
+                selectorComponents,
+                this.options,
+                isParent ? { parentAtRule: muffinAtRule } : {},
+              );
+              if (isParent) {
+                parsedAtRulesManager.add(
+                  muffinAtRule.params,
+                  addPsedo(utilityClassName, selectorComponents),
+                  declaration,
+                );
+              } else
+                parsedRulesManager.add(
+                  addPsedo(utilityClassName, selectorComponents),
+                  declaration,
+                );
+              atomicClassList.push(utilityClassName);
+            });
+            if (atomicClassList.length > 0)
+              this.resultCollector.add(selector, atomicClassList);
+          }
+        } else {
+          // target contains non class selector
+        }
+      });
+    });
+
     return this;
   }
 }
