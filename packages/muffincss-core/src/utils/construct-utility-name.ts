@@ -26,11 +26,9 @@ const constructUtilityClassName = (
     .map(sanitize)
     .join("");
 
-  const result = options.hash
-    ? x86.hash32(sanitizedName).toString(16)
+  return options.hash
+    ? `${options.prefix}${x86.hash32(sanitizedName).toString(16)}`
     : sanitizedName;
-
-  return `${options.prefix}${result}`;
 };
 
 export default constructUtilityClassName;
