@@ -22,7 +22,7 @@ async function findCssFiles(dir: string) {
 import {
   RESOLVED_CLASS_STORE_PATH,
   CSS_OUTPUT_PATH,
-} from "@muffincss/core/core/options-manager";
+} from "@muffincss/core/options-manager";
 const program = new Command();
 
 program

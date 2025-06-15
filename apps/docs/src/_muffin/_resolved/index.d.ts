@@ -9,12 +9,6 @@ declare const obj: Record<
       "toggle" | 
       "toggle--icon-light" | 
       "toggle--icon-dark" | 
-      "features-container" | 
-      "feature-card" | 
-      "feature-card:hover" | 
-      "feature-icon" | 
-      "feature-title" | 
-      "feature-description" | 
       "hero-title" | 
       "hero" | 
       "hero-content" | 
@@ -31,7 +25,13 @@ declare const obj: Record<
       "react-aria-TabList" | 
       "react-aria-Tab" | 
       "react-aria-Tab-selected" | 
-      "react-aria-TabPanel"
+      "react-aria-TabPanel" | 
+      "features-container" | 
+      "feature-card" | 
+      "feature-card:hover" | 
+      "feature-icon" | 
+      "feature-title" | 
+      "feature-description"
 ,
   string[]
 >;
