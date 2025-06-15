@@ -6,12 +6,12 @@
     padding-block: var(--spacing-4xl);
     gap: var(--spacing-6xl);
     min-height: 500px;
+    flex-direction:row;
   }
 
   @media screen and (max-width: 444px) {
     .hero-title {
       font-size: var(--font-md) !important;
-      color: red;
     }
   }
   @media screen and (max-width: 952px) {
@@ -27,7 +27,6 @@
     }
     .hero-title {
       font-size: var(--font-3xl);
-      color: blue;
 
     }
   }

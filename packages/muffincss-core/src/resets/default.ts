@@ -1,58 +1,56 @@
 import type { StyleRule } from ".";
-
 const defaultReset: StyleRule[] = [
   {
-    selector: "html",
+    selector: "*, ::after, ::before, ::backdrop, ::file-selector-button",
     declarations: {
-      "line-height": "1.15",
-      "-webkit-text-size-adjust": "100%",
-    },
-  },
-  {
-    selector: "body",
-    declarations: {
+      "box-sizing": "border-box",
       margin: "0",
+      padding: "0",
+      border: "0 solid",
     },
   },
   {
-    selector: "main",
+    selector: "html, :host",
     declarations: {
-      display: "block",
-    },
-  },
-  {
-    selector: "h1",
-    declarations: {
-      "font-size": "2em",
-      margin: "0.67em 0",
+      "line-height": "1.5",
+      "-webkit-text-size-adjust": "100%",
+      "tab-size": "4",
+      "font-family":
+        "var(--default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji')",
+      "font-feature-settings": "var(--default-font-feature-settings, normal)",
+      "font-variation-settings":
+        "var(--default-font-variation-settings, normal)",
+      "-webkit-tap-highlight-color": "transparent",
     },
   },
   {
     selector: "hr",
     declarations: {
-      "box-sizing": "content-box",
       height: "0",
-      overflow: "visible",
+      color: "inherit",
+      "border-top-width": "1px",
     },
   },
   {
-    selector: "pre",
+    selector: "abbr:where([title])",
     declarations: {
-      "font-family": "monospace, monospace",
-      "font-size": "1em",
+      "-webkit-text-decoration": "underline dotted",
+      "text-decoration": "underline dotted",
+    },
+  },
+  {
+    selector: "h1, h2, h3, h4, h5, h6",
+    declarations: {
+      "font-size": "inherit",
+      "font-weight": "inherit",
     },
   },
   {
     selector: "a",
     declarations: {
-      "background-color": "transparent",
-    },
-  },
-  {
-    selector: "abbr[title]",
-    declarations: {
-      "border-bottom": "none",
-      "text-decoration": "underline dotted",
+      color: "inherit",
+      "-webkit-text-decoration": "inherit",
+      "text-decoration": "inherit",
     },
   },
   {
@@ -62,9 +60,14 @@ const defaultReset: StyleRule[] = [
     },
   },
   {
-    selector: "code, kbd, samp",
+    selector: "code, kbd, samp, pre",
     declarations: {
-      "font-family": "monospace, monospace",
+      "font-family":
+        "var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace)",
+      "font-feature-settings":
+        "var(--default-mono-font-feature-settings, normal)",
+      "font-variation-settings":
+        "var(--default-mono-font-variation-settings, normal)",
       "font-size": "1em",
     },
   },
@@ -96,68 +99,17 @@ const defaultReset: StyleRule[] = [
     },
   },
   {
-    selector: "img",
+    selector: "table",
     declarations: {
-      "border-style": "none",
+      "text-indent": "0",
+      "border-color": "inherit",
+      "border-collapse": "collapse",
     },
   },
   {
-    selector: "button, input, optgroup, select, textarea",
+    selector: ":-moz-focusring",
     declarations: {
-      "font-family": "inherit",
-      "font-size": "100%",
-      "line-height": "1.15",
-      margin: "0",
-    },
-  },
-  {
-    selector: "button, input",
-    declarations: {
-      overflow: "visible",
-    },
-  },
-  {
-    selector: "button, select",
-    declarations: {
-      "text-transform": "none",
-    },
-  },
-  {
-    selector: 'button, [type="button"], [type="reset"], [type="submit"]',
-    declarations: {
-      "-webkit-appearance": "button",
-    },
-  },
-  {
-    selector:
-      'button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner',
-    declarations: {
-      "border-style": "none",
-      padding: "0",
-    },
-  },
-  {
-    selector:
-      'button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring',
-    declarations: {
-      outline: "1px dotted ButtonText",
-    },
-  },
-  {
-    selector: "fieldset",
-    declarations: {
-      padding: "0.35em 0.75em 0.625em",
-    },
-  },
-  {
-    selector: "legend",
-    declarations: {
-      "box-sizing": "border-box",
-      color: "inherit",
-      display: "table",
-      "max-width": "100%",
-      padding: "0",
-      "white-space": "normal",
+      outline: "auto",
     },
   },
   {
@@ -167,67 +119,145 @@ const defaultReset: StyleRule[] = [
     },
   },
   {
-    selector: "textarea",
-    declarations: {
-      overflow: "auto",
-    },
-  },
-  {
-    selector: '[type="checkbox"], [type="radio"]',
-    declarations: {
-      "box-sizing": "border-box",
-      padding: "0",
-    },
-  },
-  {
-    selector:
-      '[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button',
-    declarations: {
-      height: "auto",
-    },
-  },
-  {
-    selector: '[type="search"]',
-    declarations: {
-      "-webkit-appearance": "textfield",
-      "outline-offset": "-2px",
-    },
-  },
-  {
-    selector: '[type="search"]::-webkit-search-decoration',
-    declarations: {
-      "-webkit-appearance": "none",
-    },
-  },
-  {
-    selector: "::-webkit-file-upload-button",
-    declarations: {
-      "-webkit-appearance": "button",
-      font: "inherit",
-    },
-  },
-  {
-    selector: "details",
-    declarations: {
-      display: "block",
-    },
-  },
-  {
     selector: "summary",
     declarations: {
       display: "list-item",
     },
   },
   {
-    selector: "template",
+    selector: "ol, ul, menu",
     declarations: {
-      display: "none",
+      "list-style": "none",
     },
   },
   {
-    selector: "[hidden]",
+    selector: "img, svg, video, canvas, audio, iframe, embed, object",
     declarations: {
-      display: "none",
+      display: "block",
+      "vertical-align": "middle",
+    },
+  },
+  {
+    selector: "img, video",
+    declarations: {
+      "max-width": "100%",
+      height: "auto",
+    },
+  },
+  {
+    selector:
+      "button, input, select, optgroup, textarea, ::file-selector-button",
+    declarations: {
+      font: "inherit",
+      "font-feature-settings": "inherit",
+      "font-variation-settings": "inherit",
+      "letter-spacing": "inherit",
+      color: "inherit",
+      "border-radius": "0",
+      "background-color": "transparent",
+      opacity: "1",
+    },
+  },
+  {
+    selector: ":where(select:is([multiple], [size])) optgroup",
+    declarations: {
+      "font-weight": "bolder",
+    },
+  },
+  {
+    selector: ":where(select:is([multiple], [size])) optgroup option",
+    declarations: {
+      "padding-inline-start": "20px",
+    },
+  },
+  {
+    selector: "::file-selector-button",
+    declarations: {
+      "margin-inline-end": "4px",
+    },
+  },
+  {
+    selector: "::placeholder",
+    declarations: {
+      opacity: "1",
+    },
+  },
+  {
+    atRule: {
+      name: "supports",
+      params:
+        "(not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px)",
+      rules: [
+        {
+          selector: "::placeholder",
+          declarations: {
+            color: "color-mix(in oklab, currentcolor 50%, transparent)",
+          },
+        },
+      ],
+    },
+  },
+  {
+    selector: "textarea",
+    declarations: {
+      resize: "vertical",
+    },
+  },
+  {
+    selector: "::-webkit-search-decoration",
+    declarations: {
+      "-webkit-appearance": "none",
+    },
+  },
+  {
+    selector: "::-webkit-date-and-time-value",
+    declarations: {
+      "min-height": "1lh",
+      "text-align": "inherit",
+    },
+  },
+  {
+    selector: "::-webkit-datetime-edit",
+    declarations: {
+      display: "inline-flex",
+    },
+  },
+  {
+    selector: "::-webkit-datetime-edit-fields-wrapper",
+    declarations: {
+      padding: "0",
+    },
+  },
+  {
+    selector:
+      "::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field",
+    declarations: {
+      "padding-block": "0",
+    },
+  },
+  {
+    selector: ":-moz-ui-invalid",
+    declarations: {
+      "box-shadow": "none",
+    },
+  },
+  {
+    selector:
+      "button, input:where([type='button'], [type='reset'], [type='submit']), ::file-selector-button",
+    declarations: {
+      appearance: "button",
+    },
+  },
+  {
+    selector: "::-webkit-inner-spin-button, ::-webkit-outer-spin-button",
+    declarations: {
+      height: "auto",
+    },
+  },
+  {
+    selector: "[hidden]:where(:not([hidden='until-found']))",
+    declarations: {
+      display: "none !important",
     },
   },
 ];
