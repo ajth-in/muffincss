@@ -1,5 +1,5 @@
 import path from "path";
-import type Options from "../core/options-manager";
+import type Options from "../options-manager";
 import type { FileGenType, FileType } from "../types";
 
 export default abstract class BaseGenerator {

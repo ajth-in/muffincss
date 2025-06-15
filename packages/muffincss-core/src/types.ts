@@ -52,3 +52,22 @@ export type ClassNameKey = `.${string & {}}`;
 export type FileType = "cjs" | "esm" | "dts";
 
 export type FileGenType = { content: string; type: FileType };
+
+export type ResetDeclarations = {
+  [property: string]: string | number;
+};
+
+export type ResetRule = {
+  selector: string;
+  declarations: ResetDeclarations;
+};
+
+export type ResetAtRule = {
+  atRule: {
+    name: string;
+    params: string;
+    rules: ResetStyleItem[];
+  };
+};
+
+export type ResetStyleItem = ResetRule | ResetAtRule;

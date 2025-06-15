@@ -1,5 +1,6 @@
-import type { StyleRule } from ".";
-const defaultReset: StyleRule[] = [
+import type { ResetStyleItem } from "../types";
+
+const defaultReset: ResetStyleItem[] = [
   {
     selector: "*, ::after, ::before, ::backdrop, ::file-selector-button",
     declarations: {

@@ -1,32 +1,36 @@
 import type { AtRule, Declaration } from "postcss";
 import type { SelectorComponents } from "./parse-selector";
-import type { MuffinConfig } from "../../types";
+import type { MuffinConfig } from "../types";
 import { x86 } from "murmurhash3js";
 
-const formatToId = (input: string) => input.replace(/[^a-zA-Z0-9]/g, "_");
+const sanitize = (str: string) => str.replace(/[^a-zA-Z0-9]/g, "_");
 
 const constructUtilityClassName = (
   declaration: Declaration,
   selector: SelectorComponents,
   options: Required<MuffinConfig>,
   context?: { parentAtRule?: AtRule },
-) => {
+): string => {
   const { parentAtRule } = context ?? {};
-  const utilityClassName = [
+
+  const rawParts = [
     declaration.prop,
     declaration.value,
     selector.pseudoClasses,
     parentAtRule?.name,
     parentAtRule?.params,
-  ]
-    .filter((item): item is string => !!item?.length)
-    .map((item) => formatToId(item))
+  ];
+
+  const sanitizedName = rawParts
+    .filter((part): part is string => !!part?.length)
+    .map(sanitize)
     .join("");
 
-  const withPrefix = (value: string) => `${options.prefix}${value}`;
-  return options?.hash
-    ? withPrefix(x86.hash32(utilityClassName).toString(16))
-    : withPrefix(utilityClassName);
+  const result = options.hash
+    ? x86.hash32(sanitizedName).toString(16)
+    : sanitizedName;
+
+  return `${options.prefix}${result}`;
 };
 
 export default constructUtilityClassName;

@@ -1,8 +1,8 @@
 import path from "path";
-import type { MuffinConfig } from "../types";
-import type { PostCSSErrorCollector } from "./error-handler";
+import type { MuffinConfig } from "./types";
 import { lilconfig } from "lilconfig";
 import loaders from "./utils/options-loader";
+import type { PostCSSErrorCollector } from "./utils/error-handler";
 
 export const RESOLVED_CLASS_STORE_PATH = "_resolved";
 export const CSS_OUTPUT_PATH = "css";

@@ -1,15 +1,14 @@
-import { Instrumentation } from "@muffincss/core/core/instrumentation";
 import { Root, type Plugin } from "postcss";
 
-import Options from "@muffincss/core/core/options-manager";
-import ResolvedClassListCollector from "@muffincss/core/core/resolved-classlist-collector";
-import RulesProcessor from "@muffincss/core/processors/rules";
-import { createResetLayer } from "@muffincss/core/resets/index";
-import createUtilityLayer from "@muffincss/core/core/utility-layer";
-
-import GenerateResolvedClassListModule from "@muffincss/core/codegen/_resolved/generator";
+import ResolvedClassListCollector from "@muffincss/core/state/resolved-classlist-collector";
+import RulesProcessor from "@muffincss/core/rule-processor";
+import { createResetLayer } from "@muffincss/core/create-reset-layer";
+import createUtilityLayer from "@muffincss/core/create-utility-layer";
 import CssModuleGenerator from "@muffincss/core/codegen/css/generator";
-import cleanupRoot from "@muffincss/core/core/utils/cleanup-root";
+import GenerateResolvedClassListModule from "@muffincss/core/codegen/_resolved/generator";
+import cleanupRoot from "@muffincss/core/utils/cleanup-root";
+import { Instrumentation } from "@muffincss/core/utils/instrumentation";
+import Options from "@muffincss/core/options-manager";
 
 const instrumentation = new Instrumentation();
 

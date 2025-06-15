@@ -1,14 +1,14 @@
 import { type AtRule, type Rule } from "postcss";
-import type ResolvedClassListCollector from "../core/resolved-classlist-collector";
-import type Options from "../core/options-manager";
-import ParsedRulesManager from "../core/parsed-rules-manager";
+import ParsedRulesManager from "./state/parsed-rules-manager";
+import ParsedAtRulesManager from "./state/parsed-atrules-manager";
+import type ResolvedClassListCollector from "./state/resolved-classlist-collector";
+import type Options from "./options-manager";
 import {
   addPsedo,
   parseSelector,
   type SelectorComponents,
-} from "../core/utils/parse-selector";
-import constructUtilityClassName from "../core/utils/construct-utility-name";
-import ParsedAtRulesManager from "../core/parsed-atrules-collector";
+} from "./utils/parse-selector";
+import constructUtilityClassName from "./utils/construct-utility-name";
 
 interface ProcessingContext {
   parentAtRule?: AtRule;
@@ -51,7 +51,7 @@ export default class RulesProcessor {
 
       const selectorComponents = parseSelector(selector);
       if (selectorComponents.combinator) {
-        // TODO Here you can add logic for handling relational selectors like `>` or `+`.
+        // TODO handle relational selectors like `>` or `+`.
         continue;
       }
 
