@@ -23,7 +23,7 @@ export default class Options {
   static getDefaults(): Required<MuffinConfig> {
     return {
       outDir: "./muffincss",
-      prefix: "a-",
+      hashPrefix: "mf",
       reset: "default",
       hash: true,
       debug: false,

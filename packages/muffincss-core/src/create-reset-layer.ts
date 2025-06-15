@@ -23,7 +23,7 @@ export const createResetLayer = (
   level: MuffinConfig["reset"],
   layer: ResetLayer,
 ) => {
-  const resetLayer = atRule({ name: "layer", params: "reset" });
+  const resetLayer = atRule({ name: "layer", params: layer });
 
   const styleRules: ResetStyleItem[] = (() => {
     if (layer === "reset-min") return minimalReset;

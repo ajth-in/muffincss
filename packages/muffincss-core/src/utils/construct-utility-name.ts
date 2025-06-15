@@ -64,7 +64,7 @@ const constructUtilityClassName = (
 
   if (options.hash) {
     const hash = x86.hash32(rawClassName).toString(16);
-    return `${options.prefix}${hash}`;
+    return `${options.hashPrefix}${hash}`;
   }
 
   return rawClassName;

@@ -17,10 +17,10 @@ export type MuffinConfig = {
   reset?: "minimal" | "default" | "off";
 
   /**
-   * Prefix to apply to all generated utility class names.
-   * @default "a-"
+   * Prefix to apply hashed atomic classNames, to avoid classNames starting with number.
+   * @default "mf"
    */
-  prefix?: string;
+  hashPrefix?: string;
 
   /**
    * Whether to hash all class names.

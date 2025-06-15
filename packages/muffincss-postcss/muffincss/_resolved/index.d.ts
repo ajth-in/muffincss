@@ -1,7 +1,7 @@
 
 declare const obj: Record<
-    string
-  ,
+      "header:hover"
+,
   string[]
 >;
 export default obj;
