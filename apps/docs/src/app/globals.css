@@ -2,7 +2,7 @@
 @import url("../styles/features.css");
 @import url("../styles/main.css");
 @import url("../styles/hero.css");
-@layer reset, utilities;
+@layer reset,muffin, utilities;
 
 :root {
   --font-family-sans: "Ubuntu", sans-serif;
