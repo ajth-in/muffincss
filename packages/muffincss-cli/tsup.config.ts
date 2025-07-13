@@ -1,13 +1,9 @@
 import { defineConfig } from "tsup";
-
+import sharedConfig from "@muffincss/tsup-config";
 const sharedOptions = {
-  minify: true,
-  cjsInterop: true,
-  dts: true,
-  entry: ["src/index.ts"],
+  ...sharedConfig,
   external: ["esbuild"],
-    noExternal: ['@muffincss/core'],
-
+  entry: ["src/index.ts"],
 };
 
 export default defineConfig([
