@@ -4,6 +4,7 @@ const sharedOptions = {
   minify: true,
   cjsInterop: true,
   dts: true,
+  external: [],
 };
 const sharedEntries = ['src/tools/index.ts', 'src/types.ts'];
 
@@ -11,6 +12,7 @@ export default defineConfig([
   {
     ...sharedOptions,
     format: ['esm'],
+
     entry: ['src/index.ts', ...sharedEntries],
   },
   {

@@ -1,14 +1,17 @@
 {
   "name": "@muffincss/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Core utilities for muffincss",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsup"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./*": {
       "types": "./dist/*.d.ts",

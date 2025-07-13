@@ -1,5 +1,11 @@
 # @muffincss/core
 
+## 0.0.2
+
+### Patch Changes
+
+- add files property to package.json
+
 ## 0.0.1
 
 ### Patch Changes

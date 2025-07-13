@@ -1,6 +1,6 @@
 {
   "name": "@muffincss/postcss",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "PostCSS plugin for generating  atomic styles from regular css",
   "keywords": [
     "postcss",
@@ -21,6 +21,9 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "files": [
+    "dist"
+  ],
   "types": "./dist/index.d.ts",
   "main": "./dist/index.mjs",
   "exports": {
