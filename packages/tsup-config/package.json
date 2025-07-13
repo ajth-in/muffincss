@@ -1,0 +1,15 @@
+{
+  "name": "@muffincss/tsup-config",
+  "version": "0.1.0",
+  "description": "base tsup configuration",
+  "main": "shared.js",
+  "files": [
+    "shared.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

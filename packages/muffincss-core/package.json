@@ -28,6 +28,7 @@
     "postcss": "^8.4.27"
   },
   "devDependencies": {
+    "@muffincss/tsup-config": "workspace:*",
     "@types/murmurhash3js": "^3.0.7",
     "@types/node": "^22.15.21",
     "postcss": "^8.4.27",
