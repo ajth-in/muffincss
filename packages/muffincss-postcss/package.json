@@ -46,6 +46,7 @@
     "postcss": "^8.4.27"
   },
   "devDependencies": {
+    "@muffincss/core": "workspace:*",
     "@muffincss/tsup-config": "workspace:*",
     "@jest/globals": "^29.7.0",
     "@types/glob-parent": "^5.1.3",
