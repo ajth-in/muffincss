@@ -1,5 +1,11 @@
 # @muffincss/postcss
 
+## 0.0.3
+
+### Patch Changes
+
+- Remove the usage of core lib in prod
+
 ## 0.0.2
 
 ### Patch Changes

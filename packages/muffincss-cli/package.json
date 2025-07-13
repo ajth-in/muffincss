@@ -1,6 +1,6 @@
 {
   "name": "@muffincss/cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "cli tool for muffincss",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,9 +17,8 @@
   "files": [
     "dist"
   ],
-  
   "devDependencies": {
-    "@muffincss/tsup-config":"workspace:*",
+    "@muffincss/tsup-config": "workspace:*",
     "@types/commander": "^2.12.5",
     "@types/node": "^22.15.21",
     "tsup": "^8.4.0",
