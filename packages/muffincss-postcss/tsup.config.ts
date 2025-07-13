@@ -5,6 +5,7 @@ const sharedOptions = {
   cjsInterop: true,
   dts: true,
   external: [],
+  noExternal: ['@muffincss/core'],
 };
 const sharedEntries = ['src/tools/index.ts', 'src/types.ts'];
 

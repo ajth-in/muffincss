@@ -6,6 +6,8 @@ const sharedOptions = {
   dts: true,
   entry: ["src/index.ts"],
   external: ["esbuild"],
+    noExternal: ['@muffincss/core'],
+
 };
 
 export default defineConfig([
