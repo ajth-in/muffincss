@@ -1,6 +1,87 @@
 
     "use strict";
     module.exports = {
+  ".features-container": [
+    "mf9fd01530",
+    "mf6fbf52be",
+    "mf8068b116"
+  ],
+  ".feature-card": [
+    "mf80bebf78",
+    "mfe8196598",
+    "mf7da8f969",
+    "mf44bc4656",
+    "mf5282b934",
+    "mf797a5755"
+  ],
+  ".feature-card:hover": [
+    "mf6f97c994"
+  ],
+  ".feature-icon": [
+    "mf70b597f8",
+    "mf8c71d354",
+    "mf2f72e424",
+    "mfb427457b",
+    "mf20e3bc2f",
+    "mf5aca63a",
+    "mfa5d78265",
+    "mf2c4e68fe",
+    "mf640211ec"
+  ],
+  ".feature-title": [
+    "mfccdb0a9",
+    "mf3b74dd18",
+    "mfc6367020"
+  ],
+  ".feature-description": [
+    "mfb8ba1a4a",
+    "mf97130fa8"
+  ],
+  ".header": [
+    "mf5aca63a",
+    "mfa6519be4",
+    "mfa5d78265",
+    "mf847a60cf"
+  ],
+  ".logo": [
+    "mf547db468",
+    "mf5162174f",
+    "mf9c951b64"
+  ],
+  ".logo::after": [
+    "mfbc53f79b",
+    "mf4e0f56a3",
+    "mf401b3218",
+    "mf16b585c8",
+    "mfb4cd05fc",
+    "mf288f8b5b",
+    "mf9478b055",
+    "mf1898fb1b",
+    "mf858f7a14",
+    "mf4da9b5e6"
+  ],
+  ".nav": [
+    "mf5aca63a",
+    "mf8b353d5",
+    "mfa5d78265"
+  ],
+  ".nav-link": [
+    "mf127e6e6e",
+    "mfff066d89"
+  ],
+  ".nav-link:hover": [
+    "mf787a3169"
+  ],
+  ".toggle": [
+    "mf946fd623",
+    "mfe4a77ff1"
+  ],
+  ".toggle--icon-light": [
+    "mf45eb6fbc"
+  ],
+  ".toggle--icon-dark": [
+    "mfe169cda8"
+  ],
   ".hero-title": [
     "mfba9718b7",
     "mfee3c3e58",
@@ -105,86 +186,5 @@
     "mfc2c18090",
     "mf9f94ce5b",
     "mf838b7052"
-  ],
-  ".header": [
-    "mf5aca63a",
-    "mfa6519be4",
-    "mfa5d78265",
-    "mf847a60cf"
-  ],
-  ".logo": [
-    "mf547db468",
-    "mf5162174f",
-    "mf9c951b64"
-  ],
-  ".logo::after": [
-    "mfbc53f79b",
-    "mf4e0f56a3",
-    "mf401b3218",
-    "mf16b585c8",
-    "mfb4cd05fc",
-    "mf288f8b5b",
-    "mf9478b055",
-    "mf1898fb1b",
-    "mf858f7a14",
-    "mf4da9b5e6"
-  ],
-  ".nav": [
-    "mf5aca63a",
-    "mf8b353d5",
-    "mfa5d78265"
-  ],
-  ".nav-link": [
-    "mf127e6e6e",
-    "mfff066d89"
-  ],
-  ".nav-link:hover": [
-    "mf787a3169"
-  ],
-  ".toggle": [
-    "mf946fd623",
-    "mfe4a77ff1"
-  ],
-  ".toggle--icon-light": [
-    "mf45eb6fbc"
-  ],
-  ".toggle--icon-dark": [
-    "mfe169cda8"
-  ],
-  ".features-container": [
-    "mf9fd01530",
-    "mf6fbf52be",
-    "mf8068b116"
-  ],
-  ".feature-card": [
-    "mf80bebf78",
-    "mfe8196598",
-    "mf7da8f969",
-    "mf44bc4656",
-    "mf5282b934",
-    "mf797a5755"
-  ],
-  ".feature-card:hover": [
-    "mf6f97c994"
-  ],
-  ".feature-icon": [
-    "mf70b597f8",
-    "mf8c71d354",
-    "mf2f72e424",
-    "mfb427457b",
-    "mf20e3bc2f",
-    "mf5aca63a",
-    "mfa5d78265",
-    "mf2c4e68fe",
-    "mf640211ec"
-  ],
-  ".feature-title": [
-    "mfccdb0a9",
-    "mf3b74dd18",
-    "mfc6367020"
-  ],
-  ".feature-description": [
-    "mfb8ba1a4a",
-    "mf97130fa8"
   ]
 };

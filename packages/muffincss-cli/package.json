@@ -10,6 +10,7 @@
   "dependencies": {
     "commander": "^14.0.0"
   },
+  "files": ["dist"],
   "devDependencies": {
     "@muffincss/core": "workspace:*",
     "@muffincss/postcss": "workspace:*",
