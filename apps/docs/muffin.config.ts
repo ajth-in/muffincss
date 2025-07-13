@@ -1,4 +1,4 @@
-import { MuffinConfig } from "@muffincss/core/types";
+import { MuffinConfig } from "@muffincss/postcss/types";
 const config: MuffinConfig = {
   debug: true,
   hash: true,

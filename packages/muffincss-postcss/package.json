@@ -35,6 +35,11 @@
       "types": "./dist/tools/index.d.ts",
       "import": "./dist/tools/index.mjs",
       "require": "./dist/tools/index.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.js"
     }
   },
   "peerDependencies": {
@@ -73,7 +78,6 @@
     ]
   },
   "dependencies": {
-    "@muffincss/core": "workspace:*",
     "@types/handlebars": "^4.1.0",
     "chalk": "^4.0.0",
     "esbuild": "^0.25.4",
