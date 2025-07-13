@@ -1,4 +1,4 @@
-import { type MuffinConfig } from '@muffincss/core/types';
+import { type MuffinConfig } from '@muffincss/postcss/types';
 
 const config: MuffinConfig = {
   reset: 'default',
