@@ -7,6 +7,7 @@ export default defineConfig([
   {
     ...sharedConfig,
     format: ['esm'],
+
     entry: ['src/index.ts', ...sharedEntries],
   },
   {

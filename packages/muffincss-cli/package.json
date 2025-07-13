@@ -1,6 +1,7 @@
 {
   "name": "@muffincss/cli",
   "version": "0.0.3",
+
   "description": "cli tool for muffincss",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +9,13 @@
     "muffin": "./dist/index.js"
   },
   "dependencies": {
-    "commander": "^14.0.0",
+
+    "commander": "^14.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
     "@muffincss/core": "workspace:*",
     "@muffincss/postcss": "workspace:*",
     "cssnano": "^7.0.7",

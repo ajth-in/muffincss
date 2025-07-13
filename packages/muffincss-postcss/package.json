@@ -1,6 +1,7 @@
 {
   "name": "@muffincss/postcss",
   "version": "0.0.3",
+
   "description": "PostCSS plugin for generating  atomic styles from regular css",
   "keywords": [
     "postcss",
