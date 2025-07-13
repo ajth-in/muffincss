@@ -12,7 +12,8 @@
     "@muffincss/core": "workspace:*",
     "@muffincss/postcss": "workspace:*",
     "cssnano": "^7.0.7",
-    "postcss": "^8.5.3"
+    "postcss": "^8.5.3",
+    "esbuild": "^0.18.10"
   },
   "files": [
     "dist"
