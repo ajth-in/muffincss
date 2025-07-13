@@ -37,9 +37,7 @@
       "require": "./dist/tools/index.js"
     },
     "./types": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/types.mjs",
-      "require": "./dist/types.js"
+      "types": "./dist/types.d.ts"
     }
   },
   "peerDependencies": {
