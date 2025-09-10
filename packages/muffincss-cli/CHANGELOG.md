@@ -1,5 +1,14 @@
 # @muffincss/cli
 
+## 0.0.4-beta.0
+
+### Patch Changes
+
+- enter the pre release
+- Updated dependencies
+  - @muffincss/postcss@0.0.4-beta.0
+  - @muffincss/core@0.0.3-beta.0
+
 ## 0.0.3
 
 ### Patch Changes

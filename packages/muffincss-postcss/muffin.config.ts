@@ -1,4 +1,3 @@
-
 const config = {
   reset: 'default',
   hash: false,

@@ -8,5 +8,7 @@
     "@muffincss/core": "0.0.2",
     "@muffincss/postcss": "0.0.3"
   },
-  "changesets": []
+  "changesets": [
+    "cold-beans-march"
+  ]
 }
