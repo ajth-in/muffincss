@@ -1,7 +1,38 @@
 
 declare const obj: Record<
-    string
-  ,
+      "features-container" | 
+      "feature-card" | 
+      "feature-card:hover" | 
+      "feature-icon" | 
+      "feature-title" | 
+      "feature-description" | 
+      "header" | 
+      "logo" | 
+      "logo::after" | 
+      "nav" | 
+      "nav-link" | 
+      "nav-link:hover" | 
+      "toggle" | 
+      "toggle--icon-light" | 
+      "toggle--icon-dark" | 
+      "hero-title" | 
+      "hero" | 
+      "hero-content" | 
+      "hero-actions" | 
+      "hero-brand" | 
+      "hero-subtitle" | 
+      "button" | 
+      "button--primary" | 
+      "button--primary:hover" | 
+      "button--secondary" | 
+      "button--secondary:hover" | 
+      "hero-codeblock" | 
+      "react-aria-Tabs" | 
+      "react-aria-TabList" | 
+      "react-aria-Tab" | 
+      "react-aria-Tab-selected" | 
+      "react-aria-TabPanel"
+,
   string[]
 >;
 export default obj;

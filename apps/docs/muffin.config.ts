@@ -1,5 +1,4 @@
-import { MuffinConfig } from "@muffincss/postcss/types";
-const config: MuffinConfig = {
+const config = {
   debug: true,
   hash: true,
   reset: "default",

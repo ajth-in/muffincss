@@ -1,0 +1,12 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@muffincss/docs": "0.1.0",
+    "@muffincss/tsup-config": "0.1.0",
+    "@muffincss/cli": "0.0.3",
+    "@muffincss/core": "0.0.2",
+    "@muffincss/postcss": "0.0.3"
+  },
+  "changesets": []
+}
